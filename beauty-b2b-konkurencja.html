@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty B2B Polska — Analiza Rynku &amp; Strategia SEO Done-for-You · Joanna Mączka</title>
+    <meta name="description" content="Strategiczny raport rynku beauty B2B w Polsce: 132 400 podmiotów, 35 mld PLN, 10 konkurentów, TAM/SAM/SOM, MVP 790 PLN. Decyzja go/no-go dla oferty SEO done-for-you.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-magenta: #E91E63;
+            --primary-soft: #F8BBD0;
+            --primary-bg: #FCE4EC;
+            --accent-rose: #EC407A;
+            --accent-peach: #FF7043;
+            --accent-peach-bg: #FFF3E0;
+            --accent-gold: #FFB74D;
+            --accent-gold-bg: #FFF8E1;
+            --accent-sage: #66BB6A;
+            --accent-sage-bg: #E8F5E9;
+            --accent-teal: #26A69A;
+            --accent-teal-bg: #E0F2F1;
+            --accent-indigo: #3F51B5;
+            --accent-indigo-bg: #E8EAF6;
+            --accent-lavender: #AB47BC;
+            --accent-lavender-bg: #F3E5F5;
+            --text-charcoal: #212121;
+            --text-soft: #616161;
+            --text-faint: #9E9E9E;
+            --bg-white: #FFFFFF;
+            --bg-alt: #FAFAFA;
+            --border-light: #E0E0E0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-alt);
+            color: var(--text-charcoal);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--primary-magenta);
+        }
+        h2 { margin-bottom: 8px; }
+
+        h3, h4 {
+            font-weight: 700;
+            color: var(--text-charcoal);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 340px;
+        }
+        .chart-container.tall { height: 420px; }
+        @media (max-width: 768px) {
+            .chart-container { height: 260px; }
+            .chart-container.tall { height: 320px; }
+        }
+
+        .nav-item {
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            color: var(--text-soft);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+            padding: 10px 18px;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+        }
+        .nav-item .nav-label { font-size: 13px; font-weight: 600; line-height: 1.2; }
+        .nav-item .nav-meta { font-size: 10.5px; color: var(--text-faint); font-weight: 500; }
+        .nav-item.active {
+            background-color: var(--primary-bg);
+            border-left-color: var(--primary-magenta);
+            color: var(--primary-magenta);
+        }
+        .nav-item.active .nav-label { font-weight: 700; }
+        .nav-item.active .nav-meta { color: var(--primary-magenta); opacity: 0.8; }
+        .nav-item:hover:not(.active) {
+            background-color: var(--bg-alt);
+            color: var(--text-charcoal);
+        }
+
+        .nav-section-divider {
+            margin: 8px 16px;
+            padding: 0;
+            border: 0;
+            border-top: 1px dashed var(--primary-soft);
+        }
+        .nav-section-label {
+            font-size: 10px;
+            color: var(--text-faint);
+            padding: 4px 18px 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-weight: 700;
+        }
+
+        .section-content { display: none; animation: fadeIn 0.4s ease-out; }
+        .section-content.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-magenta) 0%, var(--primary-soft) 30%, transparent 100%);
+            width: 120px;
+            margin-top: 6px;
+            margin-bottom: 28px;
+        }
+
+        .lede {
+            font-size: 17px;
+            color: var(--text-soft);
+            max-width: 760px;
+            margin-bottom: 32px;
+            line-height: 1.55;
+        }
+
+        .kpi-card {
+            background: var(--bg-white);
+            border: 1px solid var(--primary-soft);
+            border-radius: 12px;
+            padding: 20px 22px;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.10);
+        }
+        .kpi-emoji { position: absolute; top: 14px; right: 16px; font-size: 20px; opacity: 0.85; }
+        .kpi-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--primary-magenta);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+        .kpi-number.smaller { font-size: 32px; }
+        .kpi-label { font-size: 13px; color: var(--text-soft); margin-top: 6px; line-height: 1.35; }
+        .kpi-source { display: block; font-size: 11px; color: var(--text-faint); margin-top: 4px; }
+
+        .surface-card {
+            background: var(--bg-white);
+            border: 1px solid var(--primary-soft);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .box-insight { background-color: var(--primary-bg); border-left: 4px solid var(--primary-magenta); border-radius: 8px; padding: 18px 20px; }
+        .box-risk { background-color: var(--accent-peach-bg); border-left: 4px solid var(--accent-peach); border-radius: 8px; padding: 18px 20px; }
+        .box-chance { background-color: var(--accent-sage-bg); border-left: 4px solid var(--accent-sage); border-radius: 8px; padding: 18px 20px; }
+        .box-premium { background-color: var(--accent-gold-bg); border-left: 4px solid var(--accent-gold); border-radius: 8px; padding: 18px 20px; }
+        .box-info { background-color: var(--accent-teal-bg); border-left: 4px solid var(--accent-teal); border-radius: 8px; padding: 18px 20px; }
+        .box-title { font-weight: 700; margin-bottom: 6px; font-size: 14px; }
+        .box-insight .box-title { color: var(--primary-magenta); }
+        .box-risk .box-title { color: #BF360C; }
+        .box-chance .box-title { color: #2E7D32; }
+        .box-premium .box-title { color: #E65100; }
+        .box-info .box-title { color: #00695C; }
+
+        table.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        table.data-table thead tr { background-color: var(--primary-bg); }
+        table.data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            font-weight: 700;
+            color: var(--primary-magenta);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-bottom: 2px solid var(--primary-soft);
+        }
+        table.data-table td { padding: 12px 14px; border-bottom: 1px solid var(--border-light); }
+        table.data-table tbody tr:hover { background-color: var(--bg-alt); }
+
+        .saturation-pill {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .sat-red { background: var(--accent-peach-bg); color: #BF360C; }
+        .sat-yellow { background: var(--accent-gold-bg); color: #E65100; }
+        .sat-green { background: var(--accent-sage-bg); color: #2E7D32; }
+
+        .pain-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border-light); }
+        .pain-item:last-child { border-bottom: none; }
+        .pain-rank {
+            min-width: 32px; height: 32px;
+            border-radius: 8px;
+            background: var(--primary-bg);
+            color: var(--primary-magenta);
+            font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; flex-shrink: 0;
+        }
+        .pain-content { flex: 1; }
+        .pain-title { font-weight: 700; color: var(--text-charcoal); font-size: 14px; margin-bottom: 4px; }
+        .pain-desc { font-size: 13px; color: var(--text-soft); margin-bottom: 6px; }
+        .pain-bar-wrap { display: flex; align-items: center; gap: 8px; }
+        .pain-bar { height: 6px; background: var(--border-light); border-radius: 3px; overflow: hidden; flex: 1; max-width: 200px; }
+        .pain-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary-soft), var(--primary-magenta)); border-radius: 3px; }
+        .pain-bar-label { font-size: 11px; color: var(--text-faint); font-weight: 600; }
+
+        .comp-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex; flex-direction: column;
+        }
+        .comp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px -8px rgba(233, 30, 99, 0.18);
+            border-color: var(--primary-soft);
+        }
+        .badge-edu      { background-color: var(--accent-lavender-bg); color: var(--accent-lavender); }
+        .badge-spec     { background-color: var(--accent-sage-bg); color: #2E7D32; }
+        .badge-gen      { background-color: var(--accent-indigo-bg); color: var(--accent-indigo); }
+        .badge-platform { background-color: var(--accent-peach-bg); color: #E65100; }
+        .badge-saas     { background-color: var(--accent-teal-bg); color: #00695C; }
+        .badge-price    { background-color: var(--primary-bg); color: var(--primary-magenta); }
+
+        .segment-card {
+            border-radius: 14px; padding: 22px;
+            border: 2px solid var(--border-light);
+            background: var(--bg-white);
+            position: relative;
+            transition: all 0.2s;
+        }
+        .segment-card.target {
+            border-color: var(--primary-magenta);
+            background: linear-gradient(180deg, var(--primary-bg) 0%, var(--bg-white) 60%);
+        }
+        .segment-target-badge {
+            position: absolute; top: -10px; right: 16px;
+            background: var(--primary-magenta);
+            color: white;
+            font-size: 10.5px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .quarter-card {
+            background: var(--bg-white);
+            border: 1px solid var(--primary-soft);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .quarter-card .q-label { font-size: 11px; font-weight: 700; color: var(--primary-magenta); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+        .quarter-card .q-title { font-size: 15px; font-weight: 700; color: var(--text-charcoal); margin-bottom: 10px; }
+        .quarter-card .q-behavior { font-size: 13px; color: var(--text-soft); margin-bottom: 12px; line-height: 1.5; }
+        .quarter-card .q-rec { font-size: 12.5px; background: var(--primary-bg); color: var(--primary-magenta); padding: 8px 10px; border-radius: 6px; font-weight: 600; line-height: 1.4; }
+
+        .funnel { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 20px 0; }
+        .funnel-step {
+            color: white;
+            padding: 18px 28px;
+            font-weight: 700;
+            text-align: center;
+            display: flex; flex-direction: column; gap: 4px;
+            border-radius: 8px;
+        }
+        .funnel-step .f-num { font-size: 32px; font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+        .funnel-step .f-label { font-size: 12px; opacity: 0.95; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+        .funnel-step .f-desc { font-size: 12.5px; opacity: 0.92; font-weight: 500; margin-top: 2px; }
+        .f-tam { width: 100%; max-width: 580px; background: linear-gradient(135deg, #3F51B5, #5C6BC0); }
+        .f-sam { width: 75%; max-width: 460px; background: linear-gradient(135deg, #AB47BC, #BA68C8); }
+        .f-som { width: 50%; max-width: 340px; background: linear-gradient(135deg, #E91E63, #EC407A); }
+        .funnel-revenue {
+            background: var(--accent-gold-bg);
+            border: 2px solid var(--accent-gold);
+            color: #E65100;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 12px;
+            text-align: center;
+        }
+        .funnel-revenue .rev-num { font-size: 24px; color: #E65100; font-weight: 800; }
+
+        .roadmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 16px; }
+        @media (max-width: 768px) { .roadmap { grid-template-columns: repeat(2, 1fr); } }
+        .roadmap-step { background: var(--bg-white); border: 1.5px solid var(--primary-soft); border-radius: 10px; padding: 14px 12px; text-align: center; }
+        .roadmap-step .rs-month { font-size: 11px; font-weight: 700; color: var(--primary-magenta); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+        .roadmap-step .rs-action { font-size: 12.5px; color: var(--text-charcoal); font-weight: 600; line-height: 1.35; }
+
+        .go-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, var(--accent-sage), #43A047);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 14px rgba(102, 187, 106, 0.30);
+        }
+        .go-badge.large { font-size: 18px; padding: 14px 28px; box-shadow: 0 6px 20px rgba(102, 187, 106, 0.35); }
+        .go-badge::before { content: '✓'; font-size: 16px; font-weight: 800; }
+        .go-badge.large::before { font-size: 22px; }
+
+        .tldr-table { width: 100%; border-collapse: collapse; }
+        .tldr-table tr { border-bottom: 1px solid var(--border-light); }
+        .tldr-table tr:last-child { border-bottom: none; }
+        .tldr-table td { padding: 11px 14px; font-size: 14px; }
+        .tldr-table td:first-child { color: var(--text-soft); width: 50%; }
+        .tldr-table td:nth-child(2) { font-weight: 700; color: var(--primary-magenta); text-align: right; font-variant-numeric: tabular-nums; }
+        .tldr-table tr:hover { background: var(--bg-alt); }
+
+        .src {
+            display: inline-block;
+            background: var(--bg-alt);
+            color: var(--text-faint);
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 3px;
+            font-weight: 600;
+            vertical-align: super;
+            line-height: 1;
+        }
+
+        .sources-footer {
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-light);
+            padding: 32px 0;
+            margin-top: 60px;
+        }
+        .sources-footer ol { list-style: decimal; padding-left: 20px; font-size: 13px; color: var(--text-soft); }
+        .sources-footer ol li { margin-bottom: 6px; }
+        .sources-footer a { color: var(--primary-magenta); text-decoration: none; border-bottom: 1px dotted var(--primary-soft); }
+        .sources-footer a:hover { border-bottom-style: solid; }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: var(--bg-alt); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--primary-soft); border-radius: 4px; }
+
+        /* Chat widget */
+        #chat-widget { position: fixed; bottom: 24px; right: 24px; z-index: 50; display: flex; flex-direction: column; align-items: flex-end; }
+        #chat-window {
+            width: 360px; max-height: 540px; height: 70vh;
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.18);
+            display: none; flex-direction: column; overflow: hidden;
+            border: 1px solid var(--primary-soft);
+            margin-bottom: 12px;
+        }
+        #chat-header {
+            background: var(--primary-magenta);
+            padding: 14px 16px;
+            color: white;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        #chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: var(--bg-alt); }
+        .message { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.45; }
+        .message-ai { background: var(--primary-bg); color: var(--text-charcoal); align-self: flex-start; border-bottom-left-radius: 4px; }
+        .message-user { background: var(--primary-magenta); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .message-disclaimer {
+            background: var(--accent-peach-bg);
+            color: #BF360C;
+            font-size: 12px;
+            border-left: 3px solid var(--accent-peach);
+            padding: 8px 12px;
+            border-radius: 6px;
+            align-self: stretch;
+        }
+        .typing-indicator { display: none; font-style: italic; color: var(--text-soft); font-size: 12px; padding: 4px 16px; background: var(--bg-alt); }
+        #chat-input-wrap { padding: 12px; border-top: 1px solid var(--border-light); background: var(--bg-white); display: flex; gap: 8px; }
+        #chat-input { flex: 1; background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 10px; padding: 8px 12px; font-size: 14px; font-family: inherit; outline: none; }
+        #chat-input:focus { border-color: var(--primary-magenta); }
+        #chat-send-btn { background: var(--primary-magenta); color: white; padding: 8px 14px; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; }
+        #chat-send-btn:hover { background: var(--accent-rose); }
+        #chat-toggle-btn {
+            background: var(--primary-magenta);
+            color: white;
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.35);
+            border: none; cursor: pointer;
+            font-size: 24px;
+            transition: transform 0.2s;
+        }
+        #chat-toggle-btn:hover { transform: scale(1.08); }
+
+        /* ============================================ */
+        /* LONG-FORM REPORT (S9) */
+        /* ============================================ */
+        .longform { max-width: 760px; margin: 0 auto; font-size: 16px; line-height: 1.75; color: var(--text-charcoal); }
+        .longform h3 {
+            font-size: 24px; font-weight: 800;
+            color: var(--primary-magenta);
+            margin-top: 48px; margin-bottom: 12px;
+            letter-spacing: -0.01em;
+            border-bottom: 2px solid var(--primary-bg);
+            padding-bottom: 8px;
+        }
+        .longform h3:first-of-type { margin-top: 24px; }
+        .longform h4 { font-size: 18px; font-weight: 700; color: var(--text-charcoal); margin-top: 32px; margin-bottom: 10px; }
+        .longform p { margin-bottom: 16px; }
+        .longform p:first-of-type::first-letter {
+            font-size: 56px; font-weight: 800;
+            color: var(--primary-magenta);
+            float: left;
+            line-height: 0.9;
+            margin-right: 8px; margin-top: 4px;
+            font-family: 'Plus Jakarta Sans', serif;
+        }
+        .longform strong { color: var(--primary-magenta); font-weight: 700; }
+        .longform em { color: var(--text-soft); }
+        .longform ul, .longform ol { margin-bottom: 18px; padding-left: 24px; }
+        .longform li { margin-bottom: 6px; }
+        .longform ul li::marker { color: var(--primary-magenta); }
+        .longform ol li::marker { color: var(--primary-magenta); font-weight: 700; }
+
+        .hero-stat {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--bg-white) 100%);
+            border-left: 5px solid var(--primary-magenta);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            display: flex; align-items: center; gap: 20px;
+        }
+        .hero-stat-num { font-size: 48px; font-weight: 800; color: var(--primary-magenta); line-height: 1; letter-spacing: -0.02em; flex-shrink: 0; }
+        .hero-stat-text { font-size: 15px; color: var(--text-charcoal); }
+        .hero-stat-text strong { color: var(--primary-magenta); }
+
+        .pull-quote {
+            font-size: 22px; font-weight: 700;
+            color: var(--primary-magenta);
+            border-left: 4px solid var(--primary-magenta);
+            padding: 8px 24px;
+            margin: 32px 0;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        .fancy-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 24px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(233, 30, 99, 0.06);
+            font-size: 14px;
+        }
+        .fancy-table thead tr {
+            background: linear-gradient(135deg, var(--primary-magenta) 0%, var(--accent-rose) 100%);
+            color: white;
+        }
+        .fancy-table th { padding: 14px 16px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .fancy-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); background: var(--bg-white); }
+        .fancy-table tbody tr:nth-child(even) td { background: var(--bg-alt); }
+        .fancy-table tbody tr:hover td { background: var(--primary-bg); }
+        .fancy-table tbody tr:last-child td { border-bottom: none; }
+        .fancy-table .num { font-weight: 700; color: var(--primary-magenta); font-variant-numeric: tabular-nums; text-align: right; }
+        .fancy-table .pct-up { color: #BF360C; font-weight: 700; }
+        .fancy-table .pct-down { color: #2E7D32; font-weight: 700; }
+
+        .longform-toc {
+            background: var(--bg-alt);
+            border: 1px solid var(--primary-soft);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 24px 0 32px;
+        }
+        .longform-toc h4 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--primary-magenta); margin: 0 0 10px 0; }
+        .longform-toc ol { list-style: decimal; padding-left: 24px; margin: 0; columns: 2; column-gap: 24px; font-size: 13px; }
+        .longform-toc ol li { margin-bottom: 4px; break-inside: avoid; }
+        .longform-toc a { color: var(--text-charcoal); text-decoration: none; border-bottom: 1px dotted var(--primary-soft); }
+        .longform-toc a:hover { color: var(--primary-magenta); border-bottom-style: solid; }
+        @media (max-width: 640px) {
+            .longform-toc ol { columns: 1; }
+            .longform p:first-of-type::first-letter { font-size: 42px; }
+            .hero-stat { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .hero-stat-num { font-size: 36px; }
+            .pull-quote { font-size: 17px; padding: 6px 16px; }
+        }
+
+        /* Print CSS */
+        @media print {
+            body { background: white; }
+            #sidebar, #mobile-nav, #mobile-menu, #chat-widget { display: none !important; }
+            main { margin: 0 !important; padding: 20px !important; }
+            .section-content { display: block !important; page-break-after: always; }
+            .section-content:last-of-type { page-break-after: auto; }
+            .kpi-card, .surface-card, .comp-card, .quarter-card, .segment-card, .roadmap-step,
+            .pain-item, .box-insight, .box-risk, .box-chance, .box-premium, .box-info,
+            .funnel-step { page-break-inside: avoid; }
+            h2 { font-size: 22pt; margin-top: 0; }
+            h3 { font-size: 14pt; }
+            body, p, td { font-size: 11pt; }
+            .kpi-number { font-size: 28pt; }
+            .chart-container { height: 240px; }
+            .src { display: none; }
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="w-72 bg-white border-r border-gray-100 flex-col hidden md:flex z-10 flex-shrink-0 shadow-sm">
+        <div class="p-6 border-b border-gray-100">
+            <h1 class="text-lg font-extrabold tracking-tight" style="color: var(--primary-magenta)">Joanna Mączka</h1>
+            <p class="text-[10px] mt-1 uppercase tracking-[0.12em] font-bold" style="color: var(--text-soft)">Beauty B2B · Strategia SEO</p>
+        </div>
+        <div class="flex-1 overflow-y-auto custom-scrollbar py-3 space-y-0.5 px-2">
+            <button onclick="nav('exec')" id="nav-exec" class="nav-item active w-full text-left">
+                <span class="nav-label">🚀 Executive Summary</span>
+                <span class="nav-meta">TL;DR · 10 KPI · GO badge</span>
+            </button>
+            <button onclick="nav('raport')" id="nav-raport" class="nav-item w-full text-left">
+                <span class="nav-label">📄 Pełen raport</span>
+                <span class="nav-meta">Oryginalny tekst · 8 rozdziałów · ~10 stron</span>
+            </button>
+            <hr class="nav-section-divider">
+            <div class="nav-section-label">Dashboard interaktywny</div>
+            <button onclick="nav('rynek')" id="nav-rynek" class="nav-item w-full text-left">
+                <span class="nav-label">📊 Rynek (PKD 96.02)</span>
+                <span class="nav-meta">132 400 podmiotów · reform 2025</span>
+            </button>
+            <button onclick="nav('geo')" id="nav-geo" class="nav-item w-full text-left">
+                <span class="nav-label">🗺️ Geografia &amp; Sweet Spot</span>
+                <span class="nav-meta">Top 10 miast · 4/10k saturacja</span>
+            </button>
+            <button onclick="nav('finanse')" id="nav-finanse" class="nav-item w-full text-left">
+                <span class="nav-label">💰 Finanse &amp; Pain Points</span>
+                <span class="nav-meta">35 mld · 55 mln KRD · top 10 frustracji</span>
+            </button>
+            <button onclick="nav('booksy')" id="nav-booksy" class="nav-item w-full text-left">
+                <span class="nav-label">📱 Booksy &amp; Digital</span>
+                <span class="nav-meta">10M users · -19.4% AI Overviews</span>
+            </button>
+            <button onclick="nav('konkurencja')" id="nav-konkurencja" class="nav-item w-full text-left">
+                <span class="nav-label">⚔️ Top 10 Konkurentów</span>
+                <span class="nav-meta">Klinika Marketingu, Widoczni, ks.pl</span>
+            </button>
+            <button onclick="nav('buying')" id="nav-buying" class="nav-item w-full text-left">
+                <span class="nav-label">🎯 Buying Power &amp; Sezonowość</span>
+                <span class="nav-meta">3 segmenty · cap 1000 PLN · Q1-Q4</span>
+            </button>
+            <button onclick="nav('strategia')" id="nav-strategia" class="nav-item w-full text-left">
+                <span class="nav-label">📈 Strategia &amp; MVP</span>
+                <span class="nav-meta">TAM/SAM/SOM · ryzyka · 790 PLN</span>
+            </button>
+        </div>
+        <div class="p-5 border-t border-gray-100">
+            <p class="text-[11px]" style="color: var(--text-soft)">Raport: maj 2026<br>Źródło: Gemini 3 Deep Research<br>Analiza rynku PL · 9 sekcji · 5 wykresów</p>
+        </div>
+    </nav>
+
+    <!-- Mobile Header -->
+    <div id="mobile-nav" class="md:hidden bg-white w-full border-b flex justify-between items-center p-4 fixed z-20 top-0">
+        <h1 class="font-extrabold text-base" style="color: var(--primary-magenta)">Joanna Mączka — Beauty B2B</h1>
+        <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" style="font-size: 22px; padding: 4px 10px;">☰</button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed top-14 left-0 w-full bg-white z-20 border-b shadow-lg flex-col">
+        <button onclick="nav('exec'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">🚀 Executive Summary</button>
+        <button onclick="nav('raport'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">📄 Pełen raport</button>
+        <button onclick="nav('rynek'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">📊 Rynek (PKD 96.02)</button>
+        <button onclick="nav('geo'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">🗺️ Geografia &amp; Sweet Spot</button>
+        <button onclick="nav('finanse'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">💰 Finanse &amp; Pain Points</button>
+        <button onclick="nav('booksy'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">📱 Booksy &amp; Digital</button>
+        <button onclick="nav('konkurencja'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">⚔️ Top 10 Konkurentów</button>
+        <button onclick="nav('buying'); closeMobileMenu()" class="px-6 py-3 border-b text-left w-full text-sm">🎯 Buying Power &amp; Sezonowość</button>
+        <button onclick="nav('strategia'); closeMobileMenu()" class="px-6 py-3 text-left w-full text-sm">📈 Strategia &amp; MVP</button>
+    </div>
+
+    <main class="flex-1 overflow-y-auto p-4 md:p-10 custom-scrollbar mt-14 md:mt-0 relative w-full">
+
+    <!-- ============================================================ -->
+    <!-- S1: EXECUTIVE SUMMARY -->
+    <!-- ============================================================ -->
+    <section id="sec-exec" class="section-content active max-w-6xl mx-auto">
+        <header>
+            <div class="flex items-center gap-3 flex-wrap">
+                <h2 class="text-3xl md:text-4xl">Executive Summary</h2>
+                <span class="go-badge">Decyzja: GO</span>
+            </div>
+        </header>
+        <div class="section-divider"></div>
+
+        <p class="lede">
+            Polski rynek beauty B2B (PKD 96.02) zamknął 2024 rok z liczbą <strong style="color: var(--primary-magenta)">132 400 aktywnych podmiotów</strong> i wartością <strong style="color: var(--primary-magenta)">35 mld PLN</strong> — najwyższą dynamikę wzrostu w Unii Europejskiej (+16.8%). Mimo rekordów branża cierpi na presję kosztową i utratę zaufania do generycznych agencji marketingowych. To <strong>idealny moment</strong> dla wyspecjalizowanej oferty SEO done-for-you skierowanej do mikrogabinetów.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="kpi-card"><span class="kpi-emoji">💄</span><div class="kpi-number">132,4k</div><div class="kpi-label">Aktywnych podmiotów beauty<span class="kpi-source">REGON / D&amp;B 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">💸</span><div class="kpi-number">35 mld</div><div class="kpi-label">PLN wartość rynku 2024<span class="kpi-source">Wiad. Kosmetyczne</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">📈</span><div class="kpi-number">+16,8%</div><div class="kpi-label">Dynamika wzrostu (#1 UE)<span class="kpi-source">PMR 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">🎯</span><div class="kpi-number">250</div><div class="kpi-label">SOM = klientki w MVP<span class="kpi-source">Konwersja 10% z bazy 2 500</span></div></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="surface-card lg:col-span-2">
+                <h3 class="text-lg mb-4">TL;DR — kluczowe wskaźniki rynkowe</h3>
+                <table class="tldr-table">
+                    <tbody>
+                        <tr><td>1. Aktywne podmioty beauty (PKD 96.02, 2024)</td><td>~132 400</td></tr>
+                        <tr><td>2. Wzrost netto salonów (otwarcia 14,7k − zamknięcia 5k)</td><td>+9 700</td></tr>
+                        <tr><td>3. Mikrofirm (JDG) w strukturze dłużników KRD</td><td>83%</td></tr>
+                        <tr><td>4. Średni koszt SEO lokalnego dla małej firmy</td><td>500–1 500 PLN/m</td></tr>
+                        <tr><td>5. Penetracja Booksy w Polsce</td><td>10M+ użytkowników</td></tr>
+                        <tr><td>6. Spadek CTR organicznego przez AI Overviews (PL)</td><td>−19,4%</td></tr>
+                        <tr><td>7. Dynamika wzrostu rynku beauty PL (#1 UE)</td><td>+16,8%</td></tr>
+                        <tr><td>8. Średnie zadłużenie salonu w KRD</td><td>14 000 PLN</td></tr>
+                        <tr><td>9. Wizyty umówione przez Booksy (2024)</td><td>64 000 000</td></tr>
+                        <tr><td>10. Marża netto (proxy mikro)</td><td>5–12%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div class="box-insight">
+                    <div class="box-title">Rekomendacja: GO (pełna ekspansja)</div>
+                    <p class="text-sm">Twoja marka osobista (2 500 absolwentek, badanie 311 gabinetów) rozwiązuje główny ból branży — <strong>brak zaufania</strong> do agencji.</p>
+                </div>
+                <div class="box-chance">
+                    <div class="box-title">Sweet spot oferty</div>
+                    <p class="text-sm"><strong>790 PLN/m early-bird</strong> · MVP dla 30 gabinetów beta · scope: GMF + 10 fraz + dashboard + audyt + speed · gwarancja 90 dni / +20% wyświetleń lub zwrot.</p>
+                </div>
+                <div class="box-info">
+                    <div class="box-title">Krytyczny trend 2025</div>
+                    <p class="text-sm">AI Overviews zabija CTR informacyjny (−19,4%), ale wzmacnia zapytania lokalne z silnym EEAT — Twoja przewaga eksperta beauty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S9: PEŁEN RAPORT (LONG-FORM) -->
+    <!-- ============================================================ -->
+    <section id="sec-raport" class="section-content max-w-6xl mx-auto">
+        <header>
+            <h2 class="text-3xl md:text-4xl">Pełen raport — analiza strategiczna</h2>
+        </header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            Oryginalny tekst Deep Research wygenerowany przez Gemini 3 Pro. Powyższe sekcje (Executive Summary + dashboard) to syntetyczny widok — tutaj masz wszystkie argumenty, paragrafy i kontekst. Czytaj jak dokument strategiczny od konsultanta — czas czytania: ~15–20 min.
+        </p>
+
+        <div class="longform">
+            <div class="longform-toc">
+                <h4>Spis treści</h4>
+                <ol>
+                    <li><a href="#lf-exec">Executive Summary</a></li>
+                    <li><a href="#lf-tldr">TL;DR — kluczowe wskaźniki</a></li>
+                    <li><a href="#lf-1">Wielkość i struktura rynku PL</a></li>
+                    <li><a href="#lf-2">Geografia — regionalna dystrybucja</a></li>
+                    <li><a href="#lf-3">Kondycja finansowa segmentu</a></li>
+                    <li><a href="#lf-4">Behawior cyfrowy i dojrzałość</a></li>
+                    <li><a href="#lf-5">Konkurencja w marketingu B2B</a></li>
+                    <li><a href="#lf-6">Pain points — głos branży</a></li>
+                    <li><a href="#lf-7">Ścieżka decyzyjna i Buying Power</a></li>
+                    <li><a href="#lf-8">Sygnały trendowe i regulacyjne</a></li>
+                    <li><a href="#lf-tamsamsom">Segmentacja TAM/SAM/SOM</a></li>
+                    <li><a href="#lf-risk">Top 5 ryzyk i szans</a></li>
+                    <li><a href="#lf-final">Rekomendacja końcowa &amp; MVP</a></li>
+                    <li><a href="#lf-profile">Szczegółowe profile konkurentów</a></li>
+                </ol>
+            </div>
+
+            <h3 id="lf-exec">Executive Summary</h3>
+            <p>Analiza polskiego sektora usług beauty (PKD 96.02) wskazuje na wysoki stopień nasycenia rynkowego przy jednoczesnym utrzymaniu dynamicznego trendu wzrostowego, co czyni go atrakcyjnym obszarem dla wyspecjalizowanych usług marketingu cyfrowego. Rok 2024 zamknął się liczbą ponad <strong>132 tysięcy aktywnych podmiotów</strong>, z silną dominacją jednoosobowych działalności gospodarczych, które stanowią fundament bazy klientów dla marki Joanna Mączka.</p>
+            <p>Pomimo rekordowego wzrostu wartości rynku do poziomu <strong>35 mld PLN</strong>, sektor boryka się z drastycznym spadkiem realnej rentowności wynikającym z presji kosztowej oraz zmian w zachowaniu konsumentów cyfrowych. Rekomenduje się podjęcie decyzji typu <strong>„GO"</strong> w odniesieniu do wdrożenia oferty SEO „done-for-you", pod warunkiem ścisłej koncentracji na pozycjonowaniu lokalnym oraz optymalizacji pod algorytmy AI, które w 2025 roku zaczynają przejmować znaczną część ruchu informacyjnego.</p>
+            <p>Kluczowym czynnikiem sukcesu będzie integracja strategii z ekosystemem <strong>Booksy</strong>, który stał się standardem rynkowym, oraz edukacja klientek w zakresie mierzalnego ROI, co pozwoli na przełamanie bariery zaufania do agencji zewnętrznych.</p>
+
+            <div class="hero-stat">
+                <div class="hero-stat-num">+16,8%</div>
+                <div class="hero-stat-text">Dynamika wzrostu rynku beauty PL w 2024 — <strong>najwyższa w Unii Europejskiej</strong>. To okno opportunity dla wyspecjalizowanej oferty SEO done-for-you.</div>
+            </div>
+
+            <h3 id="lf-tldr">TL;DR — kluczowe wskaźniki rynkowe</h3>
+            <table class="fancy-table">
+                <thead><tr><th>Kategoria wskaźnika</th><th style="text-align: right;">Wartość</th><th>Źródło</th></tr></thead>
+                <tbody>
+                    <tr><td>Liczba aktywnych podmiotów beauty (2024)</td><td class="num">~132 400</td><td>REGON / D&amp;B</td></tr>
+                    <tr><td>Wzrost netto liczby salonów (2024 vs 2023)</td><td class="num">+9 700</td><td>CEIDG (14,7k otwarć / 5k zamknięć)</td></tr>
+                    <tr><td>Udział mikrofirm (JDG) w strukturze dłużników</td><td class="num">83%</td><td>KRD</td></tr>
+                    <tr><td>Średni koszt SEO lokalnego miesięcznie</td><td class="num">500–1 500 PLN</td><td>Empressia / Widoczni</td></tr>
+                    <tr><td>Penetracja Booksy w Polsce (użytkownicy)</td><td class="num">&gt;10 000 000</td><td>Booksy 2024</td></tr>
+                    <tr><td>Spadek CTR w Google przez AI Overviews</td><td class="num pct-up">−19,4%</td><td>Senuto, marzec 2025</td></tr>
+                    <tr><td>Dynamika wzrostu rynku beauty PL (2024)</td><td class="num">+16,8% (#1 UE)</td><td>PMR</td></tr>
+                    <tr><td>Średnie zadłużenie salonu beauty</td><td class="num">14 000 PLN</td><td>KRD Dec 2025</td></tr>
+                    <tr><td>Liczba wizyt umówionych przez Booksy (2024)</td><td class="num">64 000 000</td><td>Booksy press</td></tr>
+                    <tr><td>Marża zysku netto (proxy rynkowe)</td><td class="num">5–12%</td><td>GUS skoryg.</td></tr>
+                </tbody>
+            </table>
+
+            <h3 id="lf-1">1. Wielkość i struktura rynku w Polsce</h3>
+            <p>Polski sektor usług pielęgnacji urody, sklasyfikowany w ramach PKD 96.02, przeszedł w ostatniej dekadzie transformację z rzemiosła w kierunku nowoczesnego przemysłu usługowego. Dane rejestrowe REGON oraz analizy Dun &amp; Bradstreet wskazują, że na koniec 2024 roku w Polsce funkcjonowało <strong>132,4 tysiąca zakładów</strong> fryzjerskich i kosmetycznych. Do tej liczby należy dodać blisko 10 tysięcy gabinetów odnowy biologicznej oraz SPA, co łącznie tworzy rynek o skali ponad 142 tysięcy podmiotów operacyjnych.</p>
+            <p>Analiza struktury podmiotowej ujawnia głębokie rozdrobnienie. Sektor ten jest niemal całkowicie zdominowany przez mikroprzedsiębiorstwa. Według danych Głównego Urzędu Statystycznego, w grupie mikroprzedsiębiorstw zatrudniających do 9 osób, aż <strong>77,5% stanowią podmioty, w których pracuje wyłącznie jedna osoba</strong>. Zjawisko to ma krytyczne znaczenie dla projektowania oferty „done-for-you", ponieważ właścicielka gabinetu pełni jednocześnie rolę głównego usługodawcy, managera, recepcjonistki i specjalisty ds. marketingu. To „przeładowanie rolami" generuje naturalny popyt na usługi zdejmujące z niej ciężar operacyjny prowadzenia działań online.</p>
+
+            <h4>Reform PKD od 1 stycznia 2025</h4>
+            <p>Kod 96.02.Z, który dotychczas łączył fryzjerstwo z kosmetyką, został zastąpiony przez bardziej precyzyjne podklasy. Zmiana ta pozwala na lepszą segmentację rynku i targetowanie usług:</p>
+            <ul>
+                <li><strong>96.21.Z</strong> — Działalność fryzjerska, obejmująca mycie, strzyżenie, układanie i barwienie.</li>
+                <li><strong>96.22.Z</strong> — Pielęgnacja urody i usługi kosmetyczne, w tym manicure, pedicure, makijaż permanentny oraz zabiegi kosmetologii estetycznej.</li>
+                <li><strong>96.23.Z</strong> — Działalność SPA, saun i salonów odchudzających.</li>
+            </ul>
+
+            <p>Rozbieżność między danymi GUS a rejestrem Sanepidu (GIS) rzuca światło na tzw. szarą strefę oraz mobilne usługi beauty. Podczas gdy CEIDG wykazuje ponad 133 tysiące aktywnych wpisów, dane sanitarne mówią o <strong>około 64 tysiącach placówek stacjonarnych</strong>. Sugeruje to, że około <strong>50% rynku stanowią podmioty mobilne lub działające w formule wynajmu stanowisk</strong>, co jest istotne przy planowaniu strategii SEO.</p>
+
+            <h4>Specjalizacje (placówki stacjonarne wg GIS 2023)</h4>
+            <ul>
+                <li>Salony kosmetyczne podstawowe (manicure, pedicure): <strong>~12 000 placówek</strong></li>
+                <li>Gabinety zaawansowane (medycyna estetyczna, hi-tech): <strong>~5 450 placówek</strong></li>
+                <li>Pozostałe obiekty (SPA, masaż): <strong>~15 000 placówek</strong></li>
+            </ul>
+
+            <p class="pull-quote">Największy potencjał dla SEO „done-for-you" leży w grupie gabinetów zaawansowanych, gdzie marża na pojedynczym zabiegu jest wystarczająco wysoka, aby pokryć koszt abonamentu agencji marketingowej.</p>
+
+            <h3 id="lf-2">2. Geografia — regionalna dystrybucja i nasycenie</h3>
+            <p>Geograficzny rozkład gabinetów beauty w Polsce jest silnie skorelowany z gęstością zaludnienia i siłą nabywczą, jednak analiza nasycenia (saturacji) wskazuje na interesujące zjawiska rynkowe. Największa liczba podmiotów koncentruje się w województwach <strong>mazowieckim (20,8%)</strong>, śląskim (10,3%) oraz małopolskim (10,1%).</p>
+
+            <h4>Ranking ośrodków miejskich pod względem liczby salonów</h4>
+            <table class="fancy-table">
+                <thead><tr><th>Miasto</th><th style="text-align: right;">Salony stacjonarne</th><th>Poziom nasycenia / Potencjał SEO</th></tr></thead>
+                <tbody>
+                    <tr><td>Warszawa</td><td class="num">2 800</td><td><span class="saturation-pill sat-red">Ekstremalne</span> — niszowe SEO konieczne</td></tr>
+                    <tr><td>Kraków</td><td class="num">1 650</td><td><span class="saturation-pill sat-red">Wysokie</span> — wpływ turystyki beauty</td></tr>
+                    <tr><td>Wrocław</td><td class="num">1 420</td><td><span class="saturation-pill sat-red">Wysokie</span> — silna świadomość cyfrowa</td></tr>
+                    <tr><td>Trójmiasto</td><td class="num">1 100</td><td><span class="saturation-pill sat-yellow">Średnie</span> — silna sezonowość</td></tr>
+                    <tr><td>Poznań</td><td class="num">950</td><td><span class="saturation-pill sat-yellow">Średnie</span> — walka o klienta premium</td></tr>
+                    <tr><td>Katowice</td><td class="num">820</td><td><span class="saturation-pill sat-yellow">Średnie</span> — rozproszenie aglomeracji</td></tr>
+                    <tr><td>Łódź</td><td class="num">680</td><td><span class="saturation-pill sat-green">Sweet Spot</span> — mniejsza konkurencja w SEO</td></tr>
+                    <tr><td>Szczecin</td><td class="num">550</td><td><span class="saturation-pill sat-green">Sweet Spot</span> — wpływ klienta niemieckiego</td></tr>
+                    <tr><td>Bydgoszcz</td><td class="num">520</td><td><span class="saturation-pill sat-green">Sweet Spot</span> — braki w ofertach SEO</td></tr>
+                    <tr><td>Rzeszów</td><td class="num">450</td><td><span class="saturation-pill sat-green">Sweet Spot</span> — bardzo wysoka dynamika per capita</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Białe plamy i zjawisko saturacji</h4>
+            <p>Średnia krajowa nasycenia rynkowego wynosi około <strong>4 salony na 10 tysięcy mieszkańców</strong>. W Warszawie i Krakowie wskaźnik ten przekracza 6, co oznacza, że tradycyjne metody pozyskiwania klientów („poczta pantoflowa") przestają być wystarczające. Z drugiej strony, w miastach o liczbie mieszkańców 50–200 tysięcy, takich jak <strong>Radom, Kielce czy Toruń</strong>, nasycenie jest optymalne, a poziom profesjonalizmu działań SEO u konkurencji — relatywnie niski. To właśnie tam znajduje się „Sweet Spot" dla oferty Joanny Mączki.</p>
+
+            <p>Dla małych gabinetów (1–5 osób) kluczowa jest lokalizacja „osiedlowa". Dane pokazują, że klientki poszukują usług w promieniu do <strong>3–5 km</strong> od miejsca zamieszkania lub pracy. To determinuje strategię SEO — nie należy pozycjonować się na frazę „kosmetyczka Warszawa", ale na <em>„manicure hybrydowy Mokotów"</em> lub <em>„depilacja laserowa Ursynów"</em>.</p>
+
+            <h3 id="lf-3">3. Kondycja finansowa segmentu beauty</h3>
+            <p>Analiza kondycji finansowej salonów beauty w Polsce w latach 2024–2025 ujawnia paradoks: przy rekordowych przychodach branży przekraczających <strong>35 mld PLN</strong>, mikrogabinety borykają się z problemami płynnościowymi. Wartość rynku rośnie głównie dzięki wzrostowi cen usług, a nie zwiększeniu wolumenu wizyt.</p>
+
+            <h4>Marżowość i koszty prowadzenia działalności</h4>
+            <p>Dla sektora mikroprzedsiębiorstw w Polsce wskaźnik poziomu kosztów ukształtował się w 2024 roku na poziomie <strong>81,6%</strong>, co daje średni wynik finansowy brutto na poziomie 18,4% przychodu. Po skorygowaniu o realne wynagrodzenie właścicielki, realna marża netto w segmencie 1–5 osób oscyluje wokół <strong>8–12%</strong>.</p>
+
+            <table class="fancy-table">
+                <thead><tr><th>Składnik kosztów</th><th>Wpływ na budżet (2024–2025)</th><th>Komentarz rynkowy</th></tr></thead>
+                <tbody>
+                    <tr><td>Najem lokalu</td><td><span class="pct-up">+15–25% YoY</span></td><td>Główny czynnik wypychający salony z centrów miast</td></tr>
+                    <tr><td>Media (energia / woda)</td><td><span class="pct-up">+30–40% YoY</span></td><td>Szczególnie dotkliwy dla gabinetów z maszynami hi-tech</td></tr>
+                    <tr><td>Składki ZUS</td><td><span class="pct-up">Stały wzrost nominalny</span></td><td>Największa bariera dla zatrudniania pracowników</td></tr>
+                    <tr><td>Materiały / kosmetyki</td><td><span class="pct-up">+12–18% YoY</span></td><td>Presja na podnoszenie cen zabiegów</td></tr>
+                    <tr><td>Koszty marketingu</td><td>Stabilne 5–10% obrotu</td><td>Często postrzegane jako koszt, a nie inwestycja</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Zadłużenie i rentowność</h4>
+            <p>Zadłużenie sektora beauty w Krajowym Rejestrze Długów sięgnęło w grudniu 2025 roku poziomu <strong>55 mln PLN</strong>, co stanowi wzrost o 14% w stosunku do roku poprzedniego. Aż 83% dłużników to jednoosobowe działalności gospodarcze. Średnie zadłużenie wynosi około <strong>14 tysięcy PLN</strong>.</p>
+
+            <div class="hero-stat">
+                <div class="hero-stat-num">14k</div>
+                <div class="hero-stat-text"><strong>14 000 PLN średniego zadłużenia ≈ leasing 1 maszyny hi-tech.</strong> Właścicielki chętniej inwestują w sprzęt niż w marketing — co prowadzi do sytuacji posiadania nowoczesnych technologii przy braku klientów do ich obsługi.</div>
+            </div>
+
+            <p>Rynek charakteryzuje się dużą „chłonnością", ale też wysoką śmiertelnością nowych firm. W 2024 roku powstało <strong>14,7 tysiąca nowych podmiotów</strong>, podczas gdy wykreślono około <strong>5 tysięcy</strong>. Oznacza to przyrost netto na poziomie 10 tysięcy salonów rocznie.</p>
+
+            <h3 id="lf-4">4. Behawior cyfrowy i dojrzałość technologiczna</h3>
+            <p>Dojrzałość cyfrowa polskich salonów beauty jest nierównomierna. Podczas gdy w obszarze systemów rezerwacji online Polska jest liderem dzięki sukcesowi Booksy, w obszarze własnych zasobów (strony WWW, SEO) segment małych gabinetów pozostaje w tyle.</p>
+
+            <h4>Ekosystem Booksy jako benchmark</h4>
+            <p>Booksy stało się centralnym punktem ekosystemu beauty w Polsce. Platforma posiada ponad <strong>10 milionów użytkowników</strong> i przetwarza <strong>64 miliony wizyt rocznie</strong>.</p>
+            <ul>
+                <li><strong>75% klientów powraca</strong> do salonu po pierwszej wizycie, jeśli proces rezerwacji był cyfrowy i wygodny.</li>
+                <li><strong>46–50% rezerwacji</strong> odbywa się poza godzinami pracy salonu, co wyklucza tradycyjną recepcję telefoniczną jako skuteczny kanał.</li>
+                <li>Problemem jest koszt: Program Boost (prowizja od nowej klientki) jest postrzegany jako drogi.</li>
+            </ul>
+
+            <h4>Obecność w kanałach online (szacunki dla mikrofirm)</h4>
+            <ul>
+                <li><strong>Profil na Instagramie / Facebooku: 95%</strong></li>
+                <li><strong>Wizytówka Google Maps: 85%</strong> — często nieaktualna</li>
+                <li><strong>Własna strona WWW: 35%</strong> — z czego tylko co piąta zoptymalizowana mobile + SEO basics</li>
+                <li>Brak jakiegokolwiek kanału: &lt;5%</li>
+            </ul>
+
+            <h4>Wydatki na marketing</h4>
+            <p>Średni budżet marketingowy małego gabinetu (1–5 osób) wynosi od <strong>500 do 1 500 PLN miesięcznie</strong>. Większość konsumują: abonament Booksy (150–300 PLN), kampanie Meta Ads (300–800 PLN, często „przepalane"), okazjonalne zakupy u freelancerek.</p>
+
+            <p>Krytyczne pytanie: <strong>Czy one już kupują SEO?</strong> Odpowiedź: <em>nieświadomie tak</em>. Kupują „pozycję w Booksy", ale rzadko decydują się na klasyczny abonament w agencji SEO, ponieważ progi wejścia &gt;2 500 PLN są dla nich barierą nie do przejścia.</p>
+
+            <h3 id="lf-5">5. Konkurencja w obszarze marketingu beauty B2B</h3>
+            <p>Rynek usług marketingowych dla branży beauty w Polsce jest spolaryzowany między dużych graczy edukacyjnych a agencje generyczne. Brakuje wyspecjalizowanych butików oferujących wyłącznie SEO „done-for-you" w modelu przystępnym dla JDG.</p>
+
+            <h4>Najważniejsi gracze rynkowi</h4>
+            <ul>
+                <li><strong>Beauty Razem (Michał Łenczyński)</strong> — Główny gracz w obszarze edukacji i lobbyingu. „Power Pack" 499–999 PLN jest standardem wyposażenia gabinetu.</li>
+                <li><strong>Marta Fiłoń (Beauty-pro / martafilon.pl)</strong> — Szkolenia 5 000–6 000 PLN. Silny autorytet w segmencie zarządzania.</li>
+                <li><strong>Klinika Marketingu (KS.pl)</strong> — Bezpośredni konkurent agencyjny. Pakiet Starter od 740 PLN, Standard od 1 840 PLN.</li>
+                <li><strong>Beauty Inspiration</strong> — Portal i organizator konferencji. Edukacja wysokopoziomowa dla dużych obiektów SPA.</li>
+                <li><strong>Salon Marketing Lab</strong> — Nowoczesna agencja stawiająca na „systemy". Komunikacja zbieżna z modelem Joanny.</li>
+            </ul>
+
+            <h4>Średnie ceny rynkowe za usługi (2025)</h4>
+            <table class="fancy-table">
+                <thead><tr><th>Usługa</th><th style="text-align: right;">Cena netto / m-c</th><th>Uwagi</th></tr></thead>
+                <tbody>
+                    <tr><td>SEO lokalne (mała firma)</td><td class="num">500 – 1 500 PLN</td><td>10–15 fraz lokalnych, optymalizacja wizytówki</td></tr>
+                    <tr><td>SEO kompleksowe (agencja)</td><td class="num">2 000 – 5 000 PLN</td><td>Link building, content marketing, audyt</td></tr>
+                    <tr><td>Obsługa Social Media</td><td class="num">800 – 2 000 PLN</td><td>8–10 postów / rolek + obsługa kampanii</td></tr>
+                    <tr><td>Audyt SEO (jednorazowy)</td><td class="num">500 – 2 000 PLN</td><td>Zależnie od rozbudowania strony</td></tr>
+                    <tr><td>Google Ads management</td><td class="num">500 – 1 000 PLN</td><td>+ budżet na kliknięcia (min. 500 PLN)</td></tr>
+                </tbody>
+            </table>
+
+            <p>Nisza „usługi SEO dedykowanej wyłącznie beauty" pozostaje <strong>nieobsadzona</strong> przez lidera o zasięgu ogólnopolskim.</p>
+
+            <h3 id="lf-6">6. Pain points i potrzeby — głos branży</h3>
+            <p>Analiza grup FB („Kosmetolożki w biznesie", „Salon Marketing PL") oraz komentarzy pod postami branżowymi pozwala zmapować najgłębsze frustracje właścicielek.</p>
+
+            <h4>Top 10 frustracji marketingowych</h4>
+            <ol>
+                <li><strong>„Brak efektów mimo starań"</strong> — 10 godzin tygodniowo na Rolki = 200 wyświetleń, 0 rezerwacji.</li>
+                <li><strong>„Uzależnienie od Booksy"</strong> — Strach przed podwyżkami prowizji.</li>
+                <li><strong>„Marketingowy bełkot"</strong> — Niezrozumienie CTR, CPC, atrybucji.</li>
+                <li><strong>„Puste godziny"</strong> — Odwołania bez bazy mailingowej / SMS.</li>
+                <li><strong>„Wojna cenowa"</strong> — Salon obok obniżył manicure o 20 PLN.</li>
+                <li><strong>„Brak czasu na życie"</strong> — Marketing wieczorami po 10h pracy.</li>
+                <li><strong>„Strona, która nie działa"</strong> — Witryna z 2017, niemożliwa do edycji.</li>
+                <li><strong>„Hejt i opinie"</strong> — Strach przed jedną negatywną opinią w Google.</li>
+                <li><strong>„Nowa konkurencja"</strong> — Gabinety w mieszkaniach (szara strefa).</li>
+                <li><strong>„Niezrozumienie SEO"</strong> — Efekty nie w tydzień = „oszustwo".</li>
+            </ol>
+
+            <p class="pull-quote">Właścicielki rozumieją znaczenie Instagrama (aspekt wizualny), ale kompletnie nie doceniają SEO (aspekt intencji zakupowej).</p>
+
+            <p>Sprzedaż SEO musi odbywać się przez język korzyści (<em>„klientka wpisuje w Google, że chce depilację TERAZ i znajduje Ciebie"</em>), a nie język techniczny.</p>
+
+            <h3 id="lf-7">7. Ścieżka decyzyjna i Buying Power</h3>
+            <p>W segmencie gabinetów 1–5 osób ścieżka decyzyjna jest krótka, ale obarczona wysokim ładunkiem emocjonalnym. Właścicielka jest jedynym decydentem.</p>
+
+            <h4>Budżet i limity (Budget Cap)</h4>
+            <p>Dla JDG beauty istnieje <strong>psychologiczna granica 1 000 PLN netto miesięcznie</strong>. Kwota 1 500 PLN OK tylko jeśli wykazany wpływ na rezerwacje.</p>
+            <ul>
+                <li><strong>Segment „Oszczędny"</strong>: 300–600 PLN</li>
+                <li><strong>Segment „Inwestujący"</strong>: 800–1 500 PLN (rozumieją CAC)</li>
+                <li><strong>Segment „Premium / Kliniki"</strong>: &gt;2 500 PLN (szukają pełnej obsługi 360°)</li>
+            </ul>
+
+            <h4>Sezonowość zakupów marketingowych</h4>
+            <table class="fancy-table">
+                <thead><tr><th>Kwartał</th><th>Behawior zakupowy</th><th>Rekomendacja dla oferty Joanny</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Q1 (Sty–Mar)</strong></td><td>Postanowienia noworoczne; chęć naprawy biznesu po grudniu</td><td>Start kampanii SEO (efekty na wiosnę)</td></tr>
+                    <tr><td><strong>Q2 (Kwi–Cze)</strong></td><td>Szczyt sezonu (komunie, wesela); brak czasu na marketing</td><td>Oferta „robimy to za Ciebie"</td></tr>
+                    <tr><td><strong>Q3 (Lip–Wrz)</strong></td><td>Zastój wakacyjny; szukanie nowych klientek na jesień</td><td>Kampanie na zabiegi regeneracyjne / po-słońcu</td></tr>
+                    <tr><td><strong>Q4 (Paź–Gru)</strong></td><td>Walka o terminy świąteczne; budżety na bony</td><td>Optymalizacja wizytówki pod „bon podarunkowy"</td></tr>
+                </tbody>
+            </table>
+
+            <p>Bariery zakupu są głównie natury psychologicznej: <em>„spróbowałam już raz i nie zadziałało"</em>. Joanna Mączka, mając bazę 2 500 absolwentek, posiada <strong>ogromny kapitał zaufania</strong>.</p>
+
+            <h3 id="lf-8">8. Sygnały trendowe i regulacyjne (2025–2026)</h3>
+            <h4>AI Overviews i zmiana zachowań konsumenckich</h4>
+            <p>Google AI Overviews (SGE) zadebiutowało w Polsce w marcu 2025 roku. Dane Senuto wskazują na <strong>spadek kliknięć w wyniki organiczne o 19,4%</strong>.</p>
+            <ul>
+                <li>Dla zapytań informacyjnych AI podaje gotową odpowiedź, co zabija ruch na blogach.</li>
+                <li>Dla zapytań lokalnych AI wciąż promuje linki do gabinetów, co zwiększa znaczenie <strong>EEAT</strong> (Expertise, Experience, Authoritativeness, Trustworthiness).</li>
+            </ul>
+
+            <h4>Wpływ Booksy SEO</h4>
+            <p>Booksy dominuje na frazy „long-tail" typu „paznokcie hybrydowe [miasto]". Próba walki z nimi przy małym budżecie jest skazana na porażkę. Szansa to:</p>
+            <ul>
+                <li><strong>Brand SEO</strong>: Klientka widzi salon w Booksy, ale szuka go w Google, by sprawdzić opinie.</li>
+                <li><strong>Specialist SEO</strong>: Pozycjonowanie na nazwy urządzeń („Endermologia Alliance [miasto]").</li>
+            </ul>
+
+            <h4>Regulacje i JPK_FA</h4>
+            <p>Wprowadzenie JPK_FA oraz obowiązkowa rejestracja w BDO od 2025 roku zwiększają obciążenia administracyjne właścicielek. Każda godzina „zaoszczędzona" dzięki delegowaniu marketingu ma teraz konkretną wartość finansową. Dodatkowo, obniżony VAT (8%) na usługi kosmetyczne zwiększył cashflow.</p>
+
+            <h3 id="lf-tamsamsom">Segmentacja TAM / SAM / SOM dla oferty Joanny Mączki</h3>
+            <table class="fancy-table">
+                <thead><tr><th>Poziom</th><th style="text-align: right;">Liczba</th><th>Definicja</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>TAM</strong> · Total Addressable Market</td><td class="num">132 400</td><td>Wszystkie podmioty PKD 96.02 w Polsce</td></tr>
+                    <tr><td><strong>SAM</strong> · Serviceable Addressable Market</td><td class="num">12 800</td><td>32 000 stationary × 40% z online presence</td></tr>
+                    <tr><td><strong>SOM</strong> · Serviceable Obtainable Market</td><td class="num">250</td><td>2 500 absolwentek Joanny × 10% konwersja</td></tr>
+                </tbody>
+            </table>
+
+            <div class="hero-stat">
+                <div class="hero-stat-num">212 500</div>
+                <div class="hero-stat-text">PLN miesięcznie revenue z SOM przy abonamencie 850 PLN/m × 250 klientek = <strong>2,55 mln PLN/rok</strong>. Wystarcza na zbudowanie profesjonalnego zespołu operacyjnego.</div>
+            </div>
+
+            <h3 id="lf-risk">Top 5 ryzyk i szans</h3>
+            <h4>Ryzyka</h4>
+            <ol>
+                <li><strong>Kanibalizacja czasu Joanny</strong> — Przejście z modelu skalowalnych kursów na pracochłonne usługi agencyjne.</li>
+                <li><strong>Brak mierzalności efektów SEO</strong> — Trudność udowodnienia, że klientka przyszła „z Google" a nie z Booksy.</li>
+                <li><strong>Wzrost kosztów Link Buildingu</strong> — Portale beauty podnoszą ceny.</li>
+                <li><strong>Problem „osobowości"</strong> — Segment kupuje od Joanny, anonimowi Account Managerzy obniżają wartość postrzeganą.</li>
+                <li><strong>Zmiany AI Google</strong> — Ryzyko spadku widoczności małych stron na rzecz gigantów (Wikipedia, ZnanyLekarz, Booksy).</li>
+            </ol>
+
+            <h4>Szanse</h4>
+            <ol>
+                <li><strong>Domknięcie cyklu klienta</strong> — Joanna uczy „co robić", agencja „robi to za klientkę".</li>
+                <li><strong>Local SEO Dominance</strong> — Nikt nie oferuje SEO z naciskiem na ekosystem Booksy + Mapy Google.</li>
+                <li><strong>Wysoka bariera wyjścia</strong> — Raz dobrze wypozycjonowany salon rzadko zmienia agencję (LTV &gt; 24 mies.).</li>
+                <li><strong>Wykorzystanie danych</strong> — Joanna posiada dane z 311 gabinetów = unique content moat.</li>
+                <li><strong>Automatyzacja AI</strong> — AI tools + ludzka korekta merytoryczna = niska struktura kosztów.</li>
+            </ol>
+
+            <h3 id="lf-final">Rekomendacja końcowa i propozycja MVP</h3>
+            <p>Na podstawie zebranych danych, decyzja biznesowa brzmi: <strong>GO (Idziemy w to)</strong>.</p>
+
+            <p class="pull-quote">Rynek potrzebuje „Agencji Wyników", a nie „Agencji Postów". Joanna Mączka ma unikalną pozycję, by wypełnić lukę między drogimi agencjami 360° a tanimi, nieskutecznymi freelancerami.</p>
+
+            <h4>Projekt MVP (First Wave)</h4>
+            <ul>
+                <li><strong>Target</strong>: 30 gabinetów z bazy absolwentek (beta-testy)</li>
+                <li><strong>Cena</strong>: <strong>790 PLN netto / m-c</strong> (early bird)</li>
+                <li><strong>Scope</strong>:
+                    <ul>
+                        <li>Full Optimization wizytówki Google Maps (zdjęcia, słowa kluczowe, Q&amp;A)</li>
+                        <li>Lokalne SEO na 10 fraz z intencją zakupu (np. „powiększanie ust [dzielnica]")</li>
+                        <li>Prosty Dashboard (ile wizyt przyszło z Google)</li>
+                        <li>Audyt techniczny i poprawa szybkości strony WWW</li>
+                    </ul>
+                </li>
+                <li><strong>Gwarancja</strong>: <em>„Jeżeli w 90 dni nie zwiększymy liczby wyświetleń w Mapach o 20% — zwracamy koszty"</em></li>
+            </ul>
+
+            <p>Taki model pozwala na szybką walidację, budowę case studies i skalowanie w modelu subskrypcyjnym, który jest stabilniejszy od jednorazowej sprzedaży kursów online. Rynek beauty w Polsce nie jest już rynkiem „ładnych obrazków", stał się rynkiem twardej matematyki i widoczności w wyszukiwarkach.</p>
+
+            <h3 id="lf-profile">Szczegółowe profile konkurentów</h3>
+
+            <h4>1. Klinika Marketingu (ks.pl)</h4>
+            <p>Najsilniejszy konkurent bezpośredni w kategorii „lokalne SEO dla gabinetów".</p>
+            <ul>
+                <li><strong>Pricing</strong>: Starter 740 PLN (wizytówka), Standard 1 840 PLN (+ pozycjonowanie strony), Optimum/Full do 3 240 PLN (+ Google Ads)</li>
+                <li><strong>Recenzje</strong>: Chwaleni za zaangażowanie, sprawny proces wdrożenia.</li>
+            </ul>
+
+            <h4>2. Social Magic (socialmagic.pl)</h4>
+            <p>Agencja stawiająca na nowe technologie pozycjonowania (AIO — AI Optimization).</p>
+            <ul>
+                <li><strong>Pricing</strong>: Lokalne SEO od 790 PLN (3 wpisy + audyt), „Dominacja Rynku" od 1 850 PLN, social od 650 PLN, wizytówka od 350 PLN</li>
+                <li><strong>Wyróżnik</strong>: Bardzo niski próg wejścia (350 PLN za wizytówkę).</li>
+            </ul>
+
+            <h4>3. Big Brains (bigbrains.pl)</h4>
+            <p>Agencja z silną specjalizacją w branży beauty, oferująca pakiety „Genius".</p>
+            <ul>
+                <li><strong>Pricing</strong>: Pakiet Simply 800 PLN (4–6 postów + 1 kampania), „Genius + SEO" od 2 000 PLN</li>
+                <li><strong>Recenzje</strong>: Ekspresowe tempo realizacji, „odżycie" firm po przejęciu marketingu.</li>
+            </ul>
+
+            <h4>4. Widoczni (widoczni.com)</h4>
+            <p>Gigant rynku SEO w Polsce. Choć generyczni, dedykowane procesy lokalne.</p>
+            <ul>
+                <li><strong>Pricing</strong>: Pozycjonowanie lokalne 1 900–2 500 PLN/m</li>
+                <li><strong>Recenzje</strong>: 700+ opinii Google (4.6), profesjonalizm i raportowanie. Krytyka: brak proaktywności w pomysłach.</li>
+            </ul>
+
+            <h4>5. MediComarketing (medicomarketing.pl)</h4>
+            <p>Skoncentrowani na estetyce i marketingu medycznym/beauty klasy premium.</p>
+            <ul>
+                <li><strong>Pricing</strong>: Plany Partner od $390/m (~1 500 zł), 50 fraz SEO w pakiecie</li>
+                <li><strong>Recenzje</strong>: Świetna znajomość branży beauty, dopracowane realizacje wizualne.</li>
+            </ul>
+
+            <h4>6. Empressia (empressia.pl)</h4>
+            <p>Agencja z Poznania z silnym zapleczem technicznym.</p>
+            <ul>
+                <li><strong>Pricing</strong>: Lokalne SEO od 1 500 PLN/m, konsultacje od 200 PLN/h, link building 300–800 PLN/30 linków</li>
+                <li><strong>Recenzje</strong>: 4.6 / 120+ opinii Google, „pełen profesjonalizm".</li>
+            </ul>
+
+            <h4>7. Salon Marketing Lab (thesalonmarketing.com)</h4>
+            <p>Brytyjsko-amerykańska marka obecna w świadomości polskich właścicielek (przez treści edukacyjne).</p>
+            <ul>
+                <li><strong>Strategia</strong>: Model „jeden salon w jednym mieście" (ekskluzywność). Skupiają się na systemach (SEO + Email Marketing).</li>
+                <li><strong>Pricing</strong>: W Polsce głównie seminaria 400–900 PLN.</li>
+            </ul>
+
+            <h4>8. Beauty-pro PL (martafilon.pl)</h4>
+            <p>Marta Fiłoń to autorytet w obszarze zarządzania, „miękko" wchodzi w marketing.</p>
+            <ul>
+                <li><strong>Oferta</strong>: Akademia Managera Beauty ~6 500 PLN, szkolenia ~990 PLN, „Planer Marketingu Beauty" 350 PLN</li>
+                <li><strong>Status</strong>: Nie agencja DFY, ale potężna bariera wejścia przez edukowanie właścicielek samodzielnego marketingu.</li>
+            </ul>
+
+            <h4>9. Adtrip (adtrip.pl)</h4>
+            <p>Agencja nastawiona na wzrost (Growth) i e-commerce.</p>
+            <ul>
+                <li><strong>Pricing</strong>: Kampanie od 4 000 PLN/m, budżety reklamowe od 5 000 PLN, model „fee + success fee".</li>
+            </ul>
+
+            <h4>10. Envision Marketing (envision-marketing.com)</h4>
+            <p>Integracja oprogramowania do zarządzania salonem z usługami agencji.</p>
+            <ul>
+                <li><strong>Pricing</strong>: Plany Solo od $99/m. Usługi agencyjne dodatkowo, indywidualnie wyceniane.</li>
+            </ul>
+
+            <h4>Kluczowe wnioski z analizy konkurencji dla Joanny Mączki</h4>
+            <ol>
+                <li><strong>Luka cenowa</strong>: Większość profesjonalnych agencji (Widoczni, Empressia) zaczyna się od 1 500–1 900 PLN. Istnieje „pusta przestrzeń" dla usługi premium-lite za około 800–1 200 PLN.</li>
+                <li><strong>Trustpilot w Polsce</strong>: Lokalne agencje SEO praktycznie nie istnieją na Trustpilot — reputacja na Google Maps. Przewaga Joanny: 2 500 absolwentek = potencjał setek opinii.</li>
+                <li><strong>Pułapka „taniego SEO"</strong>: Social Magic oferuje pakiety od 350 PLN za wizytówkę. Joanna nie powinna konkurować ceną, lecz „wiedzą branżową".</li>
+                <li><strong>Zagrożenie</strong>: Klinika Marketingu (ks.pl) najlepiej sprofilowana pod beauty, pakiety zbliżone do MVP Joanny (od 740 PLN) — monitorować najuważniej.</li>
+            </ol>
+
+            <div class="box-insight" style="margin-top: 32px;">
+                <div class="box-title">Koniec raportu</div>
+                <p class="text-sm">To była synteza Deep Research wygenerowana przez Gemini 3 Pro w maju 2026. Krótszy dashboard z wykresami: <a href="#" onclick="nav('exec'); return false;" style="color: var(--primary-magenta); text-decoration: underline;">wróć do Executive Summary</a> · pełna lista źródeł: niżej w stopce.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S2: RYNEK -->
+    <!-- ============================================================ -->
+    <section id="sec-rynek" class="section-content max-w-6xl mx-auto">
+        <header><h2 class="text-3xl md:text-4xl">Rynek (PKD 96.02) — wielkość i struktura</h2></header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            Polski sektor pielęgnacji urody przeszedł transformację z rzemiosła w nowoczesny przemysł usługowy. Sektor jest niemal całkowicie zdominowany przez <strong>mikroprzedsiębiorstwa solo</strong> — co kreuje naturalny popyt na usługi typu „done-for-you".
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="kpi-card"><span class="kpi-emoji">🏢</span><div class="kpi-number">132,4k</div><div class="kpi-label">Zakłady fryzjerskie + kosmetyczne<span class="kpi-source">REGON / D&amp;B 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">🆕</span><div class="kpi-number">14,7k</div><div class="kpi-label">Otwarcia w 2024<span class="kpi-source">CEIDG</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">⚠️</span><div class="kpi-number">5,0k</div><div class="kpi-label">Zamknięcia w 2024<span class="kpi-source">CEIDG</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">👤</span><div class="kpi-number">77,5%</div><div class="kpi-label">Mikrofirm to solo (1 osoba)<span class="kpi-source">GUS 2024</span></div></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="surface-card">
+                <h3 class="text-lg mb-3">Specjalizacje rynku (placówki stacjonarne)</h3>
+                <div class="chart-container"><canvas id="structureChart"></canvas></div>
+                <p class="text-xs mt-3 text-center" style="color: var(--text-faint)">Dane GIS 2023 + szacunki własne (skala stacjonarna)</p>
+            </div>
+
+            <div class="surface-card">
+                <h3 class="text-lg mb-3">Reform PKD 2025-01-01</h3>
+                <p class="text-sm mb-4" style="color: var(--text-soft)">Stary kod 96.02.Z (łączący fryzjerstwo i kosmetykę) został podzielony na 3 precyzyjniejsze podklasy.</p>
+                <table class="data-table">
+                    <thead><tr><th>Nowy kod</th><th>Zakres</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>96.21.Z</strong></td><td>Działalność fryzjerska (mycie, strzyżenie, układanie, barwienie)</td></tr>
+                        <tr><td><strong>96.22.Z</strong></td><td>Pielęgnacja urody i usługi kosmetyczne</td></tr>
+                        <tr><td><strong>96.23.Z</strong></td><td>Działalność SPA, saun i salonów odchudzających</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="box-insight">
+                <div class="box-title">Gap GUS vs GIS — szara strefa i mobile</div>
+                <p class="text-sm">CEIDG: <strong>133k aktywnych wpisów</strong>. Sanepid (GIS): <strong>~64k stacjonarnych</strong>. Różnica ~50% to <strong>podmioty mobilne i wynajmowane stanowiska</strong> — potrzebują silniejszego SEO lokalnego + Google Maps.</p>
+            </div>
+            <div class="box-chance">
+                <div class="box-title">Konsekwencja dla MVP</div>
+                <p class="text-sm">77,5% mikro = solo → właścicielka jest <strong>jednocześnie usługodawczynią, managerką, recepcjonistką i marketerką</strong>. Sprzedajemy nie SEO, tylko <strong>czas i spokój</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S3: GEOGRAFIA -->
+    <!-- ============================================================ -->
+    <section id="sec-geo" class="section-content max-w-6xl mx-auto">
+        <header><h2 class="text-3xl md:text-4xl">Geografia &amp; Sweet Spot</h2></header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            Geograficzny rozkład gabinetów silnie koreluje z zaludnieniem i siłą nabywczą, ale analiza nasycenia ujawnia, że <strong>największe miasta są oversaturated</strong>, a okno opportunity leży w średnich aglomeracjach 50–200k mieszkańców.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="kpi-card"><span class="kpi-emoji">📍</span><div class="kpi-number">20,8%</div><div class="kpi-label">Mazowieckie (top region)<span class="kpi-source">REGON 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">📊</span><div class="kpi-number">4 / 10k</div><div class="kpi-label">Średnia krajowa nasycenia<span class="kpi-source">GUS 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">🚨</span><div class="kpi-number">&gt;6</div><div class="kpi-label">Warszawa, Kraków / 10k<span class="kpi-source">Oversaturated</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">📏</span><div class="kpi-number">3–5 km</div><div class="kpi-label">Promień szukania klientki<span class="kpi-source">Booksy data</span></div></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="surface-card">
+                <h3 class="text-lg mb-3">Top 10 miast — liczba salonów</h3>
+                <div class="chart-container tall"><canvas id="citiesChart"></canvas></div>
+            </div>
+
+            <div class="surface-card">
+                <h3 class="text-lg mb-3">Nasycenie + potencjał SEO</h3>
+                <table class="data-table">
+                    <thead><tr><th>Miasto</th><th>Salony</th><th>Potencjał</th></tr></thead>
+                    <tbody>
+                        <tr><td>Warszawa</td><td>2 800</td><td><span class="saturation-pill sat-red">Ekstremalne</span></td></tr>
+                        <tr><td>Kraków</td><td>1 650</td><td><span class="saturation-pill sat-red">Wysokie</span></td></tr>
+                        <tr><td>Wrocław</td><td>1 420</td><td><span class="saturation-pill sat-red">Wysokie</span></td></tr>
+                        <tr><td>Trójmiasto</td><td>1 100</td><td><span class="saturation-pill sat-yellow">Średnie</span></td></tr>
+                        <tr><td>Poznań</td><td>950</td><td><span class="saturation-pill sat-yellow">Średnie</span></td></tr>
+                        <tr><td>Katowice</td><td>820</td><td><span class="saturation-pill sat-yellow">Średnie</span></td></tr>
+                        <tr><td>Łódź</td><td>680</td><td><span class="saturation-pill sat-green">Sweet Spot</span></td></tr>
+                        <tr><td>Szczecin</td><td>550</td><td><span class="saturation-pill sat-green">Sweet Spot</span></td></tr>
+                        <tr><td>Bydgoszcz</td><td>520</td><td><span class="saturation-pill sat-green">Sweet Spot</span></td></tr>
+                        <tr><td>Rzeszów</td><td>450</td><td><span class="saturation-pill sat-green">Sweet Spot</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="box-chance">
+                <div class="box-title">Sweet Spot: miasta 50–200k</div>
+                <p class="text-sm"><strong>Radom, Kielce, Toruń, Płock, Olsztyn</strong> — optymalne nasycenie + niski profesjonalizm SEO konkurencji. Pierwsza fala MVP powinna być stamtąd.</p>
+            </div>
+            <div class="box-insight">
+                <div class="box-title">Strategia long-tail dzielnicowy</div>
+                <p class="text-sm">Pozycjonujemy <strong>„manicure hybrydowy Mokotów"</strong> zamiast „kosmetyczka Warszawa". Drastyczna obniżka kosztów linkbuildingu i przyspieszenie pierwszych rezultatów (4–8 tyg. vs 6–9 m-cy).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S4: FINANSE & PAIN POINTS -->
+    <!-- ============================================================ -->
+    <section id="sec-finanse" class="section-content max-w-6xl mx-auto">
+        <header><h2 class="text-3xl md:text-4xl">Finanse, koszty i Pain Points</h2></header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            Paradoks 2024: rekordowe przychody (35 mld PLN) + dramatyczny spadek realnej rentowności. Wartość rynku rośnie głównie dzięki podwyżkom cen. Mikrofirmy boleśnie odczuwają presję kosztową, a marketing jest pierwszym wydatkiem do cięcia.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="kpi-card"><span class="kpi-emoji">💰</span><div class="kpi-number">35 mld</div><div class="kpi-label">PLN obrót branży 2024<span class="kpi-source">PMR / Wiad. Kosm.</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">📉</span><div class="kpi-number">8–12%</div><div class="kpi-label">Realna marża netto<span class="kpi-source">GUS skoryg. 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">⚠️</span><div class="kpi-number">14k</div><div class="kpi-label">PLN średnie zadłużenie<span class="kpi-source">KRD Dec 2025</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">🔴</span><div class="kpi-number">55 mln</div><div class="kpi-label">PLN łączny dług sektora<span class="kpi-source">KRD +14% YoY</span></div></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="surface-card">
+                <h3 class="text-lg mb-3">Wzrost kosztów operacyjnych YoY 2024</h3>
+                <div class="chart-container"><canvas id="costsChart"></canvas></div>
+                <p class="text-xs mt-3 text-center" style="color: var(--text-faint)">Średnie wzrosty wg badań Beauty Razem 2024–2025</p>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div class="box-risk">
+                    <div class="box-title">Paradoks rekordów</div>
+                    <p class="text-sm">35 mld PLN obrotu = wzrost cenowy, nie wolumenowy. Inflacja zjada marżę. Mikrofirmy z marżą 8–12% są ekstremalnie wrażliwe na każdy nowy koszt — w tym na agencje SEO &gt;1500 PLN/m.</p>
+                </div>
+                <div class="box-insight">
+                    <div class="box-title">Insight: maszyny zamiast marketingu</div>
+                    <p class="text-sm"><strong>14 000 PLN średnie zadłużenie ≈ leasing jednej maszyny hi-tech</strong>. <strong>Twój pitch:</strong> „Te maszyny są warte tylko tyle, ile klientek je wykorzystuje. Ja przyprowadzę klientki."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="surface-card mb-6">
+            <h3 class="text-lg mb-2">Top 10 frustracji marketingowych właścicielek</h3>
+            <p class="text-sm mb-5" style="color: var(--text-soft)">Synteza komentarzy z grup FB, forów branżowych i wywiadów Beauty Razem. Skala intensywności 1–10 wg częstotliwości wzmianek.</p>
+            <div id="pain-points-list"></div>
+        </div>
+
+        <div class="box-chance">
+            <div class="box-title">Frustracja = paliwo dla oferty</div>
+            <p class="text-sm">9 na 10 pain points to <strong>brak czasu i zaufania</strong>, nie brak wiedzy. Twoja oferta sprzedaje się przez „Robimy to za Ciebie. Z gwarancją zwrotu, jeśli nie zadziała w 90 dni" — to bezpośrednia odpowiedź na #1, #6, #10 z listy.</p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S5: BOOKSY & DIGITAL -->
+    <!-- ============================================================ -->
+    <section id="sec-booksy" class="section-content max-w-6xl mx-auto">
+        <header><h2 class="text-3xl md:text-4xl">Booksy &amp; Digital Maturity</h2></header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            Polskie salony beauty są <strong>liderami cyfrowymi w obszarze rezerwacji</strong> dzięki Booksy — ale w tyle z własnymi zasobami (WWW, SEO). Ta asymetria + nowy trend AI Overviews tworzy <strong>idealne okno</strong> dla wyspecjalizowanej oferty SEO.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="kpi-card"><span class="kpi-emoji">👥</span><div class="kpi-number">10M+</div><div class="kpi-label">Użytkownicy Booksy w PL<span class="kpi-source">Booksy 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">📅</span><div class="kpi-number">64M</div><div class="kpi-label">Wizyt zarezerwowanych w 2024<span class="kpi-source">Booksy 2024</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">🔁</span><div class="kpi-number">75%</div><div class="kpi-label">Return rate po cyfrowej rezerwacji<span class="kpi-source">Booksy data</span></div></div>
+            <div class="kpi-card"><span class="kpi-emoji">🌙</span><div class="kpi-number">46–50%</div><div class="kpi-label">Rezerwacji poza godzinami pracy<span class="kpi-source">Booksy data</span></div></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="surface-card lg:col-span-2">
+                <h3 class="text-lg mb-3">Cyfrowa obecność mikrogabinetów</h3>
+                <div class="chart-container"><canvas id="digitalChart"></canvas></div>
+                <p class="text-xs mt-3 text-center" style="color: var(--text-faint)">Szacunki własne na podstawie audytów Beauty Razem + badań branżowych 2024</p>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div class="box-info">
+                    <div class="box-title">Budżet marketingowy mikro</div>
+                    <p class="text-sm"><strong>500–1 500 PLN/m</strong>. W tym: 150–300 PLN to Booksy, 300–800 PLN „spalone" na Meta Ads bez ustawienia konwersji. <strong>Klasyczna agencja SEO &gt;2500 PLN = bariera</strong>.</p>
+                </div>
+                <div class="box-insight">
+                    <div class="box-title">Nieświadomy zakup SEO</div>
+                    <p class="text-sm">Edukacja przez analogię: „Booksy to galeria handlowa — Twoja strona to własny lokal".</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+            <div class="box-risk">
+                <div class="box-title">⚠️ AI Overviews: −19,4% CTR</div>
+                <p class="text-sm">Od marca 2025 Google AI Overviews zabija ruch z zapytań informacyjnych. Senuto raportuje średni spadek CTR o <strong>19,4%</strong>. Stare blogi tracą ruch. Strategia content musi się zmienić — krócej, faktograficznie, z silnym EEAT.</p>
+            </div>
+            <div class="box-chance">
+                <div class="box-title">✓ Local queries wciąż OK + EEAT</div>
+                <p class="text-sm">Zapytania lokalne wciąż promują linki do gabinetów. <strong>EEAT</strong> staje się krytyczne. Twoja przewaga: 20+ lat doświadczenia, MBA, 2 500 absolwentek = autorytet, którego AI nie podważy.</p>
+            </div>
+        </div>
+
+        <div class="surface-card">
+            <h3 class="text-lg mb-4">Booksy SEO vs Twoje SEO — nie walczymy o te same frazy</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div style="border: 1.5px solid var(--accent-peach); border-radius: 10px; padding: 16px; background: var(--accent-peach-bg);">
+                    <h4 style="color: #BF360C; font-size: 13px; margin-bottom: 8px;">🟠 Booksy dominuje (long-tail zabiegowe)</h4>
+                    <ul style="font-size: 13px; color: var(--text-charcoal); padding-left: 18px; margin: 0;">
+                        <li class="mb-1">„paznokcie hybrydowe Warszawa"</li>
+                        <li class="mb-1">„depilacja laserowa Kraków"</li>
+                        <li class="mb-1">„brwi henna Wrocław"</li>
+                    </ul>
+                    <p class="text-xs mt-3" style="color: #BF360C">Walka z Booksy o te frazy = przepalanie budżetu. Booksy ma DR 80+, nie pokonasz.</p>
+                </div>
+                <div style="border: 1.5px solid var(--accent-sage); border-radius: 10px; padding: 16px; background: var(--accent-sage-bg);">
+                    <h4 style="color: #2E7D32; font-size: 13px; margin-bottom: 8px;">🟢 Twoja niesza (Brand + Specialist SEO)</h4>
+                    <ul style="font-size: 13px; color: var(--text-charcoal); padding-left: 18px; margin: 0;">
+                        <li class="mb-1"><strong>Brand SEO</strong> — klientka widzi salon w Booksy, szuka opinii w Google</li>
+                        <li class="mb-1"><strong>Specialist SEO</strong> — „Endermologia Alliance Mokotów" (nazwy maszyn)</li>
+                        <li class="mb-1"><strong>Educational SEO</strong> — „co warto wiedzieć przed HIFU"</li>
+                    </ul>
+                    <p class="text-xs mt-3" style="color: #2E7D32">Booksy nie optymalizuje pod konkretne urządzenia ani treści edukacyjne.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S6: KONKURENCJA -->
+    <!-- ============================================================ -->
+    <section id="sec-konkurencja" class="section-content max-w-6xl mx-auto">
+        <header class="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+            <div><h2 class="text-3xl md:text-4xl">Top 10 Konkurentów</h2></div>
+            <div class="flex-shrink-0">
+                <select id="filter-type" onchange="renderCompetitors()" class="bg-white border text-sm rounded-lg block px-3 py-2 outline-none" style="border-color: var(--primary-soft); color: var(--text-charcoal)">
+                    <option value="all">Wszyscy rywale</option>
+                    <option value="agency_spec">Agencje specjalistyczne (beauty)</option>
+                    <option value="agency_gen">Agencje generyczne</option>
+                    <option value="edu">Edukatorzy / mentorzy</option>
+                    <option value="platform">Platformy</option>
+                    <option value="saas">SaaS / Ecosystem</option>
+                </select>
+            </div>
+        </header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            10 realnych graczy z polskiego rynku marketingu beauty B2B. Pełne profile, realne ceny, URL-e, model biznesowy. Filtr po typie konkurenta po prawej stronie.
+        </p>
+
+        <div class="surface-card mb-6">
+            <h3 class="text-lg mb-3">Pozycjonowanie konkurentów: cena × poziom Done-For-You</h3>
+            <div class="chart-container tall"><canvas id="scatterChart"></canvas></div>
+            <div class="mt-4 flex flex-wrap justify-center gap-4 text-xs" style="color: var(--text-soft)">
+                <span class="flex items-center"><span class="w-3 h-3 rounded-full mr-2" style="background: var(--accent-indigo)"></span>Agencje generyczne</span>
+                <span class="flex items-center"><span class="w-3 h-3 rounded-full mr-2" style="background: var(--accent-sage)"></span>Agencje specjalistyczne (beauty)</span>
+                <span class="flex items-center"><span class="w-3 h-3 rounded-full mr-2" style="background: var(--accent-lavender)"></span>Edukatorzy</span>
+                <span class="flex items-center"><span class="w-3 h-3 rounded-full mr-2" style="background: var(--accent-peach)"></span>Platformy / SaaS</span>
+                <span class="flex items-center"><span class="w-3 h-3 mr-2" style="background: var(--primary-magenta); transform: rotate(45deg); display: inline-block;"></span>Twoja idealna pozycja</span>
+            </div>
+        </div>
+
+        <div id="competitor-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="surface-card lg:col-span-2">
+                <h3 class="text-lg mb-3">Średnie ceny rynkowe usług marketingowych (2025)</h3>
+                <table class="data-table">
+                    <thead><tr><th>Usługa</th><th>Cena (netto/m)</th><th>Uwagi</th></tr></thead>
+                    <tbody>
+                        <tr><td>SEO lokalne (mała firma)</td><td><strong>500–1 500 PLN</strong></td><td>10–15 fraz lokalnych + GMF</td></tr>
+                        <tr><td>SEO kompleksowe (agencja)</td><td>2 000–5 000 PLN</td><td>Linkbuilding, content, audyt</td></tr>
+                        <tr><td>Obsługa Social Media</td><td>800–2 000 PLN</td><td>8–10 postów/rolek + kampanie</td></tr>
+                        <tr><td>Audyt SEO (jednorazowy)</td><td>500–2 000 PLN</td><td>Zależnie od skali strony</td></tr>
+                        <tr><td>Google Ads management</td><td>500–1 000 PLN</td><td>+ budżet (min. 500 PLN/m)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div class="box-insight">
+                    <div class="box-title">3 luki w rynku</div>
+                    <ol style="font-size: 13px; padding-left: 18px; margin: 0;">
+                        <li class="mb-2"><strong>Cenowa</strong>: pusta przestrzeń 800–1 200 PLN/m premium-lite</li>
+                        <li class="mb-2"><strong>Reputacyjna</strong>: Trustpilot PL nie istnieje dla SEO. Twoje 2 500 absolwentek = potencjał setek opinii w 30 dni.</li>
+                        <li><strong>Brand fit</strong>: nikt nie łączy edukacji + DFY + branding beauty w jednym pakiecie</li>
+                    </ol>
+                </div>
+                <div class="box-risk">
+                    <div class="box-title">⚠️ Zagrożenie #1</div>
+                    <p class="text-sm"><strong>Klinika Marketingu (ks.pl)</strong> jest najbliżej Twojej propozycji — Starter 740 PLN/m to bezpośredni overlap. Monitoruj ich pricing co kwartał.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S7: BUYING POWER -->
+    <!-- ============================================================ -->
+    <section id="sec-buying" class="section-content max-w-6xl mx-auto">
+        <header><h2 class="text-3xl md:text-4xl">Buying Power &amp; Sezonowość</h2></header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            Ścieżka decyzyjna w segmencie 1–5 osób jest krótka (właścicielka = jedyny decydent), ale wysoce <strong>emocjonalna</strong> — budżet marketingowy jest psychicznie utożsamiany z osobistymi zarobkami.
+        </p>
+
+        <h3 class="text-xl mb-4">Segmentacja klientek wg buying power</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+            <div class="segment-card">
+                <h4 class="text-base font-bold mb-2" style="color: var(--text-soft)">Oszczędny</h4>
+                <p class="text-3xl font-extrabold mb-2" style="color: var(--text-charcoal)">300–600 PLN</p>
+                <p class="text-xs mb-3" style="color: var(--text-faint)">cap miesięczny</p>
+                <p class="text-sm" style="color: var(--text-soft)">Oczekują „cudów za cenę telefonu". Konwersja na MVP: niska. Komunikacja edukacyjna („dlaczego tanio = drogo długoterminowo").</p>
+            </div>
+
+            <div class="segment-card target">
+                <span class="segment-target-badge">Twój target</span>
+                <h4 class="text-base font-bold mb-2" style="color: var(--primary-magenta)">Inwestujący</h4>
+                <p class="text-3xl font-extrabold mb-2" style="color: var(--primary-magenta)">800–1 500 PLN</p>
+                <p class="text-xs mb-3" style="color: var(--text-faint)">cap miesięczny</p>
+                <p class="text-sm" style="color: var(--text-soft)">Rozumieją CAC i LTV. <strong>790 PLN early-bird mieści się idealnie</strong>. To Twoja docelowa baza absolwentek.</p>
+            </div>
+
+            <div class="segment-card">
+                <h4 class="text-base font-bold mb-2" style="color: var(--text-soft)">Premium / Kliniki</h4>
+                <p class="text-3xl font-extrabold mb-2" style="color: var(--text-charcoal)">2 500+ PLN</p>
+                <p class="text-xs mb-3" style="color: var(--text-faint)">cap miesięczny</p>
+                <p class="text-sm" style="color: var(--text-soft)">Szukają agencji 360°. Klinika Marketingu i MediComarketing są tu silne. Wejście Year 2 z pakietem Premium 1 990 PLN.</p>
+            </div>
+        </div>
+
+        <h3 class="text-xl mb-4">Sezonowość zakupów marketingowych Q1–Q4</h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="quarter-card"><div class="q-label">Q1 · Sty–Mar</div><div class="q-title">Postanowienia noworoczne</div><div class="q-behavior">„Naprawiam biznes po grudniu". Najwyższa konwersja na nowe abonamenty.</div><div class="q-rec">🎯 Start kampanii SEO — efekty na sezon wiosenny (Q2)</div></div>
+            <div class="quarter-card"><div class="q-label">Q2 · Kwi–Cze</div><div class="q-title">Szczyt sezonu</div><div class="q-behavior">Komunie, wesela, sezon ślubny. Brak czasu na własny marketing.</div><div class="q-rec">🎯 Sprzedaj DFY: „Robimy to za Ciebie, Ty zajmij się klientkami"</div></div>
+            <div class="quarter-card"><div class="q-label">Q3 · Lip–Wrz</div><div class="q-title">Zastój wakacyjny</div><div class="q-behavior">Klientki na urlopie. Właścicielki szukają sposobu na zapełnienie jesieni.</div><div class="q-rec">🎯 Kampanie na zabiegi po-słońcu, regenerację, anti-aging</div></div>
+            <div class="quarter-card"><div class="q-label">Q4 · Paź–Gru</div><div class="q-title">Walka o terminy świąteczne</div><div class="q-behavior">Bony podarunkowe, „kosmetyki na prezent", paniczne zapełnianie kalendarza.</div><div class="q-rec">🎯 Optymalizacja GMF pod „bon podarunkowy [miasto]"</div></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="box-info">
+                <div class="box-title">Cap psychologiczny: 1 000 PLN/m</div>
+                <p class="text-sm">Bariera mentalna dla stałej obsługi. <strong>1 500 PLN OK tylko jeśli wykazany wpływ na rezerwacje</strong> — dlatego MVP wymaga prostego dashboardu „ile wizyt z Google" w pierwszym miesiącu.</p>
+            </div>
+            <div class="box-chance">
+                <div class="box-title">Twój omijasz #1 barierę: „spróbowałam już raz"</div>
+                <p class="text-sm">Twoja baza 2 500 absolwentek = <strong>wcześniejsze kursy zbudowały zaufanie</strong> przed zakupem usługi. Konwersja będzie 5–10× wyższa niż w cold market.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- S8: STRATEGIA -->
+    <!-- ============================================================ -->
+    <section id="sec-strategia" class="section-content max-w-6xl mx-auto">
+        <header>
+            <div class="flex items-center gap-3 flex-wrap">
+                <h2 class="text-3xl md:text-4xl">Strategia &amp; MVP</h2>
+                <span class="go-badge">Decyzja: GO</span>
+            </div>
+        </header>
+        <div class="section-divider"></div>
+        <p class="lede">
+            Synteza danych w 4 krokach: <strong>(1)</strong> wielkość okna rynkowego (TAM/SAM/SOM), <strong>(2)</strong> mapa ryzyk i szans, <strong>(3)</strong> propozycja MVP z ceną i gwarancją, <strong>(4)</strong> roadmapa wdrożenia 9 miesięcy.
+        </p>
+
+        <h3 class="text-xl mb-4">TAM / SAM / SOM — wielkość okna rynkowego</h3>
+        <div class="surface-card mb-8">
+            <div class="funnel">
+                <div class="funnel-step f-tam"><span class="f-label">TAM · Total Addressable Market</span><span class="f-num">132 400</span><span class="f-desc">Wszystkie podmioty PKD 96.02 w Polsce</span></div>
+                <div class="funnel-step f-sam"><span class="f-label">SAM · Serviceable Addressable</span><span class="f-num">12 800</span><span class="f-desc">32 000 stationary × 40% z online presence</span></div>
+                <div class="funnel-step f-som"><span class="f-label">SOM · Serviceable Obtainable</span><span class="f-num">250</span><span class="f-desc">2 500 absolwentek × 10% konwersja na DFY</span></div>
+                <div class="funnel-revenue">
+                    <span class="rev-num">212 500 PLN/m</span>
+                    <div class="text-xs mt-1" style="color: #BF360C">Revenue SOM przy 850 PLN/m × 250 klientek = <strong>2,55 mln PLN/rok</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-xl mb-4">Top 5 Ryzyk vs Top 5 Szans</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="surface-card" style="border-top: 4px solid var(--accent-peach);">
+                <h4 class="text-base font-bold mb-4" style="color: #BF360C">⚠️ Top 5 Ryzyk</h4>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-peach); min-width: 20px;">1.</span><span class="text-sm"><strong>Kanibalizacja czasu Joanny</strong> — przejście z modelu skalowalnych kursów na pracochłonną agencję</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-peach); min-width: 20px;">2.</span><span class="text-sm"><strong>Brak mierzalności SEO</strong> — trudność udowodnienia że klientka „przyszła z Google" vs Booksy</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-peach); min-width: 20px;">3.</span><span class="text-sm"><strong>Wzrost kosztów linkbuildingu</strong> — portale beauty podnoszą ceny artykułów sponsorowanych</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-peach); min-width: 20px;">4.</span><span class="text-sm"><strong>Personality risk</strong> — klientki kupują od Joanny; Account Managerzy obniżają wartość postrzeganą</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-peach); min-width: 20px;">5.</span><span class="text-sm"><strong>Zmiany AI Google</strong> — ryzyko spadku widoczności małych stron na rzecz Wikipedii / Booksy</span></li>
+                </ul>
+            </div>
+
+            <div class="surface-card" style="border-top: 4px solid var(--accent-sage);">
+                <h4 class="text-base font-bold mb-4" style="color: #2E7D32">✓ Top 5 Szans</h4>
+                <ul class="space-y-3">
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-sage); min-width: 20px;">1.</span><span class="text-sm"><strong>Domknięcie cyklu klienta</strong> — kursy uczą „co robić", agencja „robi to za Ciebie"</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-sage); min-width: 20px;">2.</span><span class="text-sm"><strong>Local SEO + Booksy integracja</strong> — nikt na rynku PL nie pozycjonuje SEO z naciskiem na ekosystem Booksy + Mapy Google</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-sage); min-width: 20px;">3.</span><span class="text-sm"><strong>Wysoka bariera wyjścia</strong> — raz wypozycjonowany salon rzadko zmienia agencję (LTV &gt; 24m)</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-sage); min-width: 20px;">4.</span><span class="text-sm"><strong>Unikalny content moat</strong> — dane z badania 311 gabinetów Joanny = treści SEO o nieosiągalnej jakości</span></li>
+                    <li class="flex gap-3"><span class="font-bold flex-shrink-0" style="color: var(--accent-sage); min-width: 20px;">5.</span><span class="text-sm"><strong>AI automation</strong> — produkcja treści wspomagana AI + ludzka korekta merytoryczna = niska struktura kosztów</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 class="text-xl mb-4">Rekomendowany MVP — pierwsze 90 dni</h3>
+        <div class="surface-card mb-6" style="background: var(--primary-bg); border-color: var(--primary-soft);">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div>
+                    <div class="text-xs font-bold mb-2" style="color: var(--text-soft); letter-spacing: 0.06em; text-transform: uppercase;">Cena early-bird</div>
+                    <div class="text-5xl font-extrabold mb-2" style="color: var(--primary-magenta); letter-spacing: -0.02em;">790 zł</div>
+                    <div class="text-sm" style="color: var(--text-soft)">netto / m-c</div>
+                    <div class="text-xs mt-3" style="color: var(--text-faint)">Po pilotażu cena katalogowa: 1 290 zł/m. Pierwsze 30 gabinetów na zawsze 790 zł (lock-in).</div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <div class="text-xs font-bold mb-3" style="color: var(--text-soft); letter-spacing: 0.06em; text-transform: uppercase;">Scope (co dostaje klientka)</div>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start gap-2 text-sm"><span style="color: var(--accent-sage)">✓</span><span><strong>Pełne przejęcie Google Moja Firma</strong> — zdjęcia, opisy, słowa kluczowe, Q&amp;A, posty Google</span></li>
+                        <li class="flex items-start gap-2 text-sm"><span style="color: var(--accent-sage)">✓</span><span><strong>Lokalne SEO 10 fraz z intencją zakupu</strong> — np. „HIFU Mokotów", „depilacja laserowa Wola"</span></li>
+                        <li class="flex items-start gap-2 text-sm"><span style="color: var(--accent-sage)">✓</span><span><strong>Prosty dashboard</strong> — „ile wizyt przyszło z Google" w czasie rzeczywistym</span></li>
+                        <li class="flex items-start gap-2 text-sm"><span style="color: var(--accent-sage)">✓</span><span><strong>Audyt techniczny + speed strony</strong> — Lighthouse, Core Web Vitals, mobile</span></li>
+                        <li class="flex items-start gap-2 text-sm"><span style="color: var(--accent-sage)">✓</span><span><strong>System zbierania recenzji</strong> — automatyczny SMS po wizycie z linkiem do GMF</span></li>
+                    </ul>
+
+                    <div class="box-premium">
+                        <div class="box-title">🛡️ Gwarancja zwrotu</div>
+                        <p class="text-sm">„Jeżeli w 90 dni nie zwiększymy wyświetleń wizytówki w Mapach Google o <strong>+20%</strong> — zwracamy pełen koszt. Zero ryzyka dla klientki."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-xl mb-4">Roadmapa wdrożenia (M0 → M9)</h3>
+        <div class="roadmap mb-8">
+            <div class="roadmap-step"><div class="rs-month">M0–M1</div><div class="rs-action">Recruit 30 gabinetów beta z bazy absolwentek</div></div>
+            <div class="roadmap-step"><div class="rs-month">M2</div><div class="rs-action">Onboarding + audyt + setup GMF dla 30</div></div>
+            <div class="roadmap-step"><div class="rs-month">M3</div><div class="rs-action">Pierwsze rezultaty + iteracja procesu</div></div>
+            <div class="roadmap-step"><div class="rs-month">M4–M6</div><div class="rs-action">Case studies (top 5 sukcesów) + testimonials</div></div>
+            <div class="roadmap-step"><div class="rs-month">M7–M9</div><div class="rs-action">Public launch do całej bazy 2 500 + cena katalogowa 1 290 zł</div></div>
+        </div>
+
+        <div class="text-center py-8">
+            <span class="go-badge large">Decyzja końcowa: GO — wdrażamy MVP w Q1 2026</span>
+            <p class="mt-4 text-sm max-w-2xl mx-auto" style="color: var(--text-soft)">
+                Rynek potrzebuje <strong>agencji wyników, nie agencji postów</strong>. Joanna Mączka ma unikalną pozycję, by wypełnić lukę między drogimi agencjami 360° (&gt;2 500 PLN) a tanimi, nieskutecznymi freelancerami. Pilotaż na 30 absolwentkach zwaliduje hipotezę bez ryzyka publicznej porażki.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SOURCES FOOTER -->
+    <!-- ============================================================ -->
+    <footer class="sources-footer max-w-6xl mx-auto">
+        <h3 class="text-base font-bold mb-3" style="color: var(--text-charcoal)">Źródła</h3>
+        <ol>
+            <li><a href="https://wiadomoscikosmetyczne.pl/biznes-kosmetyki/dynamiczny-wzrost-rynku-beauty-w-polsce-ile-salonow-pieknosci-przybylo-w-2024-r-2523077" target="_blank" rel="noopener">Wiadomości Kosmetyczne — „Dynamiczny wzrost rynku beauty w Polsce" (2025)</a> — liczba podmiotów, dynamika, otwarcia/zamknięcia</li>
+            <li><a href="https://beautyrazem.pl/coraz-wiecej-salonow-beauty-i-coraz-wieksza-konkurencja-na-rynku" target="_blank" rel="noopener">Beauty Razem — „Coraz więcej salonów beauty"</a> — segmentacja, mikrofirmy, konkurencja lokalna</li>
+            <li><a href="https://beautyrazem.pl/branza-beauty-spowolnienie-czy-juz-kryzys" target="_blank" rel="noopener">Beauty Razem — „Branża beauty: spowolnienie czy już kryzys?"</a> — koszty, marża, KRD</li>
+            <li><a href="https://beautyrazem.pl/koniunktura-w-salonach-beauty-grudzien-2025-zamknal-nielatwy-rok-co-dalej" target="_blank" rel="noopener">Beauty Razem — „Koniunktura w salonach beauty, grudzień 2025"</a> — pain points, sezonowość, behavior cyfrowy</li>
+            <li><a href="https://zoca.com/post/salon-marketing-2026" target="_blank" rel="noopener">Zoca AI — „Salon Marketing 2026"</a> — trendy AI, EEAT, Local SEO benchmarks</li>
+            <li>Senuto — raport o wpływie AI Overviews na CTR w PL (marzec 2025)</li>
+            <li>Booksy Press — dane o liczbie wizyt i użytkowników (raport roczny 2024)</li>
+            <li>KRD (Krajowy Rejestr Długów) — komunikat o zadłużeniu sektora beauty (grudzień 2025)</li>
+            <li>GUS — wskaźnik kosztów mikroprzedsiębiorstw 2024</li>
+            <li>Profile konkurentów: ks.pl · socialmagic.pl · bigbrains.pl · widoczni.com · medicomarketing.pl · empressia.pl · thesalonmarketing.com · martafilon.pl · adtrip.pl · envision-marketing.com</li>
+        </ol>
+        <p class="mt-5 text-xs" style="color: var(--text-faint)">
+            Raport: <strong>maj 2026</strong> · wygenerowano przez Gemini 3 Pro Deep Research, dopracowano w Claude Code · brand system: Joanna Mączka.<br>
+            Liczby zaokrąglone do pełnych setek/tysięcy.
+        </p>
+    </footer>
+
+    </main>
+
+    <!-- AI Assistant Widget -->
+    <div id="chat-widget">
+        <div id="chat-window">
+            <div id="chat-header">
+                <div>
+                    <h3 class="font-bold text-sm">Asystent Strategiczny</h3>
+                    <p class="text-[10px] opacity-80 uppercase tracking-wider">Beauty B2B · Analiza Rynku</p>
+                </div>
+                <button onclick="toggleChat()" class="opacity-80 hover:opacity-100 text-xl">✕</button>
+            </div>
+            <div id="chat-messages" class="custom-scrollbar">
+                <div class="message message-ai">
+                    Cześć Joanno! Przeanalizowałem dane o Twojej konkurencji, rynku, finansach i pain points. O co chciałabyś zapytać? 🌸
+                </div>
+                <div class="message-disclaimer">
+                    ℹ️ Asystent dopasowuje odpowiedzi po słowach kluczowych z raportu (lokalna baza wiedzy, działa offline). Pytaj o: konkurencję, miasta, ceny, Booksy, pain points, sezonowość, MVP, TAM/SAM/SOM, AI Overviews, gwarancję.
+                </div>
+            </div>
+            <div id="typing" class="typing-indicator">Asystent analizuje dane...</div>
+            <div id="chat-input-wrap">
+                <input type="text" id="chat-input" placeholder="Zadaj pytanie...">
+                <button id="chat-send-btn" onclick="sendMessage()">→</button>
+            </div>
+        </div>
+        <button id="chat-toggle-btn" onclick="toggleChat()">🌸</button>
+    </div>
+
+    <script>
+    function nav(sectionId) {
+        document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        const section = document.getElementById('sec-' + sectionId);
+        const navBtn = document.getElementById('nav-' + sectionId);
+        if (section) section.classList.add('active');
+        if (navBtn) navBtn.classList.add('active');
+        const main = document.querySelector('main');
+        if (main) main.scrollTo(0, 0);
+        window.scrollTo(0, 0);
+    }
+    function closeMobileMenu() { document.getElementById('mobile-menu').classList.add('hidden'); }
+
+    Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+    Chart.defaults.color = '#616161';
+    const tooltipStyle = {
+        backgroundColor: '#212121', titleColor: '#FCE4EC', bodyColor: '#FFFFFF',
+        padding: 10, cornerRadius: 6, displayColors: true, boxPadding: 4
+    };
+
+    // Chart 1: Structure (donut)
+    new Chart(document.getElementById('structureChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Salony podstawowe (manicure, pedicure)', 'Gabinety zaawansowane (med. estet., hi-tech)', 'SPA, masaż, wellness', 'Pozostałe (salony fryzjerskie, mobile)'],
+            datasets: [{
+                data: [12000, 5450, 15000, 99950],
+                backgroundColor: ['#E91E63', '#AB47BC', '#26A69A', '#3F51B5'],
+                borderWidth: 2, borderColor: '#FFFFFF'
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false, cutout: '55%',
+            plugins: {
+                legend: { position: 'bottom', labels: { padding: 10, font: { size: 11 }, boxWidth: 12 } },
+                tooltip: { ...tooltipStyle, callbacks: {
+                    label: ctx => `${ctx.label}: ${ctx.parsed.toLocaleString('pl-PL')} (${(ctx.parsed / 132400 * 100).toFixed(1)}%)`
+                }}
+            }
+        }
+    });
+
+    // Chart 2: Cities (horizontal bar)
+    new Chart(document.getElementById('citiesChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Warszawa', 'Kraków', 'Wrocław', 'Trójmiasto', 'Poznań', 'Katowice', 'Łódź', 'Szczecin', 'Bydgoszcz', 'Rzeszów'],
+            datasets: [{
+                label: 'Liczba salonów',
+                data: [2800, 1650, 1420, 1100, 950, 820, 680, 550, 520, 450],
+                backgroundColor: ['#E91E63', '#E91E63', '#E91E63', '#FFB74D', '#FFB74D', '#FFB74D', '#66BB6A', '#66BB6A', '#66BB6A', '#66BB6A'],
+                borderRadius: 6, borderSkipped: false
+            }]
+        },
+        options: {
+            indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+            scales: {
+                x: { beginAtZero: true, grid: { color: '#F5F5F5' }, ticks: { callback: v => v.toLocaleString('pl-PL') } },
+                y: { grid: { display: false } }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: { ...tooltipStyle, callbacks: {
+                    label: ctx => `${ctx.parsed.x.toLocaleString('pl-PL')} salonów`,
+                    afterLabel: ctx => {
+                        const colors = ['Oversaturated','Oversaturated','Oversaturated','Średnie','Średnie','Średnie','Sweet Spot','Sweet Spot','Sweet Spot','Sweet Spot'];
+                        return 'Potencjał: ' + colors[ctx.dataIndex];
+                    }
+                }}
+            }
+        }
+    });
+
+    // Chart 3: Costs YoY
+    new Chart(document.getElementById('costsChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Najem lokalu', 'Media (energia/woda)', 'Materiały / kosmetyki', 'Składki ZUS', 'Koszty marketingu'],
+            datasets: [{
+                label: 'Wzrost YoY (%)',
+                data: [22, 35, 15, 8, 0],
+                backgroundColor: ['#FF7043', '#E91E63', '#FFB74D', '#AB47BC', '#66BB6A'],
+                borderRadius: 6, borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, max: 45, grid: { color: '#F5F5F5' }, ticks: { callback: v => '+' + v + '%' } },
+                x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: { ...tooltipStyle, callbacks: { label: ctx => 'Wzrost: +' + ctx.parsed.y + '% YoY' } }
+            }
+        }
+    });
+
+    // Pain points list
+    const painPoints = [
+        { rank: 1, title: 'Brak efektów mimo starań', desc: '10h/tydz. na Rolki = 200 wyświetleń, 0 rezerwacji.', intensity: 10 },
+        { rank: 2, title: 'Uzależnienie od Booksy', desc: 'Strach przed podwyżkami prowizji, brak kontroli wizerunku.', intensity: 9 },
+        { rank: 3, title: 'Marketingowy bełkot', desc: 'Niezrozumienie CTR, CPC, atrybucji = poczucie oszukiwania przez agencje.', intensity: 9 },
+        { rank: 4, title: 'Puste godziny po odwołaniach', desc: 'Brak bazy SMS / mailingowej do szybkiego zapełnienia.', intensity: 8 },
+        { rank: 5, title: 'Wojna cenowa z sąsiadem', desc: 'Salon obok obniżył manicure o 20 PLN — wymusza reakcję.', intensity: 8 },
+        { rank: 6, title: 'Brak czasu na życie', desc: 'Marketing wieczorami po 10h pracy przy fotelu.', intensity: 8 },
+        { rank: 7, title: 'Strona, która nie działa', desc: 'Witryna z 2017 roku, nie można jej samodzielnie edytować.', intensity: 7 },
+        { rank: 8, title: 'Hejt i opinie', desc: 'Paraliżujący strach przed jedną negatywną opinią w Google.', intensity: 7 },
+        { rank: 9, title: 'Nowa konkurencja w mieszkaniach', desc: 'Młode stylistki w szarej strefie — trudno konkurować ceną.', intensity: 6 },
+        { rank: 10, title: 'Niezrozumienie SEO', desc: 'Przekonanie, że SEO to „oszustwo", bo efekty nie pojawiają się w tydzień.', intensity: 6 }
+    ];
+    const painList = document.getElementById('pain-points-list');
+    painPoints.forEach(p => {
+        painList.innerHTML += `
+            <div class="pain-item">
+                <div class="pain-rank">${p.rank}</div>
+                <div class="pain-content">
+                    <div class="pain-title">${p.title}</div>
+                    <div class="pain-desc">${p.desc}</div>
+                    <div class="pain-bar-wrap">
+                        <div class="pain-bar"><div class="pain-bar-fill" style="width: ${p.intensity * 10}%"></div></div>
+                        <span class="pain-bar-label">${p.intensity}/10</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    // Chart 4: Digital channels
+    new Chart(document.getElementById('digitalChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Instagram / FB', 'Wizytówka Google Maps', 'Własna strona WWW', 'Strona z SEO basics', 'Brak żadnego kanału'],
+            datasets: [{
+                label: '% mikrofirm beauty',
+                data: [95, 85, 35, 20, 5],
+                backgroundColor: ['#AB47BC', '#FF7043', '#E91E63', '#66BB6A', '#9E9E9E'],
+                borderRadius: 6, borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, max: 100, grid: { color: '#F5F5F5' }, ticks: { callback: v => v + '%' } },
+                x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: { ...tooltipStyle, callbacks: { label: ctx => ctx.parsed.y + '% mikrofirm' } }
+            }
+        }
+    });
+
+    // Chart 5: Scatter (konkurencja)
+    new Chart(document.getElementById('scatterChart'), {
+        type: 'scatter',
+        data: {
+            datasets: [
+                { label: 'Klinika Marketingu (3 pakiety)', data: [{x: 740, y: 60}, {x: 1840, y: 75}, {x: 3240, y: 95}], backgroundColor: '#66BB6A', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Social Magic (3 tiery)', data: [{x: 350, y: 30}, {x: 790, y: 50}, {x: 1850, y: 75}], backgroundColor: '#3F51B5', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Big Brains (2 pakiety)', data: [{x: 800, y: 55}, {x: 2000, y: 80}], backgroundColor: '#3F51B5', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Widoczni', data: [{x: 2200, y: 80}], backgroundColor: '#3F51B5', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'MediComarketing (premium)', data: [{x: 1500, y: 85}], backgroundColor: '#66BB6A', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Empressia', data: [{x: 1500, y: 70}], backgroundColor: '#3F51B5', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Beauty-pro PL (Marta Fiłoń)', data: [{x: 990, y: 15}], backgroundColor: '#AB47BC', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Salon Marketing Lab', data: [{x: 700, y: 20}], backgroundColor: '#AB47BC', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Adtrip (premium growth)', data: [{x: 4000, y: 90}], backgroundColor: '#3F51B5', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Envision Marketing (SaaS)', data: [{x: 400, y: 40}], backgroundColor: '#FF7043', pointRadius: 9, pointHoverRadius: 12 },
+                { label: 'Booksy Boost', data: [{x: 250, y: 25}], backgroundColor: '#FF7043', pointRadius: 9, pointHoverRadius: 12 },
+                { label: '★ Twoja oferta MVP (790 PLN)', data: [{x: 790, y: 80}], backgroundColor: '#E91E63', pointStyle: 'rectRot', pointRadius: 16, pointHoverRadius: 20, borderColor: '#FFFFFF', borderWidth: 3 }
+            ]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            scales: {
+                x: { title: { display: true, text: 'Cena PLN/m (lub szac. odpowiednik)', color: '#616161' }, min: 0, max: 4500, grid: { color: '#F5F5F5' } },
+                y: { title: { display: true, text: 'Poziom Done-For-You (0=samodzielnie, 100=pełna obsługa)', color: '#616161' }, min: 0, max: 100, grid: { color: '#F5F5F5' } }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: { ...tooltipStyle, callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.x} PLN · DFY ${ctx.parsed.y}%` } }
+            }
+        }
+    });
+
+    // Competitors data + render
+    const competitorsData = [
+        { id: 1, name: 'Klinika Marketingu', url: 'ks.pl', type: 'agency_spec', typeLabel: 'Specjalista beauty', focus: 'Pakiety dedykowane gabinetom + medycyna estetyczna', pricing: 'Starter 740 zł · Standard 1 840 zł · Optimum/Full do 3 240 zł', usp: 'Schodkowy pricing — można startować od minimum (wizytówka), skalować do pełnego SEO + Google Ads.', sentiment: 'Chwaleni za realne zaangażowanie i pomoc w optymalizacji profilu Google. Klientki doceniają sprawny proces wdrożenia.', rating: 4.7 },
+        { id: 2, name: 'Social Magic', url: 'socialmagic.pl', type: 'agency_gen', typeLabel: 'Agencja generyczna', focus: 'Lokalne SEO + AI Optimization (AIO) + social media', pricing: 'SEO od 790 zł · "Dominacja Rynku" 1 850 zł · Wizytówka od 350 zł · Social od 650 zł', usp: 'Stawia na nowe technologie pozycjonowania (AI). Bardzo niski próg wejścia — można zacząć od 350 zł.', sentiment: 'Pozytywne opinie o ekspresie w wdrożeniu. Krytyka: brak głębokiej znajomości specyfiki beauty.', rating: 4.2 },
+        { id: 3, name: 'Big Brains', url: 'bigbrains.pl', type: 'agency_spec', typeLabel: 'Specjalista beauty', focus: 'Kompleksowe pakiety "Genius" dla salonów beauty', pricing: 'Pakiet Simply 800 zł (4-6 postów + 1 kampania) · "Genius + SEO" od 2 000 zł', usp: 'Silna specjalizacja w branży beauty. Recenzje podkreślają „odżycie firm" po przejęciu marketingu.', sentiment: 'Bardzo pozytywne — klientki mówią o ekspresowym tempie realizacji i widocznych efektach na social media.', rating: 4.6 },
+        { id: 4, name: 'Widoczni', url: 'widoczni.com', type: 'agency_gen', typeLabel: 'Agencja generyczna', focus: 'Gigant SEO PL z dedykowanymi procesami lokalnymi', pricing: 'Pozycjonowanie lokalne 1 900–2 500 zł/m', usp: '700+ opinii Google (4.6), wysokie oceny Clutch. Profesjonalne raportowanie miesięczne.', sentiment: 'Doceniani za profesjonalizm. Krytyka: pasywni w kreowaniu pomysłów, brak proaktywności.', rating: 4.6 },
+        { id: 5, name: 'MediComarketing', url: 'medicomarketing.pl', type: 'agency_spec', typeLabel: 'Specjalista beauty', focus: 'Estetyka i marketing medyczny premium klasa', pricing: 'Plany Partner od $390/m (~1 500 zł). 50 fraz SEO w pakiecie.', usp: 'Świetna znajomość branży beauty + dopracowane realizacje wizualne. Targetuje kliniki estetyczne.', sentiment: 'Bardzo pozytywne — klienci chwalą doskonałe wyczucie estetyki i głębokie zrozumienie branży.', rating: 4.8 },
+        { id: 6, name: 'Empressia', url: 'empressia.pl', type: 'agency_gen', typeLabel: 'Agencja generyczna', focus: 'Lokalne SEO + linkbuilding z transparentnym cennikiem', pricing: 'SEO lokalne od 1 500 zł/m · Konsultacje od 200 zł/h · Linki 300–800 zł/30 sztuk', usp: 'Transparentny cennik (rzadkość w branży SEO). Silne zaplecze techniczne z Poznania.', sentiment: '4.6 / 120+ opinii Google. „Pełen profesjonalizm" przy budowie i pozycjonowaniu stron.', rating: 4.6 },
+        { id: 7, name: 'Salon Marketing Lab', url: 'thesalonmarketing.com', type: 'edu', typeLabel: 'Edukator', focus: 'Brytyjsko-amerykańska — model "jeden salon w jednym mieście"', pricing: 'Seminaria PL 400–900 zł. Ekosystem treści edukacyjnych.', usp: 'Model "ekskluzywności geograficznej". Stawiają na systemy (SEO + Email Marketing) zamiast pojedynczych postów.', sentiment: 'Komunikacja zbieżna z modelem Joanny. Mocna w content marketingu, słabsza w wykonaniu DFY na rynku PL.', rating: 4.4 },
+        { id: 8, name: 'Beauty-pro PL (Marta Fiłoń)', url: 'martafilon.pl', type: 'edu', typeLabel: 'Edukator', focus: 'Edukacja zarządzania + szkolenia dla recepcji + planery', pricing: 'Akademia Managera Beauty ~6 500 zł · Szkolenia 990 zł · Planer 350 zł', usp: 'Główny autorytet w obszarze zarządzania salonem. Sprzedaje narzędzia fizyczne (planer marketingu beauty).', sentiment: 'Bardzo wysoka rozpoznawalność wśród właścicielek. Dominuje w segmencie zarządzania, słabsza w SEO/digitalu.', rating: 4.8 },
+        { id: 9, name: 'Adtrip', url: 'adtrip.pl', type: 'agency_gen', typeLabel: 'Agencja generyczna', focus: 'Growth marketing + e-commerce dla większych marek', pricing: 'Kampanie od 4 000 zł/m · Budżety reklamowe od 5 000 zł · Model fee + success fee', usp: 'Performance approach — rozliczają się z efektów. Targetują brandy beauty, nie pojedyncze gabinety.', sentiment: 'Profesjonalna agencja growth. Poza zasięgiem cenowym mikrogabinetu.', rating: 4.5 },
+        { id: 10, name: 'Envision Marketing', url: 'envision-marketing.com', type: 'saas', typeLabel: 'SaaS / Ecosystem', focus: 'Software dla salonu + agencja w jednym ekosystemie', pricing: 'Plany Solo od $99/m (~400 zł) · Usługi agencyjne dodatkowo', usp: 'Integracja oprogramowania zarządzania salonem z marketingiem (kalendarz + CRM + SEO).', sentiment: 'Innowacyjny model. W PL słabsza obecność, ale benchmark dla integrowanych ekosystemów.', rating: 4.3 }
+    ];
+
+    function renderCompetitors() {
+        const filter = document.getElementById('filter-type').value;
+        const grid = document.getElementById('competitor-grid');
+        grid.innerHTML = '';
+        const filtered = competitorsData.filter(c => filter === 'all' || c.type === filter);
+        if (filtered.length === 0) {
+            grid.innerHTML = `<div class="col-span-full text-center py-8" style="color: var(--text-soft)">Brak konkurentów w tej kategorii.</div>`;
+            return;
+        }
+        filtered.forEach(c => {
+            const badgeClass = { 'edu': 'badge-edu', 'agency_spec': 'badge-spec', 'agency_gen': 'badge-gen', 'platform': 'badge-platform', 'saas': 'badge-saas' }[c.type];
+            let stars = '';
+            const numRating = parseFloat(c.rating);
+            for (let i = 1; i <= 5; i++) { stars += i <= numRating ? '★' : `<span style="opacity:0.25">★</span>`; }
+            grid.innerHTML += `
+                <div class="comp-card">
+                    <div class="flex justify-between items-start mb-2 gap-2">
+                        <div>
+                            <h4 class="font-bold text-base leading-tight">${c.name}</h4>
+                            <a href="https://${c.url}" target="_blank" rel="noopener" class="text-xs hover:underline" style="color: var(--text-faint)">${c.url} ↗</a>
+                        </div>
+                        <span class="${badgeClass} text-[11px] font-bold px-2 py-1 rounded uppercase tracking-wide whitespace-nowrap" style="height: fit-content;">${c.typeLabel}</span>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div style="color: var(--accent-gold); letter-spacing: 1px; font-size: 13px;">${stars}</div>
+                        <span class="font-bold text-sm" style="color: var(--text-charcoal)">${c.rating}</span>
+                    </div>
+                    <div class="mb-3 text-sm">
+                        <div class="text-[11px] uppercase tracking-wider font-bold mb-1" style="color: var(--text-faint)">Focus</div>
+                        <p style="color: var(--text-charcoal)">${c.focus}</p>
+                    </div>
+                    <div class="mb-3 text-sm">
+                        <div class="text-[11px] uppercase tracking-wider font-bold mb-1" style="color: var(--text-faint)">Pricing</div>
+                        <p style="color: var(--text-charcoal); font-weight: 600;">${c.pricing}</p>
+                    </div>
+                    <div class="mb-3 text-sm">
+                        <div class="text-[11px] uppercase tracking-wider font-bold mb-1" style="color: var(--text-faint)">USP</div>
+                        <p style="color: var(--text-charcoal)">${c.usp}</p>
+                    </div>
+                    <div class="mt-auto pt-3 border-t" style="border-color: var(--border-light)">
+                        <p class="text-[11px] uppercase tracking-wider font-bold mb-1" style="color: var(--text-faint)">Sentyment / opinie</p>
+                        <p class="text-sm italic leading-relaxed" style="color: var(--text-charcoal)">${c.sentiment}</p>
+                    </div>
+                </div>
+            `;
+        });
+    }
+    renderCompetitors();
+
+    // Chat (demo mode)
+    const chatWindow = document.getElementById('chat-window');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const typingIndicator = document.getElementById('typing');
+    let isChatOpen = false;
+    function toggleChat() {
+        isChatOpen = !isChatOpen;
+        chatWindow.style.display = isChatOpen ? 'flex' : 'none';
+        if (isChatOpen) chatInput.focus();
+    }
+    // Knowledge base — keyword-matched answers based on raport content
+    const KNOWLEDGE = [
+        {
+            topic: 'geografia / sweet spot',
+            keywords: ['miasto', 'miasta', 'gdzie', 'lokalizacja', 'lokalizacje', 'geografia', 'region', 'sweet spot', 'sweetspot', 'mokotow', 'wola', 'mazowieckie', 'warszawa', 'krakow', 'wroclaw', 'rzeszow', 'kielce', 'radom', 'torun', 'plock', 'olsztyn', 'lodz', 'poznan', 'najlepsze', 'najlepszy', 'startowac', 'zaczac', 'pierwsze', 'pilotaz', 'beta', 'nasycenie', 'saturacja', 'oversaturated'],
+            answer: `Sweet Spot to miasta 50–200k mieszkańców: Radom, Kielce, Toruń, Płock, Olsztyn. Nasycenie 4 salony/10k (vs Warszawa >6/10k = oversaturated) + niski profesjonalizm SEO konkurencji = szybsze efekty (4–8 tyg.) i wyższy LTV. Pierwsza fala 30 gabinetów MVP rekrutuj stamtąd. Pełen ranking 10 miast w sekcji „🗺️ Geografia & Sweet Spot".`
+        },
+        {
+            topic: 'cena MVP',
+            keywords: ['cena', 'koszt', 'ile', 'kosztuje', 'mvp', 'abonament', 'oferta', 'pln', 'zlotych', 'zlotowych', '790', '1290', 'early', 'bird', 'earlybird', 'sweet', 'spot', 'cennik', 'pakiet'],
+            answer: `MVP: 790 PLN netto/m-c (early-bird, lock-in dla pierwszych 30 gabinetów na zawsze). Cena katalogowa po pilotażu: 1 290 PLN/m. To mieści się w cap psychologicznym 1 000 PLN dla segmentu „Inwestujący" (800–1 500 PLN). Klinika Marketingu Starter to 740 PLN — bardzo blisko, ale brakuje im ekspertyzy beauty + nie mają gwarancji 90 dni. Twoja przewaga to autorytet 2 500 absolwentek.`
+        },
+        {
+            topic: 'konkurencja / kto groźny',
+            keywords: ['konkurencja', 'konkurent', 'konkurenci', 'kto', 'rywal', 'rywale', 'rywalizacja', 'klinika', 'marketingu', 'widoczni', 'big', 'brains', 'social', 'magic', 'medicomarketing', 'empressia', 'salon', 'lab', 'martafilon', 'fillon', 'adtrip', 'envision', 'beauty-pro', 'agencja', 'agencje', 'grozny', 'zagrozenie', 'rynek', 'firmy', 'monitorowac'],
+            answer: `Top 3 zagrożenia: (1) Klinika Marketingu (ks.pl) — Starter 740 PLN to bezpośredni overlap z Twoim 790 PLN, monitoruj co kwartał. (2) Big Brains — silna specjalizacja beauty + ekspresowe tempo realizacji. (3) MediComarketing — premium beauty z $390/m. Pełna analiza 10 graczy (z URL, cenami, sentymentem) w sekcji „⚔️ Top 10 Konkurentów".`
+        },
+        {
+            topic: 'Booksy',
+            keywords: ['booksy', 'platforma', 'rezerwacja', 'rezerwacje', 'aplikacja', 'prowizja', 'boost', 'kalendarz', 'wizyta', 'wizyty', 'long-tail', 'longtail'],
+            answer: `Booksy = 10M użytkowników PL i 64M wizyt rocznie. Nie walcz z nim na long-tail „[zabieg] [miasto]" (mają DR 80+, nie pokonasz). Wygraj na: (1) Brand SEO — klientka widzi w Booksy, szuka opinii w Google; (2) Specialist SEO — nazwy maszyn („Endermologia Alliance Mokotów"); (3) Educational SEO — „co warto wiedzieć przed HIFU". 75% klientów wraca po cyfrowej rezerwacji, 46–50% bookuje poza godzinami pracy.`
+        },
+        {
+            topic: 'pain points / problemy',
+            keywords: ['pain', 'point', 'points', 'problem', 'problemy', 'frustracja', 'frustracje', 'bol', 'ble', 'wlascicielka', 'wlasciciele', 'rolki', 'rolka', 'instagram', 'reels', 'efekt', 'efekty', 'czego', 'boja', 'martwia', 'martwi'],
+            answer: `Top 5 pain points: (1) Brak efektów — 10h/tydz. na Rolki = 200 wyświetleń, 0 rezerwacji; (2) Uzależnienie od Booksy + strach przed prowizjami; (3) Marketingowy bełkot (CTR, CPC niezrozumiałe); (4) Puste godziny po odwołaniach; (5) Brak czasu na życie. 9 z 10 to brak czasu+zaufania, NIE brak wiedzy. Twój pitch: „Robimy to za Ciebie. Z gwarancją zwrotu jeśli nie zadziała w 90 dni."`
+        },
+        {
+            topic: 'TAM SAM SOM revenue',
+            keywords: ['tam', 'sam', 'som', 'revenue', 'przychod', 'przychody', 'zarobek', 'zarobki', 'zarobic', 'zysk', 'zyski', '212', '500', '850', '250', 'ile', 'ile zarobie', 'ile mozemy', 'milion', 'miliony', 'rocznie', '2.55', 'lejek', 'funnel'],
+            answer: `TAM 132 400 (wszystkie podmioty PKD 96.02) → SAM 12 800 (stationary × 40% online presence) → SOM 250 (2 500 absolwentek × 10% konwersja na DFY). Przy 850 PLN/m × 250 klientek = 212 500 PLN/m = **2,55 mln PLN/rok**. Wystarcza na zbudowanie zespołu agencyjnego (1–2 specjalistów + Joanna jako face). Pełen funnel w sekcji „📈 Strategia & MVP".`
+        },
+        {
+            topic: 'AI Overviews / EEAT',
+            keywords: ['ai', 'overview', 'overviews', 'sge', 'google', 'eeat', 'expertise', 'autorytet', 'trend', 'trendy', 'senuto', 'spadek', 'ctr', '19', 'informacyjne', 'informacyjnych'],
+            answer: `AI Overviews wystartowało w PL w marcu 2025 — Senuto raportuje −19,4% CTR organicznego. Zapytania informacyjne („jak usunąć przebarwienia") UMIERAJĄ — AI daje gotową odpowiedź, blogi tracą ruch. Ale zapytania lokalne wciąż promują linki + EEAT staje się krytyczne. Twoja przewaga: 20+ lat + MBA + badanie 311 gabinetów + 2 500 absolwentek = unbeatable autorytet, którego AI nie podważy.`
+        },
+        {
+            topic: 'sezonowość / kiedy startować',
+            keywords: ['sezon', 'sezonowosc', 'kwartal', 'kwartaly', 'q1', 'q2', 'q3', 'q4', 'kiedy', 'styczen', 'wrzesien', 'grudzien', 'luty', 'wiosna', 'lato', 'jesien', 'zima', 'wakacje', 'noworoczne', 'wesela', 'komunie', 'swieta', 'bony', 'kalendarz', 'kampania', 'kampanie'],
+            answer: `Q1 (sty–mar) = postanowienia noworoczne, najwyższa konwersja na nowe abonamenty → idealny start kampanii SEO (efekty na Q2). Q2 = szczyt sezonu (komunie, wesela), brak czasu → sprzedaż DFY („robimy za Ciebie"). Q3 = zastój, kampanie po-słońcu / regeneracyjne. Q4 = walka o terminy świąteczne, optymalizacja GMF pod „bon podarunkowy [miasto]". Pełen timeline w sekcji „🎯 Buying Power & Sezonowość".`
+        },
+        {
+            topic: 'scope MVP / co dostaje klient',
+            keywords: ['scope', 'co', 'dostaje', 'dostanie', 'klient', 'klientka', 'klientki', 'usluga', 'uslugi', 'pakiet', 'gmf', 'mapy', 'wizytowka', 'frazy', 'fraza', 'dashboard', 'audit', 'audyt', 'speed', 'szybkosc', 'recenzje', 'opinie', 'sms', 'core', 'deliverables'],
+            answer: `Scope MVP (790 PLN/m): (1) Pełne przejęcie Google Moja Firma — zdjęcia, opisy, słowa kluczowe, Q&A, posty Google; (2) Lokalne SEO 10 fraz z intencją zakupu (np. „HIFU Mokotów"); (3) Prosty dashboard „ile wizyt z Google" w czasie rzeczywistym; (4) Audyt techniczny + speed strony (Lighthouse, Core Web Vitals); (5) Automatyczny system zbierania recenzji (SMS po wizycie z linkiem GMF). Wszystko + gwarancja 90 dni / +20% wyświetleń lub zwrot.`
+        },
+        {
+            topic: 'gwarancja / ryzyko',
+            keywords: ['gwarancja', 'gwarancje', 'zwrot', 'zwroty', 'ryzyko', 'ryzyka', '90', 'dni', 'wyswietlen', 'wyswietlenia', '20%', 'efekty', 'rezultaty'],
+            answer: `Gwarancja MVP: „Jeżeli w 90 dni nie zwiększymy wyświetleń wizytówki w Mapach Google o +20% — zwracamy pełen koszt. Zero ryzyka dla klientki." To omija pain point #10 (niezrozumienie SEO + „efekty nie w tydzień = oszustwo") i bezpośrednio odpowiada na barierę „spróbowałam już raz i nie zadziałało". Pierwsze 30 gabinetów dostaje też lock-in 790 PLN na zawsze.`
+        },
+        {
+            topic: 'finanse / marża / koszty',
+            keywords: ['marza', 'marze', 'finanse', 'finansowy', 'finansowe', 'koszt', 'koszty', 'rentownosc', 'najem', 'media', 'energia', 'zus', 'inflacja', 'krd', 'dlug', 'dlugi', 'zadluzenie', '14', '55', '35', 'mld', 'milion', 'leasing', 'maszyna', 'maszyny', 'hitech'],
+            answer: `Realna marża netto mikrogabinetu = 8–12% (po skorygowaniu o niewypłacane wynagrodzenie właścicielki). Koszty YoY 2024: media +35%, najem +22%, materiały +15%. KRD: 55 mln PLN łącznego długu sektora (+14% YoY), średnio 14 000 PLN/podmiot ≈ leasing 1 maszyny hi-tech. Insight dla Joanny: właścicielki kupują maszyny zamiast marketingu → Twój pitch: „Te maszyny są warte tylko tyle, ile klientek je wykorzystuje. Ja przyprowadzę klientki."`
+        },
+        {
+            topic: 'rynek / wielkość / PKD',
+            keywords: ['rynek', 'wielkosc', 'wielki', 'pkd', '96.02', '96.21', '96.22', '96.23', 'podmioty', '132', '142', 'tysiec', 'tysiecy', 'spa', 'fryzjerski', 'fryzjerstwo', 'kosmetyczny', 'kosmetyczne', 'salony', 'gabinety', 'mikro', 'mikrofirma', 'jdg', 'solo', 'samodzielnie', '77'],
+            answer: `132 400 aktywnych podmiotów PKD 96.02 (+ ~10k SPA = ~142k łącznie). 77,5% mikrofirm to solo (1 osoba) → naturalny popyt na DFY. Reform PKD od 2025-01-01: 96.21 fryzjerstwo / 96.22 kosmetyka / 96.23 SPA. Gap GUS (133k) vs GIS (64k stationary) = ~50% to mobile / wynajmowane stanowiska — potrzebują silniejszego SEO lokalnego. Dynamika +16,8% w 2024 (#1 w UE).`
+        },
+        {
+            topic: 'segmentacja klientek / buying power',
+            keywords: ['segment', 'segmenty', 'segmentacja', 'oszczedny', 'inwestujacy', 'premium', 'cap', 'budget', 'budzet', 'klinik', 'kliniki', 'jdg', 'mikro', 'mala', 'maly', 'malych', 'klient', 'kupuje', 'kupowanie', 'decyzja', 'decyzje', 'cap'],
+            answer: `3 segmenty: Oszczędny (300–600 PLN/m, niska konwersja, oczekują „cudów"), Inwestujący (800–1 500 PLN/m — TWÓJ TARGET, rozumieją CAC), Premium/Kliniki (>2 500 PLN, szukają agencji 360°). Cap psychologiczny = 1 000 PLN/m. Twoje 790 PLN early-bird mieści się komfortowo. Najwyższa konwersja na MVP będzie z Twojej bazy 2 500 absolwentek — kursy zbudowały zaufanie zanim zaproponujesz usługę (5–10× wyższa konwersja niż cold market).`
+        },
+        {
+            topic: 'roadmap / plan wdrożenia',
+            keywords: ['roadmap', 'roadmapa', 'plan', 'wdrozenie', 'wdrazac', 'milestone', 'kamien', 'kamienie', 'm0', 'm1', 'm3', 'm6', 'm9', 'launch', 'beta', 'pilotaz', 'recruit', 'rekrutacja', 'case', 'study', 'studies', 'fazy', 'faza'],
+            answer: `Roadmapa M0–M9: M0–M1 recruit 30 gabinetów beta z absolwentek; M2 onboarding + audyt + setup GMF; M3 pierwsze rezultaty + iteracja procesu; M4–M6 case studies (top 5 sukcesów) + testimonials; M7–M9 public launch do całej bazy 2 500 + cena katalogowa 1 290 PLN/m. Decyzja: GO — wdrażamy w Q1 2026. Pełen plan w sekcji „📈 Strategia & MVP".`
+        }
+    ];
+
+    const PL_STOPWORDS = new Set(['i', 'a', 'o', 'w', 'z', 'na', 'do', 'po', 'za', 'co', 'czy', 'to', 'jest', 'sa', 'mi', 'ma', 'tym', 'ten', 'ta', 'te', 'nie', 'tak', 'jak', 'jaki', 'jaka', 'jakie', 'gdzie', 'kiedy', 'dlaczego', 'kto', 'jako', 'sie', 'sobie', 'mnie', 'tobie', 'jego', 'jej', 'ich', 'nasz', 'twoj', 'twoja', 'twoje', 'mam', 'masz', 'jestem', 'beda', 'bedzie', 'byl', 'byla', 'byly', 'mozemy', 'moge', 'moze', 'powinien', 'trzeba', 'powinno', 'tylko', 'wiele', 'duzo', 'mniej', 'wiecej', 'najlepsze', 'najlepszy']);
+
+    function normalizePL(text) {
+        return text.toLowerCase()
+            .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e').replace(/ł/g, 'l')
+            .replace(/ń/g, 'n').replace(/ó/g, 'o').replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z')
+            .replace(/[^\w\s.-]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function tokenize(query) {
+        return normalizePL(query).split(/\s+/).filter(t => t.length >= 2 && !PL_STOPWORDS.has(t));
+    }
+
+    function findAnswer(query) {
+        const tokens = tokenize(query);
+        if (tokens.length === 0) return null;
+
+        let best = { score: 0, entry: null };
+        for (const entry of KNOWLEDGE) {
+            let score = 0;
+            for (const tok of tokens) {
+                for (const kw of entry.keywords) {
+                    const nkw = normalizePL(kw);
+                    if (tok === nkw) { score += 3; break; }
+                    // Fuzzy match tylko dla tokenów >=4 znaków (uniknij "ai" matchującego "pain")
+                    if (tok.length >= 4 && nkw.length >= 4 && (tok.includes(nkw) || nkw.includes(tok))) {
+                        score += 1; break;
+                    }
+                }
+            }
+            if (score > best.score) best = { score, entry };
+        }
+        return best.score >= 1 ? best.entry : null;
+    }
+
+    function fallbackAnswer() {
+        const topics = KNOWLEDGE.map(k => k.topic).join(' · ');
+        return `Hmm, nie złapałam tego pytania. Spróbuj zapytać o jeden z tych tematów: ${topics}. Albo zajrzyj do sekcji „📄 Pełen raport" — tam są wszystkie szczegóły.`;
+    }
+
+    async function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+        addMessage(text, 'user');
+        chatInput.value = '';
+        typingIndicator.style.display = 'block';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Try real Gemini API (only works if running inside Gemini Canvas — apiKey injected runtime)
+        const apiKey = '';
+        if (apiKey) {
+            try {
+                const ctx = `Jesteś analitykiem rynku B2B beauty PL. Pomagasz Joannie Mączce. Top konkurenci: Klinika Marketingu (740-3240 PLN), Social Magic (350-1850), Widoczni (1900-2500). MVP: 790 PLN/m early-bird. TAM 132400/SAM 12800/SOM 250. AI Overviews -19.4% CTR. Booksy 10M users, 64M wizyt. Sweet spot: miasta 50-200k (Radom, Kielce, Toruń). Marża 8-12%. KRD 55mln/14k per. Top pain: brak efektów na IG/Rolki. Odpowiadaj konkretnie max 3 zdania, ton doradczy.`;
+                const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text }] }],
+                        systemInstruction: { parts: [{ text: ctx }] }
+                    })
+                });
+                const result = await r.json();
+                const aiResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (aiResponse) {
+                    typingIndicator.style.display = 'none';
+                    addMessage(aiResponse, 'ai');
+                    return;
+                }
+            } catch (e) { /* fall through to local KB */ }
+        }
+
+        // Local keyword-matched knowledge base (działa zawsze, bez API)
+        setTimeout(() => {
+            typingIndicator.style.display = 'none';
+            const match = findAnswer(text);
+            addMessage(match ? match.answer : fallbackAnswer(), 'ai');
+        }, 500);
+    }
+    function addMessage(text, side) {
+        const msg = document.createElement('div');
+        msg.className = `message message-${side}`;
+        msg.innerText = text;
+        chatMessages.appendChild(msg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+    </script>
+</body>
+</html>
