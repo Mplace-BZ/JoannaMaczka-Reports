@@ -254,9 +254,14 @@
       .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       table.data-table { font-size: 12px; min-width: 480px; }
       table.data-table th, table.data-table td { padding: 8px 10px; }
-      .pipeline { flex-wrap: wrap; gap: 8px; }
-      .pipeline-step { min-width: 80px; padding: 10px 8px; }
-      .pipeline-arrow { display: none; }
+      .pipeline { flex-direction: column; align-items: stretch; gap: 0; }
+      .pipeline-step { min-width: unset; padding: 14px 16px; display: flex; align-items: center; gap: 12px; text-align: left; }
+      .pipeline-step .ps-icon { font-size: 26px; margin-bottom: 0; flex-shrink: 0; }
+      .pipeline-step .ps-label { font-size: 14px; }
+      .pipeline-arrow { padding: 0; text-align: center; font-size: 18px; line-height: 1; color: var(--primary-magenta); }
+      .pipeline-arrow::before { content: '↓'; }
+      .pipeline-arrow { font-size: 0; }
+      .pipeline-arrow::before { font-size: 18px; display: block; padding: 2px 0; }
       .box-insight, .box-chance, .box-risk { padding: 12px 14px; }
     }
 
