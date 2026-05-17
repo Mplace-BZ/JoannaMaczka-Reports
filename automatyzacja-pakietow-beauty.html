@@ -243,6 +243,23 @@
       color: var(--text-faint);
     }
 
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .page { padding: 16px 12px; }
+      .doc-title { font-size: 22px; }
+      .doc-subtitle { font-size: 13px; }
+      .section { padding: 16px 14px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .kpi-value { font-size: 28px; }
+      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table.data-table { font-size: 12px; min-width: 480px; }
+      table.data-table th, table.data-table td { padding: 8px 10px; }
+      .pipeline { flex-wrap: wrap; gap: 8px; }
+      .pipeline-step { min-width: 80px; padding: 10px 8px; }
+      .pipeline-arrow { display: none; }
+      .box-insight, .box-chance, .box-risk { padding: 12px 14px; }
+    }
+
     /* PRINT */
     @media print {
       body { background: white; }
@@ -332,7 +349,7 @@
   <div class="section">
     <div class="section-title">Onboarding — jednorazowo</div>
     <div class="section-divider"></div>
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <thead>
         <tr>
           <th>Czynność</th>
@@ -378,7 +395,7 @@
           <td>Jednorazowo na początku</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <!-- PAKIET 1 -->
@@ -389,7 +406,7 @@
       <div style="font-size:13px;color:var(--text-faint);">— Widoczność</div>
     </div>
     <div class="section-divider"></div>
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <thead>
         <tr>
           <th>Czynność</th>
@@ -453,7 +470,7 @@
           <td><strong style="color:#2E7D32;">~838 zł/h</strong></td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <!-- PAKIET 2 -->
@@ -464,7 +481,7 @@
       <div style="font-size:13px;color:var(--text-faint);">— Wzrost</div>
     </div>
     <div class="section-divider"></div>
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <thead>
         <tr>
           <th>Czynność</th>
@@ -522,7 +539,7 @@
           <td><strong style="color:#E65100;">~899 zł/h</strong></td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <!-- PAKIET 3 -->
@@ -533,7 +550,7 @@
       <div style="font-size:13px;color:var(--text-faint);">— Dominacja</div>
     </div>
     <div class="section-divider"></div>
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <thead>
         <tr>
           <th>Czynność</th>
@@ -597,14 +614,14 @@
           <td><strong style="color:var(--primary-magenta);">~686 zł/h</strong></td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 
   <!-- EKONOMIKA PER KLIENT -->
   <div class="section">
     <div class="section-title">Ekonomika — per klient</div>
     <div class="section-divider"></div>
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <thead>
         <tr>
           <th>Pakiet</th>
@@ -637,7 +654,7 @@
           <td>Korekta artykułów</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="box-insight" style="margin-top:16px;">
       <div class="box-title">Wszystkie pakiety efektywne — ~838–899 zł/h (decoy pricing)</div>
       <div class="box-body">Pakiet 3 za 1 500 zł to kotwica — sprawia że Pakiet 2 za 899 zł wygląda jak najlepsza wartość ("prawie to samo, 600 zł taniej"). Większość klientów wybierze Pakiet 2, gdzie masz najwyższą stawkę efektywną (899 zł/h). Pakiet 3 jest dla tych którzy chcą pełnej obsługi i nie pytają o cenę.</div>
@@ -649,7 +666,7 @@
     <div class="section-title">Ekonomika — przy skali</div>
     <div class="section-lead">Założenie: mix 40% Widoczność (699 zł) / 40% Wzrost (899 zł) / 20% Dominacja (1 500 zł) → średnio ~939 zł/klient, ~56 min/klient</div>
     <div class="section-divider"></div>
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <thead>
         <tr>
           <th>Klientów</th>
@@ -684,7 +701,7 @@
           <td>2–3 osoby + pełna automatyzacja</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="box-chance" style="margin-top:16px;">
       <div class="box-title">★ Sweet spot: 50 klientów — ~47 000 zł/m przy &lt;50h pracy</div>
       <div class="box-body">Dzięki automatyzacji flat animations i raportów: 50 klientów to tylko ~47h/m korekty treści. Jedna osoba ogarnia to bez stresu. Skalowanie nie wymaga zatrudnienia — wymaga lepszego AI pipeline.</div>
@@ -699,7 +716,7 @@
   <div class="section">
     <div class="section-title">Fazy budowy systemu</div>
     <div class="section-divider"></div>
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <thead>
         <tr>
           <th>Faza</th>
@@ -734,7 +751,7 @@
           <td style="color:var(--text-faint);">Planowane</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="box-premium" style="margin-top:16px;">
       <div class="box-title">Następny krok</div>
       <div class="box-body">Zbudowanie Fazy 2 (content pipeline) odblokuje skalowanie. Bez niej każdy nowy klient to liniowy wzrost pracy. Z nią — nowy klient to setup 15 minut i system działa sam.</div>
