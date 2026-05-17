@@ -7,6 +7,7 @@ Publiczne raporty rynkowe i analizy konkurencji dla marki **Joanna Mączka** (tr
 | Raport | Link | Data |
 |---|---|---|
 | Beauty B2B Polska — analiza rynku + strategia SEO done-for-you | [Otwórz](https://mplace-bz.github.io/JoannaMaczka-Reports/beauty-b2b-konkurencja.html) | maj 2026 |
+| Automatyzacja pakietów beauty — roadmap operacyjny | [Otwórz](https://mplace-bz.github.io/JoannaMaczka-Reports/automatyzacja-pakietow-beauty.html) | maj 2026 |
 
 ## Co to jest?
 

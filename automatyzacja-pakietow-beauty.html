@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatyzacja Pakietów Beauty — MPlace × Joanna Mączka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-magenta: #E91E63;
+      --primary-soft: #F8BBD0;
+      --primary-bg: #FCE4EC;
+      --accent-sage: #66BB6A;
+      --accent-sage-bg: #E8F5E9;
+      --accent-peach: #FF7043;
+      --accent-peach-bg: #FFF3E0;
+      --accent-gold: #FFB74D;
+      --accent-gold-bg: #FFF8E1;
+      --accent-teal: #26A69A;
+      --accent-teal-bg: #E0F2F1;
+      --text-charcoal: #212121;
+      --text-soft: #616161;
+      --text-faint: #9E9E9E;
+      --bg-white: #FFFFFF;
+      --bg-alt: #FAFAFA;
+      --border-light: #E0E0E0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-alt);
+      color: var(--text-charcoal);
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      background: var(--bg-white);
+    }
+
+    /* HEADER */
+    .doc-header {
+      border-bottom: 2px solid var(--primary-soft);
+      padding-bottom: 32px;
+      margin-bottom: 40px;
+    }
+    .doc-meta {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary-magenta);
+      margin-bottom: 10px;
+    }
+    .doc-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-magenta);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .doc-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-magenta) 0%, var(--primary-soft) 40%, transparent 100%);
+      width: 100px;
+      margin: 8px 0 28px;
+    }
+
+    /* SECTION */
+    .section { margin-bottom: 44px; }
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-magenta);
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .section-lead {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    /* KPI GRID */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .kpi-card {
+      background: var(--bg-white);
+      border: 1px solid var(--primary-soft);
+      border-radius: 12px;
+      padding: 18px 16px;
+      position: relative;
+    }
+    .kpi-emoji { position: absolute; top: 12px; right: 14px; font-size: 18px; opacity: 0.8; }
+    .kpi-number {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--primary-magenta);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .kpi-number.smaller { font-size: 26px; }
+    .kpi-label { font-size: 12px; color: var(--text-soft); margin-top: 5px; line-height: 1.35; }
+
+    /* TABLES */
+    table.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    table.data-table thead tr { background-color: var(--primary-bg); }
+    table.data-table th {
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 700;
+      color: var(--primary-magenta);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid var(--primary-soft);
+    }
+    table.data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+    table.data-table tbody tr:last-child td { border-bottom: none; }
+    table.data-table tbody tr:hover { background-color: var(--bg-alt); }
+    table.data-table .total-row td {
+      background: var(--primary-bg);
+      font-weight: 800;
+      color: var(--primary-magenta);
+      border-top: 2px solid var(--primary-soft);
+    }
+    .time-zero { color: var(--text-faint); font-style: italic; }
+    .badge-system {
+      display: inline-block;
+      background: var(--accent-teal-bg);
+      color: #00695C;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-human {
+      display: inline-block;
+      background: var(--primary-bg);
+      color: var(--primary-magenta);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* BOXES */
+    .box-insight { background-color: var(--primary-bg); border-left: 4px solid var(--primary-magenta); border-radius: 8px; padding: 16px 18px; margin: 16px 0; }
+    .box-chance  { background-color: var(--accent-sage-bg); border-left: 4px solid var(--accent-sage); border-radius: 8px; padding: 16px 18px; margin: 16px 0; }
+    .box-risk    { background-color: var(--accent-peach-bg); border-left: 4px solid var(--accent-peach); border-radius: 8px; padding: 16px 18px; margin: 16px 0; }
+    .box-premium { background-color: var(--accent-gold-bg); border-left: 4px solid var(--accent-gold); border-radius: 8px; padding: 16px 18px; margin: 16px 0; }
+    .box-title { font-weight: 700; margin-bottom: 5px; font-size: 13px; }
+    .box-insight .box-title { color: var(--primary-magenta); }
+    .box-chance  .box-title { color: #2E7D32; }
+    .box-risk    .box-title { color: #BF360C; }
+    .box-premium .box-title { color: #E65100; }
+    .box-body { font-size: 13px; color: var(--text-soft); line-height: 1.55; }
+
+    /* PIPELINE */
+    .pipeline {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+    .pipeline-step {
+      background: var(--primary-bg);
+      border: 2px solid var(--primary-soft);
+      border-radius: 10px;
+      padding: 14px 18px;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+    .pipeline-step .ps-icon { font-size: 22px; margin-bottom: 6px; }
+    .pipeline-step .ps-label { font-size: 12px; font-weight: 700; color: var(--text-charcoal); line-height: 1.3; }
+    .pipeline-step .ps-sub { font-size: 11px; color: var(--text-faint); margin-top: 3px; }
+    .pipeline-arrow {
+      font-size: 20px;
+      color: var(--primary-magenta);
+      padding: 0 6px;
+      flex-shrink: 0;
+    }
+
+    /* SCALE TABLE highlight */
+    .highlight-row td { background: #fff8f0 !important; font-weight: 600; }
+
+    /* PAKIET HEADER */
+    .pkg-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .pkg-badge {
+      background: var(--primary-magenta);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .pkg-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-magenta);
+    }
+    .pkg-price span { font-size: 13px; font-weight: 500; color: var(--text-faint); }
+
+    /* FOOTER */
+    .doc-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    /* PRINT */
+    @media print {
+      body { background: white; }
+      .page { padding: 24px; max-width: 100%; }
+      .section { page-break-inside: avoid; }
+      .kpi-card:hover { transform: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-meta">MPlace × Joanna Mączka · Dokument wewnętrzny · Maj 2026</div>
+    <div class="doc-title">Automatyzacja pakietów beauty<br>— proces, czas, ekonomika</div>
+    <div class="doc-subtitle">Roadmap operacyjny: jak obsługiwać 10–100 gabinetów beauty miesięcznie przy nakładzie ~10 minut na klienta dzięki AI pipeline.</div>
+    <div class="section-divider"></div>
+  </div>
+
+  <!-- KPI SUMMARY -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-emoji">⏱</div>
+      <div class="kpi-number">~28'</div>
+      <div class="kpi-label">czas obsługi<br><strong>1 klienta / miesiąc</strong><br>Pakiet 1 · 838 zł/h</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-emoji">📈</div>
+      <div class="kpi-number smaller">~75'</div>
+      <div class="kpi-label">czas obsługi<br><strong>1 klienta / miesiąc</strong><br>Pakiet 2 · 719 zł/h</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-emoji">🚀</div>
+      <div class="kpi-number smaller">~105'</div>
+      <div class="kpi-label">czas obsługi<br><strong>1 klienta / miesiąc</strong><br>Pakiet 3 · 686 zł/h</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-emoji">💰</div>
+      <div class="kpi-number smaller">82k zł</div>
+      <div class="kpi-label">przychód/m<br>przy 100 klientach</div>
+    </div>
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="section">
+    <div class="section-title">Rdzeń systemu: Blog jako matka contentu</div>
+    <div class="section-divider"></div>
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <div class="ps-icon">📋</div>
+        <div class="ps-label">Brief klienta</div>
+        <div class="ps-sub">1× onboarding</div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="ps-icon">✍️</div>
+        <div class="ps-label">Artykuł blogowy</div>
+        <div class="ps-sub">AI draft + korekta</div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="ps-icon">📸</div>
+        <div class="ps-label">Post Instagram</div>
+        <div class="ps-sub">grafika + caption</div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="ps-icon">✨</div>
+        <div class="ps-label">Flat Animation</div>
+        <div class="ps-sub">statystyki + cytaty auto</div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="ps-icon">📊</div>
+        <div class="ps-label">Raport PDF</div>
+        <div class="ps-sub">GA4 + GSC auto</div>
+      </div>
+    </div>
+    <div class="box-insight">
+      <div class="box-title">Kluczowa zasada</div>
+      <div class="box-body">Jeden artykuł = cały content miesiąca dla klientki. Brief wypełniany raz na początku współpracy — potem system generuje wszystko automatycznie, człowiek tylko weryfikuje i publikuje.</div>
+    </div>
+  </div>
+
+  <!-- ONBOARDING -->
+  <div class="section">
+    <div class="section-title">Onboarding — jednorazowo</div>
+    <div class="section-divider"></div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Czynność</th>
+          <th>Kto wykonuje</th>
+          <th>Czas</th>
+          <th>Czy się powtarza?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Formularz briefu (usługi, miasto, styl, frazy)</td>
+          <td><span class="badge-human">Klientka</span></td>
+          <td>15 min</td>
+          <td>Nie — 1×</td>
+        </tr>
+        <tr>
+          <td>Prompt bazowy klienta w systemie AI</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>15 min</td>
+          <td>Nie — 1×</td>
+        </tr>
+        <tr>
+          <td>Setup strony wizytówkowej</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>2h</td>
+          <td>Nie — 1×</td>
+        </tr>
+        <tr>
+          <td>Setup Google Moja Firma</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>1h</td>
+          <td>Nie — 1×</td>
+        </tr>
+        <tr>
+          <td>Setup social media (IG, FB)</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>1h</td>
+          <td>Nie — 1×</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>SUMA onboarding</strong></td>
+          <td><strong>~4–5h</strong></td>
+          <td>Jednorazowo na początku</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAKIET 1 -->
+  <div class="section">
+    <div class="pkg-header">
+      <div class="pkg-badge">Pakiet 1</div>
+      <div class="pkg-price">699 zł<span>/miesiąc netto</span></div>
+      <div style="font-size:13px;color:var(--text-faint);">— Widoczność</div>
+    </div>
+    <div class="section-divider"></div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Czynność</th>
+          <th>Kto wykonuje</th>
+          <th>Czas/miesiąc</th>
+          <th>Stawka zł/h</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generowanie 4 artykułów (AI draft)</td>
+          <td><span class="badge-system">System AI</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Korekta + lokalne detale (4 art. × ~5 min)</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td><strong>20 min</strong></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Publikacja w WP z meta tagami (4×)</td>
+          <td><span class="badge-system">System auto</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4 posty Instagram: caption + grafika (z artykułów)</td>
+          <td><span class="badge-system">System AI</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4 flat animations (statystyki, oferta, ciekawostki)</td>
+          <td><span class="badge-system">System AI</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Korekta postów + animacji (8×)</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>5 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Google Moja Firma — aktualizacja</td>
+          <td><span class="badge-system">System auto</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Miesięczny raport (GA4 + GSC → PDF auto)</td>
+          <td><span class="badge-system">System auto</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>SUMA miesięczna — 1 klient/miesiąc</strong></td>
+          <td><strong>~28 min (0,47h)</strong></td>
+          <td><strong style="color:#2E7D32;">~838 zł/h</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAKIET 2 -->
+  <div class="section">
+    <div class="pkg-header">
+      <div class="pkg-badge">Pakiet 2</div>
+      <div class="pkg-price">899 zł<span>/miesiąc netto</span></div>
+      <div style="font-size:13px;color:var(--text-faint);">— Wzrost</div>
+    </div>
+    <div class="section-divider"></div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Czynność</th>
+          <th>Kto wykonuje</th>
+          <th>Czas/miesiąc</th>
+          <th>Stawka zł/h</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generowanie 6 artykułów (AI draft)</td>
+          <td><span class="badge-system">System AI</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Korekta + lokalne detale (6 art. × ~5 min)</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td><strong>30 min</strong></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Publikacja w WP (6×)</td>
+          <td><span class="badge-system">System auto</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>6 postów Instagram + flat animation Reels</td>
+          <td><span class="badge-system">System AI</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Korekta postów + animacji</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>10 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Setup kampanii Meta Ads</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>20 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Miesięczny raport (GA4 + GSC → PDF auto)</td>
+          <td><span class="badge-system">System auto</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>SUMA miesięczna — 1 klient/miesiąc</strong></td>
+          <td><strong>~60 min (1h)</strong></td>
+          <td><strong style="color:#E65100;">~899 zł/h</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAKIET 3 -->
+  <div class="section">
+    <div class="pkg-header">
+      <div class="pkg-badge">Pakiet 3</div>
+      <div class="pkg-price">1500 zł<span>/miesiąc netto</span></div>
+      <div style="font-size:13px;color:var(--text-faint);">— Dominacja</div>
+    </div>
+    <div class="section-divider"></div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Czynność</th>
+          <th>Kto wykonuje</th>
+          <th>Czas/miesiąc</th>
+          <th>Stawka zł/h</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generowanie 8 artykułów (AI draft)</td>
+          <td><span class="badge-system">System AI</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Korekta + lokalne detale (8 art. × ~5 min)</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td><strong>40 min</strong></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Publikacja w WP (8×)</td>
+          <td><span class="badge-system">System auto</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>8 postów Instagram + flat animation Reels</td>
+          <td><span class="badge-system">System AI</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Korekta postów + animacji</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>15 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Meta Ads + Google Ads setup</td>
+          <td><span class="badge-human">MPlace</span></td>
+          <td>30 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Miesięczny raport (auto PDF)</td>
+          <td><span class="badge-system">System auto</span></td>
+          <td class="time-zero">~0 min</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Kwartalne spotkanie z Joanną (co 3 miesiące)</td>
+          <td><span class="badge-human">Joanna</span></td>
+          <td>20 min (śr./m)</td>
+          <td></td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>SUMA miesięczna — 1 klient/miesiąc</strong></td>
+          <td><strong>~105 min (1,75h)</strong></td>
+          <td><strong style="color:var(--primary-magenta);">~686 zł/h</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- EKONOMIKA PER KLIENT -->
+  <div class="section">
+    <div class="section-title">Ekonomika — per klient</div>
+    <div class="section-divider"></div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Pakiet</th>
+          <th>Przychód/m</th>
+          <th>Czas obsługi/m</th>
+          <th>Stawka efektywna</th>
+          <th>Bottleneck</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Widoczność</strong></td>
+          <td>699 zł</td>
+          <td>~28 min</td>
+          <td style="color:#2E7D32;font-weight:700;">~838 zł/h</td>
+          <td>Korekta artykułów</td>
+        </tr>
+        <tr>
+          <td><strong>Wzrost</strong></td>
+          <td>899 zł</td>
+          <td>~60 min</td>
+          <td style="color:#2E7D32;font-weight:700;">~899 zł/h</td>
+          <td>Korekta artykułów</td>
+        </tr>
+        <tr>
+          <td><strong>Dominacja</strong></td>
+          <td>1 500 zł</td>
+          <td>~105 min</td>
+          <td style="color:#2E7D32;font-weight:700;">~857 zł/h</td>
+          <td>Korekta artykułów</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="box-insight" style="margin-top:16px;">
+      <div class="box-title">Wszystkie pakiety efektywne — ~838–899 zł/h (decoy pricing)</div>
+      <div class="box-body">Pakiet 3 za 1 500 zł to kotwica — sprawia że Pakiet 2 za 899 zł wygląda jak najlepsza wartość ("prawie to samo, 600 zł taniej"). Większość klientów wybierze Pakiet 2, gdzie masz najwyższą stawkę efektywną (899 zł/h). Pakiet 3 jest dla tych którzy chcą pełnej obsługi i nie pytają o cenę.</div>
+    </div>
+  </div>
+
+  <!-- EKONOMIKA SKALA -->
+  <div class="section">
+    <div class="section-title">Ekonomika — przy skali</div>
+    <div class="section-lead">Założenie: mix 40% Widoczność (699 zł) / 40% Wzrost (899 zł) / 20% Dominacja (1 500 zł) → średnio ~939 zł/klient, ~56 min/klient</div>
+    <div class="section-divider"></div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Klientów</th>
+          <th>Przychód/miesiąc</th>
+          <th>Czas obsługi/miesiąc</th>
+          <th>Potrzebny zespół</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>10</strong></td>
+          <td>~9 390 zł</td>
+          <td>~9h</td>
+          <td>1 osoba part-time</td>
+        </tr>
+        <tr>
+          <td><strong>30</strong></td>
+          <td>~28 170 zł</td>
+          <td>~28h</td>
+          <td>1 osoba full-time</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>50 ★</strong></td>
+          <td><strong>~46 950 zł</strong></td>
+          <td>~47h</td>
+          <td>1–2 osoby + AI pipeline</td>
+        </tr>
+        <tr>
+          <td><strong>100</strong></td>
+          <td>~93 900 zł</td>
+          <td>~93h</td>
+          <td>2–3 osoby + pełna automatyzacja</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="box-chance" style="margin-top:16px;">
+      <div class="box-title">★ Sweet spot: 50 klientów — ~47 000 zł/m przy &lt;50h pracy</div>
+      <div class="box-body">Dzięki automatyzacji flat animations i raportów: 50 klientów to tylko ~47h/m korekty treści. Jedna osoba ogarnia to bez stresu. Skalowanie nie wymaga zatrudnienia — wymaga lepszego AI pipeline.</div>
+    </div>
+    <div class="box-insight" style="margin-top:12px;">
+      <div class="box-title">Bottleneck: korekta artykułów (jedyna praca człowieka)</div>
+      <div class="box-body">Flat animations, posty, raporty — 100% auto. Jedyna praca manualna to przejrzenie artykułów przed publikacją: ~5–10 min/artykuł. Przy 100 klientach i ~600 artykułach/m warto wdrożyć AI pre-review redukujący czas do ~2 min/artykuł.</div>
+    </div>
+  </div>
+
+  <!-- FAZY BUDOWY -->
+  <div class="section">
+    <div class="section-title">Fazy budowy systemu</div>
+    <div class="section-divider"></div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Faza</th>
+          <th>Co budujemy</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Faza 1</strong></td>
+          <td>LP, oferta, brief onboarding, pierwsi klienci</td>
+          <td style="color:#2E7D32;font-weight:700;">✓ Gotowe</td>
+        </tr>
+        <tr>
+          <td><strong>Faza 2</strong></td>
+          <td>Content pipeline: Blog → auto-posty social media, szablony grafik, publikacja WP</td>
+          <td style="color:var(--primary-magenta);font-weight:700;">→ Priorytet</td>
+        </tr>
+        <tr>
+          <td><strong>Faza 3</strong></td>
+          <td>Grafiki auto: Canva API / szablony, gotowe grafiki IG/FB bez człowieka</td>
+          <td style="color:var(--text-faint);">Planowane</td>
+        </tr>
+        <tr>
+          <td><strong>Faza 4</strong></td>
+          <td>Raport PDF auto: GA4 + GSC → miesięczny PDF jednym kliknięciem</td>
+          <td style="color:var(--text-faint);">Planowane</td>
+        </tr>
+        <tr>
+          <td><strong>Faza 5</strong></td>
+          <td>Panel klientki: logowanie, wyniki (ruch, pozycje, posty, budżet)</td>
+          <td style="color:var(--text-faint);">Planowane</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="box-premium" style="margin-top:16px;">
+      <div class="box-title">Następny krok</div>
+      <div class="box-body">Zbudowanie Fazy 2 (content pipeline) odblokuje skalowanie. Bez niej każdy nowy klient to liniowy wzrost pracy. Z nią — nowy klient to setup 15 minut i system działa sam.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div>MPlace Agency · <a href="https://mplace.agency/welcome/" style="color:var(--primary-magenta);">mplace.agency</a></div>
+    <div>Joanna Mączka · <a href="https://joannamaczka.pl" style="color:var(--primary-magenta);">joannamaczka.pl</a></div>
+    <div>Dokument wewnętrzny · Maj 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
