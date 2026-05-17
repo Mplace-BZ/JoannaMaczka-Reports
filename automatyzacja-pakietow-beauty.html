@@ -263,6 +263,8 @@
       .pipeline-arrow { font-size: 0; }
       .pipeline-arrow::before { font-size: 18px; display: block; padding: 2px 0; }
       .box-insight, .box-chance, .box-risk { padding: 12px 14px; }
+      .meta-ads-grid { grid-template-columns: 1fr !important; }
+      .meta-budget-grid { grid-template-columns: 1fr !important; }
     }
 
     /* PRINT */
@@ -280,8 +282,8 @@
   <!-- HEADER -->
   <div class="doc-header">
     <div class="doc-meta">MPlace × Joanna Mączka · Dokument wewnętrzny · Maj 2026</div>
-    <div class="doc-title">Automatyzacja pakietów beauty<br>— proces, czas, ekonomika</div>
-    <div class="doc-subtitle">Roadmap operacyjny: jak obsługiwać 10–100 gabinetów beauty miesięcznie przy nakładzie ~10 minut na klienta dzięki AI pipeline.</div>
+    <div class="doc-title">Automatyzacja pakietów beauty<br>— proces, czas, ekonomika & kampania FB/IG</div>
+    <div class="doc-subtitle">Roadmap operacyjny: jak obsługiwać 10–100 gabinetów beauty miesięcznie przy nakładzie ~10 minut na klienta dzięki AI pipeline — oraz jak pozyskiwać nowych klientów przez Meta Ads.</div>
     <div class="section-divider"></div>
   </div>
 
@@ -761,6 +763,11 @@
           <td>Panel klientki: logowanie, wyniki (ruch, pozycje, posty, budżet)</td>
           <td style="color:var(--text-faint);">Planowane</td>
         </tr>
+        <tr>
+          <td><strong>Faza 6</strong></td>
+          <td>Kampania FB & IG: flat animations jako kreacje reklamowe, Lookalike z klientek, cold → retargeting → WhatsApp</td>
+          <td style="color:var(--text-faint);">Planowane</td>
+        </tr>
       </tbody>
     </table></div>
     <div class="box-premium" style="margin-top:16px;">
@@ -770,96 +777,85 @@
   </div>
 
   <!-- KAMPANIA FB/IG -->
-  <div class="section">
-    <div class="section-title">Kampania reklamowa FB & Instagram</div>
-    <div class="section-lead">Jak pozyskiwać klientki — plan kampanii Meta Ads dla oferty pakietów</div>
-    <div class="section-divider"></div>
+  <div class="section" style="border:2px solid #E7F0FF;border-radius:16px;padding:32px;background:linear-gradient(135deg,#f0f4ff 0%,#fdf0ff 100%);">
+
+    <!-- HEADER META -->
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px;">
+      <div style="background:linear-gradient(135deg,#1877F2,#B44FE8);border-radius:12px;padding:10px 14px;font-size:22px;line-height:1;">📣</div>
+      <div>
+        <div style="font-size:20px;font-weight:800;background:linear-gradient(90deg,#1877F2,#B44FE8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.01em;">Kampania reklamowa FB & Instagram</div>
+        <div style="font-size:13px;color:#555;margin-top:2px;">Plan kampanii Meta Ads — jak pozyskiwać klientki</div>
+      </div>
+    </div>
+    <div style="height:3px;background:linear-gradient(90deg,#1877F2,#B44FE8,transparent);border-radius:2px;width:120px;margin:12px 0 28px;"></div>
 
     <!-- TARGETOWANIE -->
-    <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-faint);margin-bottom:12px;">Targetowanie</div>
-    <div class="box-insight" style="margin-top:0;">
-      <div class="box-title">Kto: właścicielki gabinetów beauty, 25–50 lat, Polska</div>
-      <div class="box-body">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#1877F2;margin-bottom:10px;">🎯 Targetowanie</div>
+    <div style="background:#EEF4FF;border-left:4px solid #1877F2;border-radius:8px;padding:16px 18px;margin-bottom:24px;">
+      <div style="font-weight:700;color:#1877F2;font-size:13px;margin-bottom:6px;">Właścicielki gabinetów beauty · 25–50 lat · Polska</div>
+      <div style="font-size:13px;color:#444;line-height:1.6;">
         Zainteresowania: paznokcie, medycyna estetyczna, kosmetologia, salon beauty<br>
         Stanowisko: "właściciel", "self-employed" + branża beauty/kosmetyka<br>
-        <strong>Lookalike z listy obecnych klientek Joanny — najsilniejszy target</strong>
+        <strong style="color:#1877F2;">Lookalike z listy obecnych klientek Joanny — najsilniejszy target</strong>
       </div>
     </div>
 
     <!-- 3 REKLAMY -->
-    <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-faint);margin:24px 0 12px;">Struktura kampanii — 3 reklamy</div>
-    <div class="table-wrap"><table class="data-table">
-      <thead>
-        <tr>
-          <th>Reklama</th>
-          <th>Przekaz</th>
-          <th>Format</th>
-          <th>CTA</th>
-          <th>Cel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>1 — Problem</strong><br><span style="font-size:11px;color:var(--text-faint);">cold traffic</span></td>
-          <td><em>„Twój gabinet ma świetne opinie, ale Google o nim nie wie. 95% klientek szuka salonu przez wyszukiwarkę — i trafia do konkurencji."</em></td>
-          <td>Flat animation / karuzela</td>
-          <td>Sprawdź jak to naprawić →</td>
-          <td>Świadomość problemu</td>
-        </tr>
-        <tr>
-          <td><strong>2 — Dowód</strong><br><span style="font-size:11px;color:var(--text-faint);">cold + warm</span></td>
-          <td><em>„Beata z Poznania: 460 zł reklamy → 170 zapytań → 41 nowych klientek w miesiąc"</em></td>
-          <td>Flat animation z liczbami</td>
-          <td>Chcę takie wyniki →</td>
-          <td>Dowód społeczny → LP</td>
-        </tr>
-        <tr>
-          <td><strong>3 — Oferta</strong><br><span style="font-size:11px;color:var(--text-faint);">retargeting</span></td>
-          <td><em>„Zostały 3 miejsca w maju. Pakiet od 699 zł/m — bez umowy, bez wiązania."</em></td>
-          <td>Statyczny post / Stories</td>
-          <td>Napisz na WhatsApp →</td>
-          <td>Konwersja → zapytanie</td>
-        </tr>
-      </tbody>
-    </table></div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#1877F2;margin-bottom:10px;">📋 Struktura kampanii — 3 reklamy</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;" class="meta-ads-grid">
+
+      <div style="background:#fff;border:2px solid #1877F2;border-radius:12px;padding:16px;">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#1877F2;margin-bottom:8px;">Reklama 1 · Cold traffic</div>
+        <div style="font-size:13px;font-weight:700;color:#222;margin-bottom:8px;">Problem</div>
+        <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:10px;line-height:1.5;">„Twój gabinet ma świetne opinie, ale Google o nim nie wie. 95% klientek szuka salonu przez wyszukiwarkę — i trafia do konkurencji."</div>
+        <div style="font-size:11px;color:#888;">Format: flat animation / karuzela</div>
+        <div style="margin-top:10px;background:#1877F2;color:#fff;border-radius:6px;padding:6px 10px;font-size:11px;font-weight:700;text-align:center;">Sprawdź jak to naprawić →</div>
+      </div>
+
+      <div style="background:#fff;border:2px solid #B44FE8;border-radius:12px;padding:16px;">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#B44FE8;margin-bottom:8px;">Reklama 2 · Cold + Warm</div>
+        <div style="font-size:13px;font-weight:700;color:#222;margin-bottom:8px;">Dowód</div>
+        <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:10px;line-height:1.5;">„Beata z Poznania: 460 zł reklamy → 170 zapytań → 41 nowych klientek w miesiąc"</div>
+        <div style="font-size:11px;color:#888;">Format: flat animation z liczbami</div>
+        <div style="margin-top:10px;background:#B44FE8;color:#fff;border-radius:6px;padding:6px 10px;font-size:11px;font-weight:700;text-align:center;">Chcę takie wyniki →</div>
+      </div>
+
+      <div style="background:#fff;border:2px solid #E91E63;border-radius:12px;padding:16px;">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#E91E63;margin-bottom:8px;">Reklama 3 · Retargeting</div>
+        <div style="font-size:13px;font-weight:700;color:#222;margin-bottom:8px;">Oferta</div>
+        <div style="font-size:12px;color:#555;font-style:italic;margin-bottom:10px;line-height:1.5;">„Zostały 3 miejsca w maju. Pakiet od 699 zł/m — bez umowy, bez wiązania."</div>
+        <div style="font-size:11px;color:#888;">Format: statyczny post / Stories</div>
+        <div style="margin-top:10px;background:#E91E63;color:#fff;border-radius:6px;padding:6px 10px;font-size:11px;font-weight:700;text-align:center;">Napisz na WhatsApp →</div>
+      </div>
+
+    </div>
 
     <!-- BUDŻET -->
-    <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-faint);margin:24px 0 12px;">Budżet na start</div>
-    <div class="table-wrap"><table class="data-table">
-      <thead>
-        <tr>
-          <th>Faza</th>
-          <th>Budżet</th>
-          <th>Czas</th>
-          <th>Cel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Test</strong></td>
-          <td>300–500 zł</td>
-          <td>2 tygodnie</td>
-          <td>Sprawdzić który kreator konwertuje</td>
-        </tr>
-        <tr class="highlight-row">
-          <td><strong>Scale ★</strong></td>
-          <td>1 000–1 500 zł/m</td>
-          <td>stały</td>
-          <td>Stały ruch na LP → 2–3 klientki/m</td>
-        </tr>
-      </tbody>
-    </table></div>
-    <div class="box-chance" style="margin-top:16px;">
-      <div class="box-title">ROI: 1 klientka zwraca cały budżet reklamowy</div>
-      <div class="box-body">Jedna klientka na pakiecie Wzrost (899 zł/m) = budżet zwrócony w pierwszym miesiącu. Od drugiego miesiąca — czysty zysk. Przy 2–3 klientkach miesięcznie z reklamy koszt pozyskania spada poniżej 200 zł/klientkę.</div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#1877F2;margin-bottom:10px;">💰 Budżet na start</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;" class="meta-budget-grid">
+      <div style="background:#fff;border:1px solid #cce0ff;border-radius:10px;padding:16px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:6px;">Faza testowa</div>
+        <div style="font-size:24px;font-weight:800;color:#1877F2;letter-spacing:-0.02em;">300–500 zł</div>
+        <div style="font-size:12px;color:#666;margin-top:4px;">2 tygodnie · sprawdzić który kreator konwertuje</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#1877F2,#B44FE8);border-radius:10px;padding:16px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:rgba(255,255,255,0.75);margin-bottom:6px;">★ Scale</div>
+        <div style="font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.02em;">1 000–1 500 zł/m</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.85);margin-top:4px;">stały · 2–3 klientki/m</div>
+      </div>
+    </div>
+    <div style="background:#E8F5E9;border-left:4px solid #43A047;border-radius:8px;padding:16px 18px;margin-bottom:24px;">
+      <div style="font-weight:700;color:#2E7D32;font-size:13px;margin-bottom:5px;">ROI: 1 klientka zwraca cały budżet reklamowy</div>
+      <div style="font-size:13px;color:#444;line-height:1.55;">Jedna klientka na pakiecie Wzrost (899 zł/m) = budżet zwrócony w pierwszym miesiącu. Od drugiego — czysty zysk. Przy 2–3 klientkach miesięcznie koszt pozyskania spada poniżej <strong>200 zł/klientkę</strong>.</div>
     </div>
 
     <!-- KREACJE -->
-    <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-faint);margin:24px 0 12px;">Kreacje reklamowe</div>
-    <div class="box-premium">
-      <div class="box-title">Flat animations = kreacje reklamowe Joanny robią się same</div>
-      <div class="box-body">Te same flat animations które system produkuje dla klientek — Joanna używa jako reklamy własnej. Liczby z case studies (460 zł → 41 klientek), cytaty ze szkoleń, statystyki branżowe. System produkuje content marketingowy i reklamowy jednocześnie — zero dodatkowej pracy.</div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#1877F2;margin-bottom:10px;">✨ Kreacje reklamowe</div>
+    <div style="background:linear-gradient(135deg,#fff8ff,#f0f4ff);border:1px solid #ddd8ff;border-radius:10px;padding:16px 18px;">
+      <div style="font-weight:700;color:#B44FE8;font-size:13px;margin-bottom:5px;">Flat animations = kreacje reklamowe Joanny robią się same</div>
+      <div style="font-size:13px;color:#444;line-height:1.55;">Te same flat animations które system produkuje dla klientek — Joanna używa jako reklamy własnej. Liczby z case studies (460 zł → 41 klientek), cytaty ze szkoleń, statystyki branżowe. System produkuje content i kreacje reklamowe jednocześnie — zero dodatkowej pracy.</div>
     </div>
+
   </div>
 
   <!-- FOOTER -->
