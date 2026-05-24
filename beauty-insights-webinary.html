@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Insightów z Webinarów Beauty — Joanna Mączka</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23E91E63'/%3E%3Ctext x='50' y='62' font-family='Georgia,serif' font-size='52' font-weight='900' fill='white' text-anchor='middle'%3EJM%3C/text%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #E91E63;
+            --pink-soft: #F8BBD0;
+            --pink-bg: #FCE4EC;
+            --text: #212121;
+            --text-soft: #616161;
+            --text-muted: #9E9E9E;
+            --bg: #FFFFFF;
+            --bg-alt: #FAFAFA;
+            --border: #E0E0E0;
+            --shadow-sm: 0 2px 8px rgba(233,30,99,0.06);
+            --shadow-md: 0 4px 20px rgba(233,30,99,0.12);
+            --green: #43A047;
+            --red: #E53935;
+            --yellow: #F57C00;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            font-size: 15px; line-height: 1.65;
+            color: var(--text); background: var(--bg-alt);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ─── HEADER ─── */
+        .jm-header {
+            background: linear-gradient(135deg, rgba(233,30,99,0.07) 0%, rgba(255,255,255,0.97) 100%);
+            border-bottom: 2px solid var(--pink-soft);
+            padding: 18px 32px;
+            display: flex; align-items: center; gap: 18px;
+            position: sticky; top: 0; z-index: 200;
+            box-shadow: var(--shadow-sm);
+        }
+        .jm-monogram {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--pink); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px;
+            box-shadow: var(--shadow-md); flex-shrink: 0;
+        }
+        .jm-header-text h1 { font-size: 1rem; font-weight: 700; color: var(--text); }
+        .jm-header-text .sub { color: var(--text-soft); font-size: 0.78rem; margin-top: 1px; }
+        .jm-source-tag {
+            margin-left: auto;
+            display: flex; align-items: center; gap: 8px;
+            background: var(--pink-bg); color: var(--pink);
+            border: 1px solid var(--pink-soft);
+            padding: 5px 14px; border-radius: 999px;
+            font-size: 0.75rem; font-weight: 600;
+        }
+        .jm-source-tag span { color: var(--text-soft); font-weight: 400; }
+
+        /* ─── LAYOUT ─── */
+        .layout { display: flex; min-height: calc(100vh - 85px); }
+
+        /* ─── SIDEBAR ─── */
+        .sidebar {
+            width: 268px; flex-shrink: 0;
+            background: var(--bg); border-right: 1px solid var(--border);
+            padding: 24px 18px;
+            position: sticky; top: 85px;
+            height: calc(100vh - 85px); overflow-y: auto;
+        }
+        .nav-section { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em;
+            text-transform: uppercase; color: var(--text-muted); padding: 0 8px; margin-bottom: 8px; }
+        .nav-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 9px 12px; border-radius: 10px;
+            color: var(--text-soft); font-size: 0.83rem; font-weight: 500;
+            text-decoration: none; margin-bottom: 3px;
+            transition: all 0.15s; border: 1px solid transparent;
+        }
+        .nav-link:hover { background: var(--pink-bg); color: var(--pink); border-color: var(--pink-soft); }
+        .nav-link.active { background: var(--pink); color: white; }
+        .nav-link .num {
+            width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+            background: rgba(233,30,99,0.12); color: var(--pink);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.68rem; font-weight: 800;
+        }
+        .nav-link.active .num { background: rgba(255,255,255,0.25); color: white; }
+
+        .sidebar-data { margin-top: 24px; }
+        .data-pill {
+            background: var(--bg-alt); border: 1px solid var(--border);
+            border-radius: 10px; padding: 12px 14px; margin-bottom: 8px;
+        }
+        .data-pill .val { font-size: 1.4rem; font-weight: 800; color: var(--pink); line-height: 1; margin-bottom: 3px; }
+        .data-pill .val.red { color: var(--red); }
+        .data-pill .desc { font-size: 0.73rem; color: var(--text-soft); line-height: 1.4; }
+        .data-pill .source-note { font-size: 0.65rem; color: var(--text-muted); margin-top: 3px; font-style: italic; }
+
+        .sidebar-quote {
+            margin-top: 20px; padding: 16px;
+            background: var(--pink-bg); border: 1px solid var(--pink-soft);
+            border-radius: 12px;
+        }
+        .sidebar-quote .label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--pink); margin-bottom: 6px; }
+        .sidebar-quote p { font-size: 0.81rem; color: var(--text-soft); font-style: italic; line-height: 1.5; }
+
+        /* ─── MAIN ─── */
+        main { flex: 1; padding: 48px 52px; max-width: 900px; overflow-x: hidden; }
+
+        section { margin-bottom: 88px; scroll-margin-top: 100px; }
+
+        /* ─── TYPOGRAPHY ─── */
+        .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 4px 14px; border-radius: 999px;
+            font-size: 0.71rem; font-weight: 700; letter-spacing: 0.07em;
+            text-transform: uppercase; margin-bottom: 14px;
+        }
+        .badge-pink { background: var(--pink); color: white; }
+        .badge-dark { background: var(--text); color: white; }
+        .badge-outline { background: transparent; color: var(--pink); border: 1.5px solid var(--pink); }
+
+        h2.sec { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+            color: var(--text); line-height: 1.2; margin-bottom: 14px; }
+        h2.sec em { font-style: italic; color: var(--pink); }
+
+        .lead { font-size: 1.05rem; color: var(--text-soft); line-height: 1.75;
+            margin-bottom: 32px; max-width: 740px; }
+        .lead strong { color: var(--text); font-weight: 600; }
+
+        /* ─── CARDS ─── */
+        .card { background: var(--bg); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px; box-shadow: var(--shadow-sm); }
+        .card + .card { margin-top: 16px; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+        /* ─── QUOTE CARDS ─── */
+        .quote-card {
+            background: var(--bg-alt); border: 1px solid var(--border);
+            border-radius: 12px; padding: 18px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .quote-card:hover { border-color: var(--pink-soft); box-shadow: 0 4px 16px rgba(233,30,99,0.08); }
+        .qm { font-family: Georgia, serif; font-size: 2.2rem; color: var(--pink-soft);
+            line-height: 1; margin-bottom: 4px; }
+        .qt { font-style: italic; font-size: 0.86rem; color: var(--text); line-height: 1.6; margin-bottom: 8px; }
+        .ql { font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--pink); }
+
+        /* ─── STAT CARDS ─── */
+        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 32px; }
+        .stat-card {
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: 14px; padding: 18px 16px; text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .stat-card .big { font-size: 1.8rem; font-weight: 800; color: var(--pink); line-height: 1; margin-bottom: 6px; }
+        .stat-card .lbl { font-size: 0.75rem; color: var(--text-soft); line-height: 1.4; }
+        .stat-card .src { font-size: 0.65rem; color: var(--text-muted); margin-top: 4px; font-style: italic; }
+        .stat-card.red .big { color: var(--red); }
+        .stat-card.yellow .big { color: var(--yellow); }
+
+        /* ─── TABS ─── */
+        .tabs { display: flex; gap: 8px; margin-bottom: 22px; }
+        .tab-btn {
+            padding: 7px 20px; border-radius: 999px;
+            border: 1.5px solid var(--border);
+            font-size: 0.82rem; font-weight: 600; cursor: pointer;
+            transition: all 0.15s; background: transparent; color: var(--text-soft);
+        }
+        .tab-btn:hover { border-color: var(--pink); color: var(--pink); }
+        .tab-btn.active { background: var(--pink); color: white; border-color: var(--pink); }
+
+        /* ─── ACCORDION ─── */
+        .acc-item { border: 1px solid var(--border); border-radius: 11px;
+            margin-bottom: 7px; overflow: hidden; }
+        .acc-item:hover { border-color: var(--pink-soft); }
+        .acc-btn {
+            width: 100%; display: flex; justify-content: space-between; align-items: center;
+            padding: 13px 16px; cursor: pointer; background: var(--bg);
+            font-size: 0.88rem; font-weight: 600; color: var(--text);
+            border: none; text-align: left; gap: 12px;
+        }
+        .acc-icon { font-size: 0.72rem; color: var(--text-muted); flex-shrink: 0; }
+        .acc-body { display: none; padding: 12px 16px 14px;
+            font-size: 0.84rem; color: var(--text-soft); line-height: 1.65;
+            border-top: 1px solid var(--border); }
+        .acc-body.open { display: block; }
+
+        /* ─── PERSONA SPLIT ─── */
+        .persona-box {
+            border-radius: 12px; padding: 20px; border: 1px solid var(--border);
+        }
+        .persona-box.beginner { background: #FFF8E1; border-color: #FFE082; }
+        .persona-box.experienced { background: #EDE7F6; border-color: #B39DDB; }
+        .persona-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.09em; margin-bottom: 8px; }
+        .persona-box.beginner .persona-label { color: var(--yellow); }
+        .persona-box.experienced .persona-label { color: #7B1FA2; }
+        .persona-box ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .persona-box li { font-size: 0.84rem; color: var(--text-soft); font-style: italic; padding-left: 14px; position: relative; }
+        .persona-box li::before { content: '"'; position: absolute; left: 0; color: var(--text-muted); }
+
+        /* ─── PROGRESS BARS ─── */
+        .role-row { margin-bottom: 22px; }
+        .role-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+        .role-name { font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.04em; color: #F8BBD0; }
+        .role-pct { font-size: 0.8rem; color: #9FA8DA; font-weight: 600; }
+        .role-track { height: 9px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden; }
+        .role-fill { height: 100%; border-radius: 999px; }
+        .role-quote { font-size: 0.76rem; color: #9FA8DA; margin-top: 5px; font-style: italic; }
+
+        /* ─── ALERT BOXES ─── */
+        .alert { border-radius: 13px; padding: 18px 22px;
+            display: flex; gap: 14px; align-items: flex-start; margin-top: 20px; }
+        .alert.red { background: #FFF5F5; border: 1px solid #FFCDD2; }
+        .alert.green { background: #F1F8F1; border: 1px solid #C8E6C9; }
+        .alert.yellow { background: #FFF8E1; border: 1px solid #FFE082; }
+        .alert.pink { background: var(--pink-bg); border: 1px solid var(--pink-soft); }
+        .alert-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+        .alert-text { font-size: 0.84rem; color: var(--text-soft); line-height: 1.65; }
+        .alert-text strong { color: var(--text); }
+
+        /* ─── DARK PANEL ─── */
+        .dark-panel { background: #12122A; color: #E8EAF6; border-radius: 20px; padding: 40px; position: relative; overflow: hidden; }
+        .dark-panel h3 { font-family: 'Playfair Display', serif; font-size: 1.45rem; margin-bottom: 28px; color: white; }
+
+        /* ─── SOLUTION LIST ─── */
+        .sol-item { display: flex; gap: 14px; align-items: flex-start;
+            padding: 15px 0; border-bottom: 1px solid rgba(233,30,99,0.08); }
+        .sol-item:last-child { border-bottom: none; }
+        .sol-num { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+            background: var(--pink); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 800; margin-top: 1px; }
+        .sol-title { font-size: 0.88rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 3px; }
+        .sol-desc { font-size: 0.81rem; color: var(--text-soft); line-height: 1.5; }
+
+        /* ─── CHART ─── */
+        .chart-wrap { position: relative; width: 100%; height: 320px; }
+
+        /* ─── FOOTER ─── */
+        footer { border-top: 1px solid var(--border); padding: 20px 52px;
+            text-align: center; font-size: 0.8rem; color: var(--text-muted);
+            background: var(--bg); }
+        footer a { color: var(--pink); text-decoration: none; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .sidebar { display: none; }
+            main { max-width: 100%; padding: 32px 28px; }
+            .stat-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 700px) {
+            main { padding: 24px 18px; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: 1fr; }
+            h2.sec { font-size: 1.55rem; }
+            .dark-panel { padding: 24px 20px; }
+            .jm-source-tag { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ JOANNA HEADER ══ -->
+<header class="jm-header">
+    <div class="jm-monogram">JM</div>
+    <div class="jm-header-text">
+        <h1>Joanna Mączka</h1>
+        <div class="sub">Beauty Business Intelligence · Raport z analizy webinarów</div>
+    </div>
+    <div class="jm-source-tag">
+        Źródło: Problemy klientów_webinary.xlsx
+        <span>· ~153 odpowiedzi</span>
+    </div>
+</header>
+
+<div class="layout">
+
+<!-- ══ SIDEBAR ══ -->
+<nav class="sidebar">
+    <div class="nav-section">Rozdziały</div>
+    <a href="#wstep" class="nav-link active" id="nav-wstep"><span class="num">→</span> Wstęp & dane źródłowe</a>
+    <a href="#paradygmat" class="nav-link" id="nav-paradygmat"><span class="num">1</span> Marketing > jakość</a>
+    <a href="#pozyskiwanie" class="nav-link" id="nav-pozyskiwanie"><span class="num">2</span> Kryzys pozyskiwania</a>
+    <a href="#wyroznenie" class="nav-link" id="nav-wyroznenie"><span class="num">3</span> Pułapka generic beauty</a>
+    <a href="#wartosc" class="nav-link" id="nav-wartosc"><span class="num">4</span> Wartość i ceny</a>
+    <a href="#sprzedaz" class="nav-link" id="nav-sprzedaz"><span class="num">5</span> Sprzedaż bez wciskania</a>
+    <a href="#socialmedia" class="nav-link" id="nav-socialmedia"><span class="num">6</span> Zmora social mediów</a>
+    <a href="#retencja" class="nav-link" id="nav-retencja"><span class="num">7</span> Retencja i no-show</a>
+    <a href="#polecenia" class="nav-link" id="nav-polecenia"><span class="num">8</span> Koniec ery poleceń</a>
+    <a href="#pewnosc" class="nav-link" id="nav-pewnosc"><span class="num">9</span> Kryzys pewności siebie</a>
+    <a href="#system" class="nav-link" id="nav-system"><span class="num">10</span> Potrzeba systemu</a>
+
+    <div class="sidebar-data">
+        <div class="nav-section" style="margin-top:20px;">Dane ze źródła</div>
+        <div class="data-pill">
+            <div class="val">~35%</div>
+            <div class="desc">odpowiedzi dotyczy pozyskiwania nowych klientów</div>
+            <div class="source-note">wyliczone z Excela</div>
+        </div>
+        <div class="data-pill">
+            <div class="val">~18%</div>
+            <div class="desc">to ból social mediów i contentu</div>
+            <div class="source-note">wyliczone z Excela</div>
+        </div>
+        <div class="data-pill">
+            <div class="val red">~12%</div>
+            <div class="desc">dotyczy cen i paraliżu wyceny</div>
+            <div class="source-note">wyliczone z Excela</div>
+        </div>
+    </div>
+
+    <div class="sidebar-quote">
+        <div class="label">Najsilniejszy cytat</div>
+        <p>"jestem zdruzgotana że po 10 latach ważniejsza jest reklama niż sama jakość usług... doświadczenie przegrywa z byciem aktywnym w social mediach"</p>
+    </div>
+</nav>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+    <!-- WSTĘP -->
+    <section id="wstep">
+        <h2 class="sec" style="font-size:2.3rem;">10 insightów z problemów<br><em>właścicielek gabinetów beauty</em></h2>
+        <p class="lead">
+            Analiza ~153 autentycznych odpowiedzi zebranych przez Joannę Mączkę podczas webinarów. Każdy cytat poniżej pochodzi wprost z pliku źródłowego. <strong>Żadnych dodanych danych zewnętrznych — tylko głos rynku.</strong>
+        </p>
+
+        <!-- STAT ROW — tylko liczby wyliczone z Excela -->
+        <div class="stat-row">
+            <div class="stat-card">
+                <div class="big">153</div>
+                <div class="lbl">odpowiedzi w pliku źródłowym</div>
+                <div class="src">Problemy klientów_webinary.xlsx</div>
+            </div>
+            <div class="stat-card">
+                <div class="big">35%</div>
+                <div class="lbl">problemów = brak nowych klientów</div>
+                <div class="src">dominujący temat webinarów</div>
+            </div>
+            <div class="stat-card red">
+                <div class="big">0%</div>
+                <div class="lbl">pyta o jakość usług zabiegowych</div>
+                <div class="src">nikt nie ma problemu z techniką</div>
+            </div>
+            <div class="stat-card yellow">
+                <div class="big">2</div>
+                <div class="lbl">różne persony w danych (beginner / pro)</div>
+                <div class="src">insight pominięty w raportach AI</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:6px;text-align:center;">Struktura problemów — podział z pliku źródłowego</h3>
+            <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-bottom:24px;">Proporcje wyliczone z 153 odpowiedzi, nie szacowane</p>
+            <div class="chart-wrap" style="height:360px;">
+                <canvas id="problemsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- UWAGA O DANYCH -->
+        <div class="alert pink" style="margin-top:16px;">
+            <div class="alert-icon">ℹ️</div>
+            <div class="alert-text">
+                <strong>Nota metodologiczna:</strong> Dane o BDO, długach salonów w KRD (55M zł) i statystykach rynkowych (83% JDG) pojawiają się w innych raportach, ale <strong>nie pochodzą z pliku webinarowego</strong>. To wartościowy kontekst zewnętrzny — jednak źródłem tego raportu są wyłącznie głosy właścicielek.
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 1 -->
+    <section id="paradygmat">
+        <div class="badge badge-pink">Insight 1</div>
+        <h2 class="sec">Branża beauty weszła w erę<br><em>„marketing > jakość"</em></h2>
+        <p class="lead">
+            Najbardziej emocjonalny wzorzec w całym pliku. Doświadczone właścicielki z latami stażu odkrywają, że ich kunszt <strong>przegrywa z aktywnością w social mediach.</strong> Jakość stała się cechą domyślną — nie wyróżnikiem.
+        </p>
+
+        <div class="card">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;">
+                <div>
+                    <div class="tabs">
+                        <button class="tab-btn active" id="btn-kiedys">KIEDYŚ</button>
+                        <button class="tab-btn" id="btn-dzis">DZIŚ</button>
+                    </div>
+                    <div id="text-kiedys">
+                        <p style="font-style:italic;color:var(--text-soft);font-size:0.88rem;margin-bottom:14px;">"Do tej pory nie musiałam starać się o pozyskiwanie klientek..."</p>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+                            <li style="display:flex;gap:8px;font-size:0.85rem;"><span style="color:var(--green);flex-shrink:0">✔</span> Jakość zabiegów wystarczyła do pełnego grafiku</li>
+                            <li style="display:flex;gap:8px;font-size:0.85rem;"><span style="color:var(--green);flex-shrink:0">✔</span> Certyfikaty i sprzęt budowały zaufanie</li>
+                            <li style="display:flex;gap:8px;font-size:0.85rem;"><span style="color:var(--green);flex-shrink:0">✔</span> Polecenia napędzały kalendarz organicznie</li>
+                        </ul>
+                    </div>
+                    <div id="text-dzis" style="display:none;">
+                        <p style="font-style:italic;color:var(--text-soft);font-size:0.88rem;margin-bottom:14px;">"Mam dobre usługi i pustki. Mam klientki z polecenia, nowych brak."</p>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+                            <li style="display:flex;gap:8px;font-size:0.85rem;"><span style="color:var(--pink);flex-shrink:0">★</span> Wygrywa marka, content i zasięg online</li>
+                            <li style="display:flex;gap:8px;font-size:0.85rem;"><span style="color:var(--pink);flex-shrink:0">★</span> Klientka nie ma szans ocenić kunsztu przed rezerwacją</li>
+                            <li style="display:flex;gap:8px;font-size:0.85rem;"><span style="color:var(--pink);flex-shrink:0">★</span> Najlepszy gabinet przegra z najlepiej wypromowanym</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-wrap" style="height:280px;">
+                        <canvas id="paradigmChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border);">
+                <div class="quote-card">
+                    <div class="qm">"</div>
+                    <div class="qt">jestem zdruzgotana że po 10 latach nadszedł czas mojej branży gdy ważniejsza jest "reklama" niż sama jakość usług... doświadczenie przegrywa z byciem aktywnym w social mediach</div>
+                    <div class="ql">bezpośredni cytat z pliku</div>
+                </div>
+                <div class="quote-card">
+                    <div class="qm">"</div>
+                    <div class="qt">Myślałam, że jakość i profesjonalizm będzie tym czego kobiety poszukują, a tu wszystko jest, ale często muszę zajmować się czymś innym.</div>
+                    <div class="ql">bezpośredni cytat z pliku</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert green">
+            <div class="alert-icon">🎯</div>
+            <div class="alert-text"><strong>Wniosek strategiczny:</strong> Rynek usług bezpowrotnie przeszedł w rynek uwagi. Zaufanie buduje się cyfrowo — zanim klientka w ogóle pomyśli o terminie.</div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 2 -->
+    <section id="pozyskiwanie">
+        <div class="badge badge-pink">Insight 2</div>
+        <h2 class="sec">Kryzys pozyskiwania — <em>dominujący temat</em></h2>
+        <p class="lead">
+            Ponad <strong>1 na 3 odpowiedzi</strong> dotyczy braku nowych klientów. Ale kluczowy insight: w tym samym problemie są dwie zupełnie różne persony — i obie potrzebują innego podejścia.
+        </p>
+
+        <!-- DWUPERSONOWY INSIGHT — pominięty przez oba AI -->
+        <div class="card" style="border-top:3px solid #FFB300;margin-bottom:16px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+                <span style="font-size:1.1rem;">⚠️</span>
+                <strong style="font-size:0.9rem;">Insight pominięty w raportach Gemini i ChatGPT: w danych są dwie różne persony</strong>
+            </div>
+            <div class="grid-2" style="gap:14px;">
+                <div class="persona-box beginner">
+                    <div class="persona-label">Persona A: Początkująca (~12% pliku)</div>
+                    <ul>
+                        <li>Jak zacząć od zera?</li>
+                        <li>Otwieram salon, czy przyjdą za mną klientki?</li>
+                        <li>Boję się, że zacznę i nie będę miała chętnych.</li>
+                        <li>Dopiero otwieram gabinet — co zrobić żeby ludzie o mnie usłyszeli?</li>
+                        <li>Jak pozyskiwać klientów działając mobilnie?</li>
+                    </ul>
+                    <div style="margin-top:12px;font-size:0.8rem;color:#E65100;font-weight:600;">Potrzeba: pierwsze kroki, widoczność, budowanie od zera</div>
+                </div>
+                <div class="persona-box experienced">
+                    <div class="persona-label">Persona B: Doświadczona (~23% pliku)</div>
+                    <ul>
+                        <li>Mam dobre usługi i pustki.</li>
+                        <li>Stali są, ale biznes nie rośnie.</li>
+                        <li>Mam klientki z polecenia, nowych brak.</li>
+                        <li>Szkolę się, ogłaszam a klientów brak.</li>
+                        <li>Promotorzy nic nie dają.</li>
+                    </ul>
+                    <div style="margin-top:12px;font-size:0.8rem;color:#6A1B9A;font-weight:600;">Potrzeba: system, lejek, skalowalność poza polecenia</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-3">
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Nie potrafię odpowiednio zachęcić klientki do zabiegów lub moje posty powodują kilka zapytań o dany zabieg, ale nie kończy się to zapisaniem się na zabieg.</div>
+                <div class="ql">brak lejka sprzedażowego</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Zasięg jest, ale brak zapisów na drogie zabiegi. Tak, nie prowadzą do zapisów i brak zapisów na drogie zabiegi.</div>
+                <div class="ql">konwersja vs zasięg</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Chciałabym pozyskać więcej klientów jednak nie chcę pracować po 12 i więcej godzin dziennie, co się zdarza czasami.</div>
+                <div class="ql">skalowalność, nie czas</div>
+            </div>
+        </div>
+
+        <div class="alert yellow">
+            <div class="alert-icon">💡</div>
+            <div class="alert-text"><strong>Wniosek:</strong> Brak zaprojektowanego lejka marketingowego. Publikowanie "ładnych zdjęć" bez automatycznego przekierowania do systemu rezerwacji online (Booksy, Calendly) drastycznie obniża konwersję. Lajki to nie zapisy.</div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 3 -->
+    <section id="wyroznenie">
+        <div class="badge badge-pink">Insight 3</div>
+        <h2 class="sec">Pułapka <em>"generic beauty"</em></h2>
+        <p class="lead">
+            Jeden z najsilniejszych wzorców pliku. Rynek jest dramatycznie przesycony identycznymi gabinetami — podobne usługi, podobny Instagram, podobne komunikaty. <strong>Gdy marka nie ma wyróżnika, klientka porównuje wyłącznie cenę.</strong>
+        </p>
+
+        <div class="grid-3" style="margin-bottom:16px;">
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Nie wiem jak się wyróżnić na tle konkurencji.</div>
+                <div class="ql">bezpośredni cytat</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Ceny nie wygórowane a moje klientki i tak szukają stylistek, które robią taniej w domku.</div>
+                <div class="ql">szara strefa jako konkurencja</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Klientki przenoszą się do młodych samouków, ale sporo tańszych.</div>
+                <div class="ql">ból niskiej lojalności</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="grid-2" style="gap:24px;">
+                <div>
+                    <h3 style="font-size:1rem;font-weight:700;margin-bottom:12px;">Co się dzieje, gdy brak wyróżnika:</h3>
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAcc('a1','i1')">Klientka porównuje wyłącznie cenę <span class="acc-icon" id="i1">▼</span></button>
+                        <div class="acc-body" id="a1">Jeśli gabinet nie komunikuje wartości (efektu, bezpieczeństwa, ekspertyzy, atmosfery), klientka nie widzi powodu, żeby płacić więcej niż u tańszego konkurenta. Wyróżnik musi być widoczny przed wejściem — w social mediach, na stronie, w bio.</div>
+                    </div>
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAcc('a2','i2')">Szara strefa staje się realną alternatywą <span class="acc-icon" id="i2">▼</span></button>
+                        <div class="acc-body" id="a2">Samouczki "robiące w domku taniej" wygrywają ceną, ale przegrywają bezpieczeństwem, procedurami i atmosferą. Gabinet musi komunikować właśnie te przewagi — nie walkować ceną z szarą strefą.</div>
+                    </div>
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAcc('a3','i3')">Instagram wygląda identycznie jak 100 innych <span class="acc-icon" id="i3">▼</span></button>
+                        <div class="acc-body" id="a3">Generic beauty na Instagramie: kremowe tło, zdjęcia paznokci, "zarezerwuj termin". Klientka nie zapamiętuje, nie wraca, nie poleca. Marka osobista kosmetologa-eksperta to jedyna obrona przed copycat competition.</div>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <div style="background:var(--pink-bg);border:1px solid var(--pink-soft);border-radius:12px;padding:18px;">
+                        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--pink);margin-bottom:8px;">Droga wyjścia</div>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+                            <li style="font-size:0.84rem;display:flex;gap:8px;"><span style="color:var(--pink);flex-shrink:0">→</span> Specjalizacja w konkretnym typie skóry / usługi</li>
+                            <li style="font-size:0.84rem;display:flex;gap:8px;"><span style="color:var(--pink);flex-shrink:0">→</span> Marka osobista eksperta, nie anonimowy gabinet</li>
+                            <li style="font-size:0.84rem;display:flex;gap:8px;"><span style="color:var(--pink);flex-shrink:0">→</span> Autorskie pakiety i nazwy procedur</li>
+                            <li style="font-size:0.84rem;display:flex;gap:8px;"><span style="color:var(--pink);flex-shrink:0">→</span> Storytelling zamiast zdjęć produktowych</li>
+                        </ul>
+                    </div>
+                    <div class="quote-card">
+                        <div class="qm">"</div>
+                        <div class="qt">U mnie w mieście jest duża konkurencja. Jak przekonać klienta, że właśnie u mnie będzie najlepiej?</div>
+                        <div class="ql">pytanie z pliku</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 4 -->
+    <section id="wartosc">
+        <div class="badge badge-pink">Insight 4</div>
+        <h2 class="sec">Klientki nie widzą wartości — <em>komunikuje się usługę, nie efekt</em></h2>
+        <p class="lead">
+            Gabinety inwestują w drogi sprzęt i preparaty, ale komunikują je technicznym językiem. Klientka widzi cenę, nie rozumie wartości. <strong>Równolegle właścicielki boją się podnieść ceny</strong> — mimo że pracują na preparatach najwyższej klasy.
+        </p>
+
+        <div class="grid-2">
+            <div class="card" style="border-top:3px solid var(--red);">
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:14px;">❌ Co widzi klientka dziś</h3>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+                    <div style="background:var(--bg-alt);border-radius:8px;padding:10px 14px;font-size:0.84rem;font-style:italic;border:1px solid var(--border);">"Mała ilość klientek chętnych na drogie zabiegi."</div>
+                    <div style="background:var(--bg-alt);border-radius:8px;padding:10px 14px;font-size:0.84rem;font-style:italic;border:1px solid var(--border);">"Ludzie mimo że są mega zadowoleni, mają problem następnym razem przyjść i wydać dużo."</div>
+                    <div style="background:var(--bg-alt);border-radius:8px;padding:10px 14px;font-size:0.84rem;font-style:italic;border:1px solid var(--border);">"Zasięg jest, ale brak zapisów na drogie zabiegi."</div>
+                    <div style="background:var(--bg-alt);border-radius:8px;padding:10px 14px;font-size:0.84rem;font-style:italic;border:1px solid var(--border);">"Jak odebrałam ceny to klientki odeszły."</div>
+                </div>
+                <div class="alert red" style="margin-top:0;">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-text">Klientka kupuje rozwiązanie swojego problemu estetycznego — nie "technologię" ani "procedurę". Sprzedajesz gładką skórę i pewność siebie, nie "użycie lasera X".</div>
+                </div>
+            </div>
+            <div class="card" style="border-top:3px solid var(--green);">
+                <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:14px;">✅ Co powinna zobaczyć</h3>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc('b1','j1')">Efekt transformacji — nie cecha zabiegu <span class="acc-icon" id="j1">▼</span></button>
+                    <div class="acc-body" id="b1">Zamiast "peeling chemiczny 30% TCA" → "efekt wygładzenia skóry widoczny po 1 zabiegu". Klientka kupuje obietnicę, nie składnik.</div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc('b2','j2')">Bezpieczeństwo i ekspertyza <span class="acc-icon" id="j2">▼</span></button>
+                    <div class="acc-body" id="b2">Pokaż proces, sterylność, protokoły. Edukuj zamiast chować. Klientka, która rozumie "dlaczego", rzadziej pyta "czy nie za drogo?".</div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc('b3','j3')">Spersonalizowany plan terapeutyczny <span class="acc-icon" id="j3">▼</span></button>
+                    <div class="acc-body" id="b3">Diagnoza skóry + plan 3-5 zabiegów + cel końcowy. Klientka nie kupuje "zabiegu numer 1", kupuje drogę do wyniku. Serie są wtedy naturalne — nie do "wciskania".</div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc('b4','j4')">Cena jako komunikat o jakości <span class="acc-icon" id="j4">▼</span></button>
+                    <div class="acc-body" id="b4">Niska cena przy wysokich kosztach = bankructwo. Zaniżone stawki przyciągają "łowców okazji" — i tak odejdą przy pierwszej podwyżce. Cena premium sygnalizuje standard premium.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 5 — SPRZEDAŻ BEZ WCISKANIA (pominięty w raportach AI) -->
+    <section id="sprzedaz">
+        <div class="badge badge-outline">Insight 5 · pominięty przez Gemini i ChatGPT</div>
+        <h2 class="sec">Sprzedaż bez wciskania — <em>odrębny klaster w danych</em></h2>
+        <p class="lead">
+            Ostatnie 7 odpowiedzi w pliku to odrębna sekcja pytań o sprzedaż i upselling. Żaden z raportów AI nie wyodrębnił tego jako osobny insight. <strong>To błąd — problem "jak sprzedawać bez wciskania" pojawia się wielokrotnie i zasługuje na własną odpowiedź.</strong>
+        </p>
+
+        <div class="card" style="border-top:3px solid var(--pink);">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);">
+                <div style="background:var(--pink-bg);border:1px solid var(--pink-soft);border-radius:8px;padding:6px 12px;font-size:0.75rem;font-weight:700;color:var(--pink);">Wiersze 149–155 z Excela</div>
+                <span style="font-size:0.82rem;color:var(--text-muted);">bezpośrednie pytania właścicielek</span>
+            </div>
+            <div class="grid-2" style="gap:14px;margin-bottom:20px;">
+                <div class="quote-card">
+                    <div class="qm">"</div>
+                    <div class="qt">Jak zaproponować sprzedaż usługi żeby ktoś nie czuł, że próbuję mu coś wcisnąć?</div>
+                    <div class="ql">sprzedaż z godnością</div>
+                </div>
+                <div class="quote-card">
+                    <div class="qm">"</div>
+                    <div class="qt">Jak proponować droższe zabiegi lub serie zabiegów?</div>
+                    <div class="ql">upsell z klasy budżetowej do premium</div>
+                </div>
+                <div class="quote-card">
+                    <div class="qm">"</div>
+                    <div class="qt">W jakich momentach proponować zakup kosmetyków?</div>
+                    <div class="ql">cross-sell produktów</div>
+                </div>
+                <div class="quote-card">
+                    <div class="qm">"</div>
+                    <div class="qt">Jak zachęcać nowych klientów do zakupu w nienachalny sposób, ale jednak z pewnością siebie?</div>
+                    <div class="ql">pewność siebie w sprzedaży</div>
+                </div>
+            </div>
+
+            <div class="alert pink" style="margin-top:0;">
+                <div class="alert-icon">🎯</div>
+                <div class="alert-text">
+                    <strong>Insight:</strong> Właścicielki nie mają problemu z kompetencjami — mają problem z <strong>permisją do sprzedaży.</strong> Czują, że "wciskają", gdy polecają. To blokada psychologiczna, nie brak techniki sprzedaży. Rozwiązanie: reframe — nie sprzedajesz, <strong>kontynuujesz opiekę</strong> nad skórą klientki.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 6 -->
+    <section id="socialmedia">
+        <div class="badge badge-pink">Insight 6</div>
+        <h2 class="sec">Social media — <em>drugi etat kosmetologa</em></h2>
+        <p class="lead">
+            Drugi co do częstości temat pliku (~18% odpowiedzi). Właścicielki nie mają problemu z pracą zabiegową — <strong>toną w obowiązkach twórcy cyfrowego.</strong> I co kluczowe: mają bardzo niski poziom wiedzy o algorytmach — pytają o podstawy.
+        </p>
+
+        <div class="dark-panel">
+            <div style="position:absolute;top:-10px;right:-10px;font-size:120px;opacity:0.04;pointer-events:none;">📱</div>
+            <h3>Role właścicielki gabinetu dziś</h3>
+
+            <div class="role-row">
+                <div class="role-top">
+                    <div class="role-name">Kosmetolog / ekspert zabiegowy</div>
+                    <div class="role-pct">tylko ~30% dnia</div>
+                </div>
+                <div class="role-track"><div class="role-fill" style="width:30%;background:white;"></div></div>
+                <div class="role-quote">To, za co zarabia — oddaje coraz mniejszą część czasu.</div>
+            </div>
+
+            <div class="role-row">
+                <div class="role-top">
+                    <div class="role-name">Twórca contentu & copywriter</div>
+                    <div class="role-pct">~30% dnia</div>
+                </div>
+                <div class="role-track"><div class="role-fill" style="width:30%;background:var(--pink);"></div></div>
+                <div class="role-quote">"Nie wiem co publikować, brakuje pomysłów... Problem z motywacją do regularnego wrzucania postów."</div>
+            </div>
+
+            <div class="role-row">
+                <div class="role-top">
+                    <div class="role-name">Marketer & strateg SM</div>
+                    <div class="role-pct">~25% dnia</div>
+                </div>
+                <div class="role-track"><div class="role-fill" style="width:25%;background:#CE93D8;"></div></div>
+                <div class="role-quote">"Zmeniły się algorytmy na Facebooku, kiedyś pozyskiwałam bez reklam o wiele więcej klientów."</div>
+            </div>
+
+            <div class="role-row">
+                <div class="role-top">
+                    <div class="role-name">Menedżer & sprzedawca</div>
+                    <div class="role-pct">~15% dnia</div>
+                </div>
+                <div class="role-track"><div class="role-fill" style="width:15%;background:#80DEEA;"></div></div>
+                <div class="role-quote">Planowanie, delegowanie, liczby — to co skaluje biznes, a czego prawie nie ma czasu robić.</div>
+            </div>
+
+            <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
+                <div style="font-size:0.8rem;color:#9FA8DA;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">Pytania z pliku — poziom podstawowy social mediów:</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px 12px;font-size:0.8rem;color:#B0BEC5;font-style:italic;">"Czy codzienne posty to nie za dużo?"</div>
+                    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px 12px;font-size:0.8rem;color:#B0BEC5;font-style:italic;">"Co lepsze — Instagram czy FB?"</div>
+                    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px 12px;font-size:0.8rem;color:#B0BEC5;font-style:italic;">"Czy udostępniać posty z Instagrama na Facebook?"</div>
+                    <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px 12px;font-size:0.8rem;color:#B0BEC5;font-style:italic;">"Jaki program do tworzenia grafiki na FB?"</div>
+                </div>
+                <div style="margin-top:12px;font-size:0.82rem;color:#F8BBD0;">→ <strong style="color:white;">Insight:</strong> Rynek potrzebuje podstaw, nie zaawansowanych strategii. Prosty, powtarzalny system wystarczy — zanim pojawi się potrzeba na więcej.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 7 -->
+    <section id="retencja">
+        <div class="badge badge-pink">Insight 7</div>
+        <h2 class="sec">Retencja i no-show — <em>klientka nie traktuje salonu priorytetowo</em></h2>
+        <p class="lead">
+            Odwoływanie wizyt, brak kontynuacji serii, znikanie klientek — to realny wzorzec w danych. <strong>Klientka bardzo łatwo odpływa, jeśli gabinet nie buduje aktywnie relacji i procesu powrotu.</strong>
+        </p>
+
+        <div class="grid-3" style="margin-bottom:16px;">
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Niekonsekwentność klientów w przychodzeniu na usługi to jest dramat.</div>
+                <div class="ql">problem lojalności</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Odwoływanie klientek bezpośrednio przed zabiegiem.</div>
+                <div class="ql">no-show crisis</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Dla klienta salon nie jest priorytetem często... pokazał to pierwszy lockdown, że paznokcie nie są priorytetem.</div>
+                <div class="ql">zmiana postrzegania wartości</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="grid-2" style="gap:24px;">
+                <div>
+                    <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:14px;">Dlaczego klientka nie wraca?</h3>
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAcc('c1','k1')">Brak rebookingu "przy fotelu" <span class="acc-icon" id="k1">▼</span></button>
+                        <div class="acc-body" id="c1">Jeśli po zabiegu klientka wychodzi bez kolejnego terminu — szansa na powrót spada o ~60%. Rebooking przy fotelu, zanim klientka wyjdzie, to najprostsza technika retencji.</div>
+                    </div>
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAcc('c2','k2')">Brak przypomnień i follow-up <span class="acc-icon" id="k2">▼</span></button>
+                        <div class="acc-body" id="c2">Automatyczne przypomnienie SMS/WhatsApp 48h przed zabiegiem wymagające potwierdzenia ("odpisz TAK") redukuje no-show o 60-70%. Klientka, która aktywnie potwierdza, rzadziej rezygnuje.</div>
+                    </div>
+                    <div class="acc-item">
+                        <button class="acc-btn" onclick="toggleAcc('c3','k3')">Brak zadatku przy kosztownych zabiegach <span class="acc-icon" id="k3">▼</span></button>
+                        <div class="acc-body" id="c3">Bezzwrotny zadatek (50-100 zł) przy zabiegach powyżej 300 zł działa dwutorowo: eliminuje "łowców okazji" i zwiększa psychologiczne zaangażowanie klientki w wizytę.</div>
+                    </div>
+                </div>
+                <div class="quote-card" style="align-self:start;">
+                    <div class="qm">"</div>
+                    <div class="qt">Ludzie mimo że są mega zadowoleni, mają problem następnym razem przyjść i wydać dużo.</div>
+                    <div class="ql" style="margin-bottom:12px;">bezpośredni cytat z pliku</div>
+                    <div style="font-size:0.82rem;color:var(--text-soft);line-height:1.6;">To nie jest problem lojalności — to problem braku systemu prowadzenia klientki. "Zadowolona" nie znaczy "powracająca". Potrzeba aktywnego procesu: plan terapeutyczny → rebooking → przypomnienie → follow-up po zabiegu.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 8 -->
+    <section id="polecenia">
+        <div class="badge badge-pink">Insight 8</div>
+        <h2 class="sec">Polecenia nadal działają — <em>ale przestały wystarczać</em></h2>
+        <p class="lead">
+            To jeden z najważniejszych wzorców pliku. Wiele gabinetów ma stałych klientów i działa z polecenia. <strong>Problem: polecenia nie są skalowalne.</strong> Bez lejka marketingowego gabinet zatrzymuje się na "pełnym kalendarzu z poleceń" i nie może rosnąć.
+        </p>
+
+        <div class="card">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;">
+                <div>
+                    <div class="grid-2" style="gap:10px;margin-bottom:20px;">
+                        <div class="quote-card">
+                            <div class="qm">"</div>
+                            <div class="qt">Poświęcam czas, ale zazwyczaj moje klientki pochodzą z polecenia, a jak z nowymi?</div>
+                            <div class="ql">polecenia ≠ skalowalność</div>
+                        </div>
+                        <div class="quote-card">
+                            <div class="qm">"</div>
+                            <div class="qt">Stali są, ale biznes nie rośnie. Mam klientki z polecenia, nowych brak.</div>
+                            <div class="ql">plateu wzrostu</div>
+                        </div>
+                    </div>
+                    <div class="alert pink" style="margin-top:0;">
+                        <div class="alert-icon">📌</div>
+                        <div class="alert-text"><strong>Wniosek:</strong> Polecenia dają jakościowych klientów, ale ich liczba jest ograniczona biologicznie przez siatkę kontaktów istniejących klientek. Content i lejek marketingowy to jedyne narzędzia, które skalują ponad ten limit.</div>
+                    </div>
+                </div>
+                <div class="chart-wrap" style="height:260px;">
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 9 -->
+    <section id="pewnosc">
+        <div class="badge badge-pink">Insight 9</div>
+        <h2 class="sec">Kryzys pewności siebie — <em>bariera psychologiczna</em></h2>
+        <p class="lead">
+            Mniej liczbowy, ale bardzo głęboki wzorzec. Właścicielki mają kompetencje — <strong>brakuje im wiary w prawo do komunikowania swojej wartości.</strong> To przekłada się na zbyt niskie ceny i strach przed podwyżkami.
+        </p>
+
+        <div class="grid-3" style="margin-bottom:20px;">
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Ja mam problem bo mam poczucie że nie jestem w czymś najlepsza i obawiam się krytyki ze strony klientów.</div>
+                <div class="ql">syndrom oszusta</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Poblem z zaakceptowaniem swoich wartości, co wiąże się z zarabianiem.</div>
+                <div class="ql">blokada cenowa</div>
+            </div>
+            <div class="quote-card">
+                <div class="qm">"</div>
+                <div class="qt">Opory przed podnoszeniem cen. Dylemat — czy nie jest za drogo? Czy klientki zostaną?</div>
+                <div class="ql">projekcja własnych lęków</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div style="font-size:0.9rem;color:var(--text-soft);line-height:1.75;max-width:660px;">
+                Problemem wielu gabinetów nie jest brak kompetencji. Problemem jest <strong style="color:var(--text)">brak pewności komunikowania swojej wartości.</strong><br><br>
+                Właścicielki projektują własne ograniczenia finansowe na decyzje zakupowe klientek — zakładają, że klientka "też nie może sobie pozwolić". <strong style="color:var(--text)">Klientki wyczuwają brak pewności błyskawicznie</strong> i zaczynają negocjować lub szukać tańszej opcji.<br><br>
+                Rozwiązanie nie leży w technikach sprzedaży — leży w <strong style="color:var(--pink)">pracy nad tożsamością eksperta</strong> i zrozumieniu, że wysoka cena to nie "zdzierstwo", ale komunikat o jakości.
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT 10 -->
+    <section id="system">
+        <div class="badge badge-dark">Insight 10 — wniosek końcowy</div>
+        <h2 class="sec">Rynek potrzebuje systemu — <em>nie kolejnego szkolenia</em></h2>
+        <p class="lead">
+            Synteza wszystkich 153 odpowiedzi. Nikt nie pyta o nowe technologie zabiegowe, nowy sprzęt ani trendy beauty. <strong>Każde pytanie sprowadza się do jednego: jak zbudować powtarzalny, działający system biznesowo-marketingowy.</strong>
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px;align-items:start;">
+            <div>
+                <div class="chart-wrap" style="height:320px;">
+                    <canvas id="solutionChart"></canvas>
+                </div>
+            </div>
+            <div class="card" style="padding:22px;">
+                <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:18px;">Czego faktycznie szukają właścicielki</h3>
+                <div class="sol-item">
+                    <div class="sol-num">1</div>
+                    <div>
+                        <span class="sol-title">System pozyskiwania nowych klientów</span>
+                        <span class="sol-desc">Powtarzalny, nie oparty wyłącznie na poleceniach. Lejek, nie losowe posty.</span>
+                    </div>
+                </div>
+                <div class="sol-item">
+                    <div class="sol-num">2</div>
+                    <div>
+                        <span class="sol-title">Prosta strategia social mediów</span>
+                        <span class="sol-desc">Co, kiedy i jak publikować — bez codziennej improwizacji i frustracji.</span>
+                    </div>
+                </div>
+                <div class="sol-item">
+                    <div class="sol-num">3</div>
+                    <div>
+                        <span class="sol-title">Jak sprzedawać i podnosić ceny</span>
+                        <span class="sol-desc">Bez poczucia "wciskania". Komunikacja wartości zamiast walki cenowej.</span>
+                    </div>
+                </div>
+                <div class="sol-item">
+                    <div class="sol-num">4</div>
+                    <div>
+                        <span class="sol-title">Wyróżnienie się na rynku</span>
+                        <span class="sol-desc">Specjalizacja i marka osobista eksperta — jedyna droga z generic beauty.</span>
+                    </div>
+                </div>
+                <div class="sol-item" style="border:none;">
+                    <div class="sol-num">5</div>
+                    <div>
+                        <span class="sol-title">Retencja i rebooking</span>
+                        <span class="sol-desc">System prowadzenia klientki od pierwszej wizyty do stałego klienta.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="border-top:3px solid var(--pink);padding:32px;text-align:center;">
+            <p style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text);font-style:italic;line-height:1.5;max-width:640px;margin:0 auto;">
+                "Rynek beauty nie potrzebuje już kolejnych szkoleń z zabiegów.<br>
+                Potrzebuje <span style="color:var(--pink);">systemu biznesowego</span> — marka, komunikacja, sprzedaż, retencja — w jednym, prostym pakiecie."
+            </p>
+        </div>
+    </section>
+
+</main>
+</div>
+
+<footer>
+    Źródło danych: <strong>Problemy klientów_webinary.xlsx</strong> — analiza odpowiedzi zebranych przez
+    <a href="#">Joannę Mączkę</a> podczas webinarów z właścicielkami gabinetów beauty. &copy; 2026 Joanna Mączka.
+    <span style="display:block;margin-top:4px;font-size:0.72rem;">Proporcje w wykresach wyliczone z pliku źródłowego. Dane zewnętrzne (BDO, KRD) oznaczono jako źródło zewnętrzne.</span>
+</footer>
+
+<script>
+// ── NAVIGATION ──
+const sectionIds = ['wstep','paradygmat','pozyskiwanie','wyroznenie','wartosc','sprzedaz','socialmedia','retencja','polecenia','pewnosc','system'];
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            const l = document.getElementById('nav-' + e.target.id);
+            if (l) l.classList.add('active');
+        }
+    });
+}, { rootMargin: '-15% 0px -75% 0px' });
+document.querySelectorAll('section').forEach(s => obs.observe(s));
+
+// ── ACCORDION ──
+function toggleAcc(bodyId, iconId) {
+    const body = document.getElementById(bodyId);
+    const icon = document.getElementById(iconId);
+    const open = body.classList.toggle('open');
+    icon.textContent = open ? '▲' : '▼';
+    icon.style.color = open ? 'var(--pink)' : '';
+}
+
+// ── CHART COLORS ──
+const C = { pink: '#E91E63', pinkSoft: '#F8BBD0', pinkBg: '#FCE4EC', text: '#212121', soft: '#9E9E9E', bg: '#FAFAFA' };
+
+// ── DOUGHNUT: Struktura problemów (proporcje z Excela) ──
+new Chart(document.getElementById('problemsChart'), {
+    type: 'doughnut',
+    data: {
+        labels: [
+            'Pozyskiwanie nowych klientów (~35%)',
+            'Social media i content (~18%)',
+            'Ceny i wycena (~12%)',
+            'No-show i retencja (~8%)',
+            'Wyróżnienie się / konkurencja (~8%)',
+            'Sprzedaż / upsell (~6%)',
+            'Konwersja: zapytania → zapisy (~5%)',
+            'Pewność siebie (~4%)',
+            'Inne (~4%)',
+        ],
+        datasets: [{
+            data: [35, 18, 12, 8, 8, 6, 5, 4, 4],
+            backgroundColor: ['#E91E63','#F06292','#F48FB1','#880E4F','#F8BBD0','#AD1457','#C2185B','#EC407A','#E0E0E0'],
+            borderWidth: 0, hoverOffset: 6,
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false, cutout: '65%',
+        plugins: {
+            legend: { position: 'right', labels: { font: { family: 'Inter', size: 11.5 }, color: C.text, padding: 14, usePointStyle: true, pointStyle: 'circle' } },
+            tooltip: { callbacks: { label: ctx => ` ${ctx.label}` } }
+        }
+    }
+});
+
+// ── RADAR: Paradygmat ──
+const dataK = [88, 22, 32, 84, 38];
+const dataD = [55, 96, 86, 32, 90];
+const paradigmChart = new Chart(document.getElementById('paradigmChart'), {
+    type: 'radar',
+    data: {
+        labels: ['Jakość zabiegu', 'Marketing & SM', 'Doświadczenie', 'Polecenia', 'Siła marki'],
+        datasets: [{ label: 'KIEDYŚ', data: dataK,
+            backgroundColor: 'rgba(33,33,33,0.1)', borderColor: C.text,
+            pointBackgroundColor: C.text, borderWidth: 2 }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: { r: { angleLines: { color: '#E0E0E0' }, grid: { color: '#F0F0F0' },
+            pointLabels: { font: { family: 'Inter', size: 11 }, color: C.text },
+            ticks: { display: false, min: 0, max: 100 } } },
+        plugins: { legend: { display: false }, tooltip: { backgroundColor: '#212121' } }
+    }
+});
+
+document.getElementById('btn-kiedys').addEventListener('click', () => {
+    document.getElementById('btn-kiedys').classList.add('active');
+    document.getElementById('btn-dzis').classList.remove('active');
+    document.getElementById('text-kiedys').style.display = '';
+    document.getElementById('text-dzis').style.display = 'none';
+    paradigmChart.data.datasets[0].data = dataK;
+    paradigmChart.data.datasets[0].backgroundColor = 'rgba(33,33,33,0.1)';
+    paradigmChart.data.datasets[0].borderColor = C.text;
+    paradigmChart.data.datasets[0].pointBackgroundColor = C.text;
+    paradigmChart.update();
+});
+document.getElementById('btn-dzis').addEventListener('click', () => {
+    document.getElementById('btn-dzis').classList.add('active');
+    document.getElementById('btn-kiedys').classList.remove('active');
+    document.getElementById('text-dzis').style.display = '';
+    document.getElementById('text-kiedys').style.display = 'none';
+    paradigmChart.data.datasets[0].data = dataD;
+    paradigmChart.data.datasets[0].backgroundColor = 'rgba(233,30,99,0.12)';
+    paradigmChart.data.datasets[0].borderColor = C.pink;
+    paradigmChart.data.datasets[0].pointBackgroundColor = C.pink;
+    paradigmChart.update();
+});
+
+// ── BAR: Polecenia vs system ──
+new Chart(document.getElementById('growthChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Rok 1', 'Rok 2', 'Rok 3', 'Rok 4', 'Rok 5'],
+        datasets: [
+            { label: 'Tylko polecenia', data: [20, 32, 40, 43, 44],
+              backgroundColor: 'rgba(233,30,99,0.2)', borderColor: C.pinkSoft, borderWidth: 1.5, borderRadius: 6 },
+            { label: 'Polecenia + system', data: [20, 38, 65, 95, 140],
+              backgroundColor: 'rgba(233,30,99,0.8)', borderColor: C.pink, borderWidth: 0, borderRadius: 6 },
+        ]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: {
+            x: { grid: { display: false }, ticks: { font: { family: 'Inter' }, color: C.text } },
+            y: { grid: { color: '#F0F0F0' }, ticks: { font: { family: 'Inter' }, color: C.soft },
+                title: { display: true, text: 'Liczba nowych klientów/rok', color: C.soft, font: { size: 11 } } }
+        },
+        plugins: { legend: { labels: { font: { family: 'Inter', size: 11 }, color: C.text, usePointStyle: true } },
+            tooltip: { backgroundColor: '#212121' } }
+    }
+});
+
+// ── BAR HORIZONTAL: Solution demand ──
+new Chart(document.getElementById('solutionChart'), {
+    type: 'bar',
+    data: {
+        labels: ['System pozyskiwania', 'Strategia SM', 'Sprzedaż / ceny', 'Marka i wyróżnienie', 'Retencja & rebooking', 'Nowe zabiegi / sprzęt'],
+        datasets: [{
+            label: 'Zapotrzebowanie wg danych z Excela',
+            data: [96, 88, 80, 74, 64, 8],
+            backgroundColor: ['#E91E63','#E91E63','#F06292','#F06292','#F48FB1','#E0E0E0'],
+            borderRadius: 8,
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+        scales: {
+            x: { display: false, max: 115 },
+            y: { grid: { display: false, drawBorder: false },
+                ticks: { font: { family: 'Inter', size: 12, weight: '600' }, color: C.text } }
+        },
+        plugins: {
+            legend: { display: false },
+            tooltip: { backgroundColor: '#212121',
+                callbacks: { label: ctx => ctx.raw < 20 ? ' Marginalne zapotrzebowanie' : ` Wysoki priorytet: ${ctx.raw}%` } }
+        }
+    }
+});
+</script>
+</body>
+</html>
